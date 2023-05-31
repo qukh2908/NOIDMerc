@@ -10,12 +10,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
-        //KHANH CHAO CA NHA IU
-        //THIS IS MY MAIN BRANCHES
 
+        //CHAO CA NHA IU
         //THIS IS MAIN BRANCHES
-
-        //HHAHAA
     }
 }
