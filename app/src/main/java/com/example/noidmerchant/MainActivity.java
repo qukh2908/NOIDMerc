@@ -11,7 +11,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //CHAO CA NHA IU
-   
+        //CHAO CA NHA IUuu
     }
 }
