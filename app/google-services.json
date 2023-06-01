@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "440451329115",
+    "firebase_url": "https://thuctap22c2ltm1-default-rtdb.firebaseio.com",
+    "project_id": "thuctap22c2ltm1",
+    "storage_bucket": "thuctap22c2ltm1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:440451329115:android:61dd65989bfa7a0a8aa37e",
+        "android_client_info": {
+          "package_name": "com.example.noidmerchant"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWlpJ6LRr1vMRFLQtd43bdV-jIeb3G0yM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:440451329115:android:07842dc0cd14ad0d8aa37e",
+        "android_client_info": {
+          "package_name": "com.thuctap.application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWlpJ6LRr1vMRFLQtd43bdV-jIeb3G0yM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
