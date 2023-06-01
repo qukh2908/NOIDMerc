@@ -20,6 +20,7 @@
     <ImageButton
         android:id="@+id/logOutB"
         android:layout_width="50dp"
+        android:contentDescription="LogoutBtn"
         android:layout_height="50dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="24dp"
