@@ -43,13 +43,13 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="15dp"
-                android:hint="Email"
-                app:startIconDrawable="@drawable/ic_person">
+                android:hint="Tên đăng nhập"
+                app:startIconDrawable="@drawable/ic_username">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/loginEmail"
+                    android:id="@+id/loginUsername"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp" />
+                    android:layout_height="65dp" />
             </com.google.android.material.textfield.TextInputLayout>
             <!-- Mật khẩu -->
             <com.google.android.material.textfield.TextInputLayout
@@ -66,7 +66,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/loginPassword"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="65dp"
                     android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -85,7 +85,7 @@
                     android:layout_marginEnd="25dp"
                     android:layout_marginBottom="5dp"
                     android:layout_weight="1"
-                    android:backgroundTint="#6cc0e5"
+                    android:backgroundTint="#a2e1db"
                     android:text="Đăng Nhập"
                     app:cornerRadius="10dp" />
 

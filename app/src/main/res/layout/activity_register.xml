@@ -9,13 +9,13 @@
     <!--Background-->
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="230dp"
+        android:layout_height="150dp"
         android:background="@drawable/wave_top" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="350dp"
-        android:layout_gravity="center"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         app:cardCornerRadius="20dp"
         app:cardMaxElevation="20dp">
 
@@ -29,11 +29,48 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textAlignment="center"
                 android:text="Đăng Kí"
+                android:textAlignment="center"
                 android:textColor="#333E48"
                 android:textSize="28dp"
                 android:textStyle="bold" />
+
+            <!-- Email -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtInputEmail"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:hint="Email"
+                app:startIconDrawable="@drawable/ic_email">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Tên khách hàng -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtInputName"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:hint="Tên quản lí"
+                app:startIconDrawable="@drawable/ic_person">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtName"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
             <!-- Tên đăng nhập -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/txtInputUsername"
@@ -43,14 +80,17 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="15dp"
-                android:hint="Email"
-                app:startIconDrawable="@drawable/ic_person">
+                android:hint="Tên đăng nhập"
+                app:startIconDrawable="@drawable/ic_username">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtEmail"
+                    android:id="@+id/edtUsername"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp" />
+                    android:layout_height="65dp" />
             </com.google.android.material.textfield.TextInputLayout>
+
+
+
             <!-- Mật khẩu -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/txtInputPassword"
@@ -66,7 +106,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtPassword"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="65dp"
                     android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -75,17 +115,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <Button
-                    android:id="@+id/btnSignUp" android:layout_weight="1"
+                    android:id="@+id/btnSignUp"
                     android:layout_width="292dp"
                     android:layout_height="50dp"
-                    android:backgroundTint="#6cc0e5"
                     android:layout_marginStart="25dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
                     android:layout_marginEnd="25dp"
-                    app:cornerRadius = "10dp"
-                    android:text="Đăng kí" />
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#a2e1db"
+                    android:text="Đăng kí"
+                    app:cornerRadius="10dp" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -96,8 +139,8 @@
                         android:id="@+id/txtSignIn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="right"
                         android:layout_marginRight="15dp"
+                        android:gravity="right"
                         android:text="Đã có tài khoản" />
 
                 </LinearLayout>

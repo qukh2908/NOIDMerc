@@ -1,14 +1,14 @@
 {
   "project_info": {
-    "project_number": "440451329115",
-    "firebase_url": "https://thuctap22c2ltm1-default-rtdb.firebaseio.com",
-    "project_id": "thuctap22c2ltm1",
-    "storage_bucket": "thuctap22c2ltm1.appspot.com"
+    "project_number": "155036475454",
+    "firebase_url": "https://noidapp221-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "noidapp221",
+    "storage_bucket": "noidapp221.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:440451329115:android:61dd65989bfa7a0a8aa37e",
+        "mobilesdk_app_id": "1:155036475454:android:ee72f5d8162bc6b1d7716f",
         "android_client_info": {
           "package_name": "com.example.noidmerchant"
         }
@@ -16,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCWlpJ6LRr1vMRFLQtd43bdV-jIeb3G0yM"
+          "current_key": "AIzaSyCbAkQo9WclreFDBJ3zIaG_oGxhRCYv30c"
         }
       ],
       "services": {
@@ -27,15 +27,34 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:440451329115:android:07842dc0cd14ad0d8aa37e",
+        "mobilesdk_app_id": "1:155036475454:android:05293040b70e8062d7716f",
         "android_client_info": {
-          "package_name": "com.thuctap.application"
+          "package_name": "com.thuctap.NOID"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCWlpJ6LRr1vMRFLQtd43bdV-jIeb3G0yM"
+          "current_key": "AIzaSyCbAkQo9WclreFDBJ3zIaG_oGxhRCYv30c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:155036475454:android:4a3eded36d44002ad7716f",
+        "android_client_info": {
+          "package_name": "com.thuctap.noid_merchant"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbAkQo9WclreFDBJ3zIaG_oGxhRCYv30c"
         }
       ],
       "services": {
