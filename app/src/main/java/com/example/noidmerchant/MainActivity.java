@@ -59,7 +59,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, SettingsActivity.class));
             }
         });
-        //CHAO CA NHA
-        //HELLO CAC BAN
     }
 }
