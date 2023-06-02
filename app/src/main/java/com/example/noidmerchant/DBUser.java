@@ -1,13 +1,17 @@
 package com.example.noidmerchant;
 
 public class DBUser {
-    String email,name,username,password;
+    String email,name,username,password,role;
+    public DBUser() {
 
-    public DBUser(String email, String name, String username, String password) {
+    }
+
+    public DBUser(String email, String name, String username, String password, String role) {
         this.email = email;
         this.name = name;
         this.username = username;
         this.password = password;
+        this.role = role;
     }
 
     public String getEmail() {
@@ -42,7 +46,12 @@ public class DBUser {
         this.password = password;
     }
 
-    public DBUser() {
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
 
