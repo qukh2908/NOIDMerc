@@ -129,7 +129,7 @@ public class LoginActivity extends AppCompatActivity {
     public void checkUser(){
         String userUsername = logUsername.getText().toString().trim();
         String userPassword = logPassword.getText().toString().trim();
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Admin");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("taikhoan");
         Query checkUserDatabase = reference.orderByChild("username").equalTo(userUsername);
         checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
