@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         app:cardCornerRadius="20dp"
-        app:cardMaxElevation="20dp">
+        app:cardElevation="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,21 +33,22 @@
                 android:textAlignment="center"
                 android:textColor="#333E48"
                 android:textSize="28dp"
+                android:layout_marginTop="10dp"
                 android:textStyle="bold" />
-            <!-- Tên đăng nhập -->
+            <!-- Email -->
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txtInputUsername"
+                android:id="@+id/txtInputEmail"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="15dp"
-                android:hint="Tên đăng nhập"
-                app:startIconDrawable="@drawable/ic_username">
+                android:hint=" Email"
+                app:startIconDrawable="@drawable/ic_mail">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/loginUsername"
+                    android:id="@+id/loginEmail"
                     android:layout_width="match_parent"
                     android:layout_height="65dp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -93,14 +94,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
+                    android:gravity="center"
                     android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/txtRegAccount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="165dp"
-                        android:text="Đăng ký" />
                     <TextView
                         android:id="@+id/txtForgotPassword"
                         android:layout_width="wrap_content"

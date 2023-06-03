@@ -10,16 +10,16 @@ import android.os.Handler;
 @SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash2);
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_splash2);
 
-        Handler handler = new Handler();
-             handler.postDelayed(() -> {
-                 startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+    Handler handler = new Handler();
+         handler.postDelayed(() -> {
+             startActivity(new Intent(SplashActivity.this, LoginActivity.class));
 
-                 finish();
-             },2000);
-        }
+             finish();
+         },2000);
+    }
 }
