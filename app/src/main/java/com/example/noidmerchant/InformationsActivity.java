@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -18,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class InformationsActivity extends AppCompatActivity {
     String path = "taikhoan/";
-    ImageView btnBack,btnSave;
+    Button btnSave;
     FirebaseDatabase database;
     DatabaseReference refEmail,refName,refAdd,refPhone;
     EditText txtEmail,txtPhone,txtAdd,txtName;
@@ -33,7 +35,7 @@ public class InformationsActivity extends AppCompatActivity {
         txtEmail = findViewById(R.id.txt_email);
         txtPhone = findViewById(R.id.txt_sdt);
         txtAdd = findViewById(R.id.txt_diachi);
-//        btnSave = findViewById(R.id.btn_luu);
+        btnSave = findViewById(R.id.btn_luu);
         database = FirebaseDatabase.getInstance();
         FirebaseUser userUID =  FirebaseAuth.getInstance().getCurrentUser();
 //        assert userUID != null ;
@@ -101,6 +103,16 @@ public class InformationsActivity extends AppCompatActivity {
 
         back_btn.setOnClickListener(v -> {
             finish();
+        });
+
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                refEmail.setValue(txtEmail.getText().toString());
+                refAdd.setValue(txtAdd.getText().toString());
+                refName.setValue(txtName.getText().toString());
+                refPhone.setValue(txtPhone.getText().toString());
+            }
         });
     }
 }
