@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -21,8 +22,7 @@ public class InformationsActivity extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference refEmail,refName,refAdd,refPhone;
     EditText txtEmail,txtPhone,txtAdd,txtName;
-    String uid = "SITrYwpwi2V91Qx1zhW0BWr96mD3";
-
+    String uid;
     ImageView back_btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,12 @@ public class InformationsActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         FirebaseUser userUID =  FirebaseAuth.getInstance().getCurrentUser();
 //        assert userUID != null ;
-//        uid = userUID.getUid();
+        uid = userUID.getUid();
+
+        if(uid != null) {
+            Log.d("ADebugTag", "UID: " + uid);
+        }
+
         refEmail = database.getReference(path + uid + "/email");
         refName = database.getReference(path + uid + "/name");
         refPhone = database.getReference(path + uid + "/phone");
