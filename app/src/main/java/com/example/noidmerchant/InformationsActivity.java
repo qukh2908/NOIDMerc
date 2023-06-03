@@ -9,7 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -22,7 +27,7 @@ public class InformationsActivity extends AppCompatActivity {
     String path = "taikhoan/";
     Button btnSave;
     FirebaseDatabase database;
-    DatabaseReference refEmail,refName,refAdd,refPhone;
+    DatabaseReference refEmail,refName,refAdd,refPhone,refDb;
     EditText txtEmail,txtPhone,txtAdd,txtName;
     String uid;
     ImageView back_btn;
@@ -49,6 +54,7 @@ public class InformationsActivity extends AppCompatActivity {
         refName = database.getReference(path + uid + "/name");
         refPhone = database.getReference(path + uid + "/phone");
         refAdd = database.getReference(path + uid + "/address");
+        refDb = database.getReference(path);
 
         refName.addValueEventListener(new ValueEventListener() {
             @Override
@@ -104,14 +110,27 @@ public class InformationsActivity extends AppCompatActivity {
         back_btn.setOnClickListener(v -> {
             finish();
         });
-
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                refEmail.setValue(txtEmail.getText().toString());
-                refAdd.setValue(txtAdd.getText().toString());
-                refName.setValue(txtName.getText().toString());
-                refPhone.setValue(txtPhone.getText().toString());
+//
+                refDb.child(path).setValue(uid)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                refEmail.setValue(txtEmail.getText().toString());
+                                refAdd.setValue(txtAdd.getText().toString());
+                                refName.setValue(txtName.getText().toString());
+                                refPhone.setValue(txtPhone.getText().toString());
+                                Toast.makeText(InformationsActivity.this, " Luu thành công", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(InformationsActivity.this, " Luu khong công", Toast.LENGTH_SHORT).show();
+                            }
+                        });
             }
         });
     }
