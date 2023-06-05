@@ -108,7 +108,9 @@ public class InformationsActivity extends AppCompatActivity {
                         refPhone.setValue(txtPhone.getText().toString());
                         Toast.makeText(InformationsActivity.this, "Lưu thành công", Toast.LENGTH_SHORT).show();
                     })
-                    .addOnFailureListener(e -> Toast.makeText(InformationsActivity.this, "Không thành công", Toast.LENGTH_SHORT).show());
+                    .addOnFailureListener(e ->
+                            Toast.makeText(InformationsActivity.this, "Không thành công", Toast.LENGTH_SHORT).show()
+                    );
         });
     }
 }

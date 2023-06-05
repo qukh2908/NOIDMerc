@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">NOID Merchant</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="directory_fragment">Danh mục</string>
+    <string name="product_fragment">Sản phẩm</string>
+
 </resources>
