@@ -3,6 +3,9 @@ package com.example.noidmerchant.database;
 public class DBCategory {
     public static String categoryName;
 
+    public DBCategory() {
+    }
+
     public DBCategory(String categoryName) {
         DBCategory.categoryName = categoryName;
     }
