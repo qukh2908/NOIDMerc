@@ -7,6 +7,7 @@
     android:background="@color/white"
     android:orientation="vertical"
     tools:context=".gui.BuyProductActivity">
+
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
@@ -32,40 +33,129 @@
 
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/textView7"
+
+
+
+
+
+
+
+    <Button
+        android:id="@+id/btn_luu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:text="Danh Mục:"
+        android:layout_marginBottom="44dp"
+        android:text="Lưu"
         android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+        app:layout_constraintHorizontal_bias="0.859"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="20dp"
-        tools:layout_editor_absoluteY="200dp" />
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="65dp"
+        android:paddingTop="100dp"
+        android:paddingLeft="20dp"
+        tools:ignore="MissingConstraints">
 
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="27dp"
-        tools:layout_editor_absoluteY="270dp" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Danh Mục:"
+            android:textColor="@color/black"
+            android:textSize="20dp"/>
 
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="361dp" />
+            <AutoCompleteTextView
+                android:id="@+id/edt_danhmuc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Chọn Danh Mục"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tên Sản Phẩm:"
+            android:paddingTop="50dp"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteTextView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Chọn Sản Phẩm"
+            android:textColor="@color/black"
+            android:textSize="20dp"/>
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Số Lượng:"
+            android:paddingTop="50dp"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+            <EditText
+                android:id="@+id/editTextNumberSigned"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="numberSigned"
+                android:hint="Nhập Số Lượng"
+                android:textColor="@color/black"
+                android:textSize="20dp"/>
+
+        </TableRow>
+
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ngày Nhập:"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:paddingTop="50dp"/>
+
+
+
+
+
+
+                <EditText
+                    android:id="@+id/edt_ngaynhap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="date"
+                    android:hint="Chọn Ngày Nhập"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"/>
+
+
+        </TableRow>
+    </TableLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
