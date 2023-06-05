@@ -7,14 +7,19 @@ import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 
 import com.example.noidmerchant.R;
-import com.example.noidmerchant.database.ViewPagerAdapter;
+import com.example.noidmerchant.adapter.ViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
+import com.example.noidmerchant.database.DBCategory;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class ProductsActivity extends AppCompatActivity {
     private TabLayout mTab;
     private ViewPager mView;
 
 
+    final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference cateRef = database.getReference().child("danhmucsp");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,5 +30,8 @@ public class ProductsActivity extends AppCompatActivity {
         mView.setAdapter(viewPagerAdapter);
         mTab.setupWithViewPager(mView);
 
+        //Thêm danh mục lên realtime DB
+        cateRef.push().setValue(new DBCategory("Coffee"));
+        //Thêm danh mục lên realtime DB
     }
 }

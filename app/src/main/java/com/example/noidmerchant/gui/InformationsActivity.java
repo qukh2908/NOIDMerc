@@ -98,8 +98,8 @@ public class InformationsActivity extends AppCompatActivity {
         });
 
         back_btn.setOnClickListener(v -> finish());
+
         btnSave.setOnClickListener(v -> {
-//
             refDb.child(path).setValue(uid)
                     .addOnSuccessListener(unused -> {
                         refEmail.setValue(txtEmail.getText().toString());

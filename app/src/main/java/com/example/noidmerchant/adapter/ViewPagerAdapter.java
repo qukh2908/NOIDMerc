@@ -1,4 +1,4 @@
-package com.example.noidmerchant.database;
+package com.example.noidmerchant.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
