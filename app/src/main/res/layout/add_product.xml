@@ -36,6 +36,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="28dp"
         android:text="Lưu"
+        android:textSize="20dp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.875"
@@ -120,7 +122,7 @@
         android:layout_marginTop="44dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Name"
+        android:text="Nhập Tên Sản Phẩm"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.618"
@@ -131,9 +133,10 @@
         android:id="@+id/edt_gia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="30dp"
         android:ems="10"
         android:inputType="number"
+        android:text="Nhập Giá Sản Phẩm"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.954"
@@ -141,33 +144,67 @@
         app:layout_constraintTop_toBottomOf="@+id/edt_ten" />
 
     <EditText
-        android:id="@+id/editTextNumber2"
+        android:id="@+id/edt_soluong"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:ems="10"
-        android:textSize="20dp"
         android:inputType="number"
-        tools:layout_editor_absoluteX="166dp"
-        tools:layout_editor_absoluteY="247dp" />
+        android:text="Nhập Số Lượng"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.91"
+        app:layout_constraintStart_toEndOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/edt_gia" />
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/edt_mieuta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Name"
+        android:text="Miêu Tả Sản Phẩm"
         android:textSize="20dp"
-        tools:layout_editor_absoluteX="168dp"
-        tools:layout_editor_absoluteY="387dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.911"
+        app:layout_constraintStart_toEndOf="@+id/textView12"
+        app:layout_constraintTop_toBottomOf="@+id/ed_danhmuc" />
 
     <AutoCompleteTextView
-        android:id="@+id/autoCompleteTextView"
+        android:id="@+id/ed_danhmuc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="AutoCompleteTextView"
+        android:layout_marginTop="30dp"
+        android:text="Chọn Danh Mục"
         android:textSize="20dp"
-        tools:layout_editor_absoluteX="170dp"
-        tools:layout_editor_absoluteY="316dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.33"
+        app:layout_constraintStart_toEndOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/edt_soluong" />
+
+    <Button
+        android:id="@+id/btn_inputhinh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Chọn Hình"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.311"
+        app:layout_constraintStart_toEndOf="@+id/textView13"
+        app:layout_constraintTop_toBottomOf="@+id/edt_mieuta" />
+
+    <ImageView
+        android:id="@+id/img_hinhanh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_luu"
+        app:layout_constraintHorizontal_bias="0.709"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_inputhinh"
+        app:layout_constraintVertical_bias="0.481"
+        tools:srcCompat="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

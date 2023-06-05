@@ -7,7 +7,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import com.example.noidmerchant.gui.HelpsActivity;
+import com.example.noidmerchant.gui.BuyProductActivity;
 import com.example.noidmerchant.gui.InformationsActivity;
 import com.example.noidmerchant.gui.OrdersActivity;
 import com.example.noidmerchant.gui.ProductsActivity;
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         helps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, HelpsActivity.class));
+                startActivity(new Intent(MainActivity.this, BuyProductActivity.class));
             }
         });
         info.setOnClickListener(new View.OnClickListener() {

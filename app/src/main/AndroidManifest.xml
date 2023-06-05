@@ -40,7 +40,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".gui.HelpsActivity"
+            android:name=".gui.BuyProductActivity"
             android:exported="false" />
 
         <activity

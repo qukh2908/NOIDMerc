@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.noidmerchant.R;
 
-public class HelpsActivity extends AppCompatActivity {
+public class BuyProductActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_helps);
+        setContentView(R.layout.activity_buyproduct);
     }
 }
