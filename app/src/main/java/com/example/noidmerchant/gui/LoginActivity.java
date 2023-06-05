@@ -1,4 +1,4 @@
-package com.example.noidmerchant;
+package com.example.noidmerchant.gui;
 
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -13,6 +13,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.noidmerchant.MainActivity;
+import com.example.noidmerchant.R;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

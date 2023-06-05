@@ -12,40 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NOIDMerchant"
         tools:targetApi="31">
-        <activity
-            android:name=".SettingsActivity"
-            android:exported="false" />
 
         <activity
-            android:name=".HelpsActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".InformationsActivity"
-            android:exported="false">
-
-
-
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-
-
-        <activity
-            android:name=".StatisticsActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".OrdersActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".ProductsActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".SplashActivity"
+            android:name=".gui.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -59,7 +28,7 @@
         </activity>
 
         <activity
-            android:name=".MainActivity"
+            android:name=".gui.LoginActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -67,12 +36,46 @@
         </activity>
 
         <activity
-            android:name=".LoginActivity"
+            android:name=".gui.SettingsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".gui.HelpsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".gui.InformationsActivity"
+            android:exported="false">
+
+
+
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
+
+        <activity
+            android:name=".gui.StatisticsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".gui.OrdersActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".gui.ProductsActivity"
+            android:exported="false" />
+
+
+        <activity
+            android:name=".MainActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
 
     </application>
 

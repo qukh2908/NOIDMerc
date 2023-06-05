@@ -1,4 +1,4 @@
-package com.example.noidmerchant;
+package com.example.noidmerchant.database;
 public class DBUser {
     String email, name, password, address, phone;
 

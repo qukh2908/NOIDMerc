@@ -7,6 +7,13 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.example.noidmerchant.gui.HelpsActivity;
+import com.example.noidmerchant.gui.InformationsActivity;
+import com.example.noidmerchant.gui.OrdersActivity;
+import com.example.noidmerchant.gui.ProductsActivity;
+import com.example.noidmerchant.gui.SettingsActivity;
+import com.example.noidmerchant.gui.StatisticsActivity;
+
 public class MainActivity extends AppCompatActivity {
     private CardView products,orders,statistics,helps,info,settings;
 
@@ -24,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         products.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,ProductsActivity.class));
+                startActivity(new Intent(MainActivity.this, ProductsActivity.class));
             }
         });
         //Bat su kien Order

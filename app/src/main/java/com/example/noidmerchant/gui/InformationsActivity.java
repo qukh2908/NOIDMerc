@@ -1,4 +1,4 @@
-package com.example.noidmerchant;
+package com.example.noidmerchant.gui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,10 +11,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
+import com.example.noidmerchant.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -43,11 +42,12 @@ public class InformationsActivity extends AppCompatActivity {
         btnSave = findViewById(R.id.btn_luu);
         database = FirebaseDatabase.getInstance();
         FirebaseUser userUID =  FirebaseAuth.getInstance().getCurrentUser();
-//        assert userUID != null ;
         uid = userUID.getUid();
 
         if(uid != null) {
             Log.d("ADebugTag", "UID: " + uid);
+        } else {
+            Log.d("ADebugTag", "UID IS NULL ");
         }
 
         refEmail = database.getReference(path + uid + "/email");
@@ -122,13 +122,13 @@ public class InformationsActivity extends AppCompatActivity {
                                 refAdd.setValue(txtAdd.getText().toString());
                                 refName.setValue(txtName.getText().toString());
                                 refPhone.setValue(txtPhone.getText().toString());
-                                Toast.makeText(InformationsActivity.this, " Luu thành công", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(InformationsActivity.this, "Lưu thành công", Toast.LENGTH_SHORT).show();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(InformationsActivity.this, " Luu khong công", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(InformationsActivity.this, "Không thành công", Toast.LENGTH_SHORT).show();
                             }
                         });
             }
