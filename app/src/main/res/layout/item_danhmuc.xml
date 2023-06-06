@@ -4,20 +4,24 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="10dp"
-    android:layout_marginTop="105dp"
     android:layout_marginEnd="10dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp">
-
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_dm"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/ic_giaohang"/>
         <EditText
             android:id="@+id/edt_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="43dp"
-            android:text="ten danh muc"
+            android:layout_toEndOf="@+id/img_dm"
+            android:text="ten danh sach san pham"
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="20sp" />
