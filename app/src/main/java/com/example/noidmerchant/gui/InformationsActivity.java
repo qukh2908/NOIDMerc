@@ -97,7 +97,6 @@ public class InformationsActivity extends AppCompatActivity {
             }
         });
 
-        back_btn.setOnClickListener(v -> finish());
 
         btnSave.setOnClickListener(v -> {
             refDb.child(path).setValue(uid)
@@ -112,5 +111,8 @@ public class InformationsActivity extends AppCompatActivity {
                             Toast.makeText(InformationsActivity.this, "Không thành công", Toast.LENGTH_SHORT).show()
                     );
         });
+
+        //nút back
+        back_btn.setOnClickListener(v -> finish());
     }
 }
