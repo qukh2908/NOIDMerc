@@ -46,20 +46,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <ImageView
-        android:id="@+id/Logout_profile"
+        android:id="@+id/logout"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:src="@drawable/logout_profile"
+        android:src="@drawable/logout"
         android:background="@color/white"
         android:scaleType="centerCrop"
         android:layout_gravity="center"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Đăng Xuất"
-            android:textSize="25sp"
             android:layout_marginLeft="10dp"
-            android:textColor="#FF0000"/>
+            android:text="Đăng Xuất"
+            android:textColor="#FF0000"
+            android:textSize="25sp"
+            android:textStyle="bold" />
     </TableRow>
         <TableRow
             android:layout_width="match_parent"
@@ -124,6 +126,14 @@
         android:paddingTop="25dp"
         android:textColor="@color/black"
         android:text="Trương Hoàng Phúc"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:paddingLeft="75dp"
+        android:paddingTop="25dp"
+        android:textColor="@color/black"
+        android:text="Nguyễn Gia Tiên"/>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

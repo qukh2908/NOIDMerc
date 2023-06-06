@@ -39,8 +39,8 @@
         tools:layout_editor_absoluteY="65dp"
         android:paddingTop="100dp"
         android:paddingLeft="20dp"
-        android:stretchColumns="1"
         android:shrinkColumns="0"
+        android:stretchColumns="1"
         android:layout_marginRight="10dp"
         tools:ignore="MissingConstraints">
 
@@ -74,6 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
+            android:paddingTop="30dp"
             android:textColor="@color/black"
             android:textSize="20sp"/>
     </TableRow>
@@ -94,6 +95,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
+            android:paddingTop="30dp"
             android:textColor="@color/black"
             android:textSize="20sp"/>
 
@@ -115,6 +117,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
+            android:paddingTop="30dp"
             android:textColor="@color/black"
             android:textSize="20sp" />
     </TableRow>
@@ -136,6 +139,7 @@
                 android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:text="TextView"
+                android:paddingTop="30dp"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
         </TableRow>

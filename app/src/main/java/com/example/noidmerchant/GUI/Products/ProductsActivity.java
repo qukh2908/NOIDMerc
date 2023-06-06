@@ -28,7 +28,7 @@ public class ProductsActivity extends AppCompatActivity {
         mTab = findViewById(R.id.tab_layout);
         mView = findViewById(R.id.view_pager);
         back_btn = findViewById(R.id.back_btn);
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        ViewPagerAdapter viewPagerAdapter = new     ViewPagerAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         mView.setAdapter(viewPagerAdapter);
         mTab.setupWithViewPager(mView);
 

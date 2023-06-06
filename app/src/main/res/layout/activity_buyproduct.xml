@@ -51,6 +51,7 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="Danh Mục:"
+            android:paddingTop="30dp"
             android:textColor="@color/black"
             android:textSize="20dp"/>
 
@@ -61,7 +62,9 @@
                 android:focusable="false"
                 android:hint="Chọn Danh Mục"
                 android:textColor="@color/black"
-                android:textSize="20dp" />
+                android:paddingTop="20dp"
+                android:textSize="20dp"
+                android:textStyle="bold" />
         </TableRow>
 
         <TableRow
@@ -76,13 +79,16 @@
             android:textColor="@color/black"
             android:textSize="20dp" />
 
-        <AutoCompleteTextView
-            android:id="@+id/autoCompleteTextView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Chọn Sản Phẩm"
-            android:textColor="@color/black"
-            android:textSize="20dp"/>
+            <AutoCompleteTextView
+                android:id="@+id/edt_sanpham"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:hint="Chọn Sản Phẩm"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:paddingTop="20dp"
+                android:textStyle="bold" />
         </TableRow>
         <TableRow
             android:layout_width="match_parent"
@@ -95,15 +101,18 @@
             android:paddingTop="50dp"
             android:textColor="@color/black"
             android:textSize="20dp" />
+
             <EditText
-                android:id="@+id/editTextNumberSigned"
+                android:id="@+id/edt_soluong"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="numberSigned"
                 android:hint="Nhập Số Lượng"
+                android:textSize="20dp"
+                android:inputType="numberSigned"
                 android:textColor="@color/black"
-                android:textSize="20dp"/>
+                android:paddingTop="20dp"
+                android:textStyle="bold" />
 
         </TableRow>
 
@@ -122,19 +131,17 @@
                     android:paddingTop="50dp"/>
 
 
-
-
-
-
-                <EditText
-                    android:id="@+id/edt_ngaynhap"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="date"
-                    android:hint="Chọn Ngày Nhập"
-                    android:textColor="@color/black"
-                    android:textSize="20dp"/>
+            <EditText
+                android:id="@+id/edt_ngaynhap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Chọn Ngày Nhập"
+                android:inputType="date"
+                android:textSize="20dp"
+                android:paddingTop="20dp"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
 
         </TableRow>
