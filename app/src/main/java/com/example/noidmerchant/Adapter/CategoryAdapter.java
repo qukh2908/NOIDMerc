@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,8 +35,8 @@ public class CategoryAdapter extends  RecyclerView.Adapter<CategoryAdapter.Categ
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
         Category category = list.get(position);
-        holder.edtName.setText(category.getTendm());
-        Picasso.get().load(category.getPic()).placeholder(R.drawable.ic_giaohang).into(holder.imgCt);
+        holder.txtName.setText(category.getTendm());
+//        Picasso.get().load(category.getPic()).placeholder(R.drawable.ic_giaohang).into(holder.imgCt);
     }
 
     @Override
@@ -46,11 +47,10 @@ public class CategoryAdapter extends  RecyclerView.Adapter<CategoryAdapter.Categ
 
     public class CategoryViewHolder extends RecyclerView.ViewHolder{
         private ImageView imgCt;
-        private EditText edtName;
+        private TextView txtName;
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgCt = itemView.findViewById(R.id.img_dm);
-            edtName = itemView.findViewById(R.id.edt_name);
+            txtName = itemView.findViewById(R.id.txt_name);
 
         }
     }

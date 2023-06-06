@@ -1,11 +1,14 @@
 package com.example.noidmerchant.Adapter;
 
-public class Category {
-    private String tendm,pic,nameID;
+import java.util.HashMap;
+import java.util.Map;
 
-    public Category(String tendm, String pic, String nameID) {
+public class Category {
+    private String tendm,nameID;
+
+    public Category(String tendm, String nameID) {
         this.tendm = tendm;
-        this.pic = pic;
+
         this.nameID = nameID;
     }
 
@@ -20,13 +23,9 @@ public class Category {
         this.tendm = tendm;
     }
 
-    public String getPic() {
-        return pic;
-    }
 
-    public void setPic(String pic) {
-        this.pic = pic;
-    }
+
+
 
     public String getNameID(String key) {
         return nameID;
@@ -35,9 +34,10 @@ public class Category {
     public void setNameID(String nameID) {
         this.nameID = nameID;
     }
-    //    public Map<String, Object> toMap() {
-//        HashMap<String, Object> result = new HashMap<>();
-//
-//        return result;
-//    }
+        public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("tendm", tendm);
+
+        return result;
+    }
 }
