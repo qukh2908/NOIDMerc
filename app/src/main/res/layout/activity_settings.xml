@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -31,4 +31,121 @@
             android:textSize="25sp" />
 
     </RelativeLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="65dp"
+        android:paddingTop="30dp"
+        android:paddingLeft="30dp"
+        tools:ignore="MissingConstraints">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+        android:id="@+id/Logout_profile"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:src="@drawable/logout_profile"
+        android:background="@color/white"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đăng Xuất"
+            android:textSize="25sp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#FF0000"/>
+    </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="50dp">
+            <ImageView
+                android:id="@+id/Info_profile"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/about"
+                android:background="@color/white"
+                android:scaleType="centerCrop"
+
+                android:layout_gravity="center"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thông Tin"
+                android:textSize="25sp"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/black"/>
+
+    </TableRow>
+         <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/black"
+            android:paddingTop="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="15dp"/>
+
+    </TableLayout>
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Phát triển bởi"
+        android:textSize="20dp" android:paddingTop="30dp"
+        android:textAlignment="center"
+        android:textColor="@color/black"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:paddingLeft="75dp"
+            android:paddingTop="25dp"
+            android:textColor="@color/black"
+            android:text="Trần Quốc Toản"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:paddingLeft="75dp"
+        android:paddingTop="25dp"
+        android:textColor="@color/black"
+        android:text="Trần Đức Anh"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:paddingLeft="75dp"
+        android:paddingTop="25dp"
+        android:textColor="@color/black"
+        android:text="Trương Hoàng Phúc"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom|center_horizontal">
+
+        <ImageView
+            android:id="@+id/icon_copyRight"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:src="@drawable/baseline_edit_24"
+            android:layout_marginEnd="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_toEndOf="@+id/icon_copyRight"
+            android:text="Phiên bản 1.0"
+            android:textColor="@color/black"
+            android:gravity="center_vertical"/>
+
+    </RelativeLayout>
+
+    </LinearLayout>

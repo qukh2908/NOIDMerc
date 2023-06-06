@@ -33,25 +33,6 @@
 
     </RelativeLayout>
 
-
-
-
-
-
-
-
-    <Button
-        android:id="@+id/btn_luu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
-        android:text="Lưu"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.859"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -153,6 +134,19 @@
                     android:textColor="@color/black"
                     android:textSize="20dp"/>
 
+
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="right"
+            android:paddingTop="40dp">
+            <Button
+                android:id="@+id/btn_luu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Lưu"
+                android:textSize="20dp" />
 
         </TableRow>
     </TableLayout>
