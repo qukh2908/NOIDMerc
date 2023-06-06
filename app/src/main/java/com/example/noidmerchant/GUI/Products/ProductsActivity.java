@@ -1,4 +1,4 @@
-package com.example.noidmerchant.gui;
+package com.example.noidmerchant.GUI.Products;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentStatePagerAdapter;
@@ -8,9 +8,8 @@ import android.os.Bundle;
 import android.widget.ImageView;
 
 import com.example.noidmerchant.R;
-import com.example.noidmerchant.adapter.ViewPagerAdapter;
+import com.example.noidmerchant.Adapter.ViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
-import com.example.noidmerchant.database.DBCategory;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 

@@ -1,4 +1,4 @@
-package com.example.noidmerchant.gui;
+package com.example.noidmerchant.GUI.Common;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;

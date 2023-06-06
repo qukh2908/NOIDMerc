@@ -3,16 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gui.fragment.DirectoryFragment"
+    tools:context=".GUI.Products.CategoryFragment"
     android:background="@android:color/holo_orange_dark">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        android:layout_margin="20dp"
-        android:text="@string/directory_fragment" />
+        android:layout_height="match_parent" />
 
 </FrameLayout>

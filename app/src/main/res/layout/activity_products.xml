@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".gui.ProductsActivity">
+    tools:context=".GUI.Products.ProductsActivity">
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -20,9 +20,8 @@
             android:layout_width="40dp"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:contentDescription="back button"
             android:src="@drawable/baseline_arrow_back_24"
-            tools:ignore="RedundantDescriptionCheck" />
+            android:contentDescription="back button" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -46,29 +45,30 @@
             android:layout_height="wrap_content"
             app:tabSelectedTextColor="@color/black"
             android:background="#FFF5C5"
-            android:gravity="top">
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black" />
+            android:gravity="top"
+            android:contentDescription="tab layout">
+<!--            <com.google.android.material.tabs.TabItem-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textColor="@color/black" />-->
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black" />
+<!--            <com.google.android.material.tabs.TabItem-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textColor="@color/black" />-->
         </com.google.android.material.tabs.TabLayout>
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:contentDescription="NULL"/>
+            android:contentDescription="view pager"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcv_danhmuc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="10dp"/>
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/rcv_danhmuc"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:layout_marginBottom="10dp"/>-->
 </LinearLayout>
 </LinearLayout>

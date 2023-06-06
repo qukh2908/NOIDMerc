@@ -1,4 +1,4 @@
-package com.example.noidmerchant.gui;
+package com.example.noidmerchant.GUI.Imports;
 
 import androidx.appcompat.app.AppCompatActivity;
 

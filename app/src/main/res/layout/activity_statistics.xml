@@ -6,7 +6,7 @@
     android:background="@color/white"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".gui.StatisticsActivity">
+    tools:context=".GUI.Statistics.StatisticsActivity">
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
