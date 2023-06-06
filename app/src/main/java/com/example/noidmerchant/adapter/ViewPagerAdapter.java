@@ -6,8 +6,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.example.noidmerchant.gui.DirectoryFragment;
-import com.example.noidmerchant.gui.ProductFragment;
+import com.example.noidmerchant.gui.fragment.DirectoryFragment;
+import com.example.noidmerchant.gui.fragment.ProductFragment;
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     public ViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {

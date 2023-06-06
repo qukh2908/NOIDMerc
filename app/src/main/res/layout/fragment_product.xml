@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gui.DirectoryFragment"
+    tools:context=".gui.fragment.DirectoryFragment"
     android:background="@android:color/holo_blue_dark">
 
     <!-- TODO: Update blank fragment layout -->
