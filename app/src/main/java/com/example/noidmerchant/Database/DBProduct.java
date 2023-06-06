@@ -1,4 +1,4 @@
-package com.example.noidmerchant.database;
+package com.example.noidmerchant.Database;
 
 public class DBProduct {
     String categoryID, productImage, productName, productDescription;

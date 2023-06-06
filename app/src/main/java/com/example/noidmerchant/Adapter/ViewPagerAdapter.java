@@ -1,4 +1,4 @@
-package com.example.noidmerchant.adapter;
+package com.example.noidmerchant.Adapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -6,8 +6,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.example.noidmerchant.gui.fragment.DirectoryFragment;
-import com.example.noidmerchant.gui.fragment.ProductFragment;
+import com.example.noidmerchant.GUI.Products.CategoryFragment;
+import com.example.noidmerchant.GUI.Products.ProductFragment;
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     public ViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
@@ -19,11 +19,11 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                return new DirectoryFragment();
+                return new CategoryFragment();
             case 1:
                 return new ProductFragment();
             default:
-                return new DirectoryFragment();
+                return new CategoryFragment();
         }
     }
 

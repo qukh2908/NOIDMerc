@@ -7,12 +7,12 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import com.example.noidmerchant.gui.BuyProductActivity;
-import com.example.noidmerchant.gui.InformationsActivity;
-import com.example.noidmerchant.gui.OrdersActivity;
-import com.example.noidmerchant.gui.ProductsActivity;
-import com.example.noidmerchant.gui.SettingsActivity;
-import com.example.noidmerchant.gui.StatisticsActivity;
+import com.example.noidmerchant.GUI.Imports.BuyProductActivity;
+import com.example.noidmerchant.GUI.Common.InformationsActivity;
+import com.example.noidmerchant.GUI.Orders.OrdersActivity;
+import com.example.noidmerchant.GUI.Products.ProductsActivity;
+import com.example.noidmerchant.GUI.Common.SettingsActivity;
+import com.example.noidmerchant.GUI.Statistics.StatisticsActivity;
 
 public class MainActivity extends AppCompatActivity {
     private CardView products,orders,statistics,helps,info,settings;

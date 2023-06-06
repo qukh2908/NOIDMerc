@@ -14,7 +14,7 @@
         tools:targetApi="31">
 
         <activity
-            android:name=".gui.SplashActivity"
+            android:name=".GUI.Common.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,7 +28,7 @@
         </activity>
 
         <activity
-            android:name=".gui.LoginActivity"
+            android:name=".GUI.Common.LoginActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -36,15 +36,15 @@
         </activity>
 
         <activity
-            android:name=".gui.SettingsActivity"
+            android:name=".GUI.Common.SettingsActivity"
             android:exported="false" />
 
         <activity
-            android:name=".gui.BuyProductActivity"
+            android:name=".GUI.Imports.BuyProductActivity"
             android:exported="false" />
 
         <activity
-            android:name=".gui.InformationsActivity"
+            android:name=".GUI.Common.InformationsActivity"
             android:exported="false">
 
 
@@ -56,15 +56,15 @@
 
 
         <activity
-            android:name=".gui.StatisticsActivity"
+            android:name=".GUI.Statistics.StatisticsActivity"
             android:exported="false" />
 
         <activity
-            android:name=".gui.OrdersActivity"
+            android:name=".GUI.Orders.OrdersActivity"
             android:exported="false" />
 
         <activity
-            android:name=".gui.ProductsActivity"
+            android:name=".GUI.Products.ProductsActivity"
             android:exported="false" />
 
 
