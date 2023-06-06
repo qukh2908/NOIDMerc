@@ -37,18 +37,23 @@
 
         <activity
             android:name=".GUI.Common.SettingsActivity"
-            android:exported="false" />
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
 
         <activity
             android:name=".GUI.Imports.BuyProductActivity"
-            android:exported="false" />
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
 
         <activity
             android:name=".GUI.Common.InformationsActivity"
             android:exported="false">
-
-
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -57,15 +62,27 @@
 
         <activity
             android:name=".GUI.Statistics.StatisticsActivity"
-            android:exported="false" />
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
 
         <activity
             android:name=".GUI.Orders.OrdersActivity"
-            android:exported="false" />
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
 
         <activity
             android:name=".GUI.Products.ProductsActivity"
-            android:exported="false" />
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
 
 
         <activity
@@ -75,8 +92,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
-
     </application>
 
 </manifest>
