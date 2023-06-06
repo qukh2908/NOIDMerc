@@ -4,10 +4,11 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="10dp"
-    android:layout_marginTop="105dp"
+    android:background="@color/white"
+    android:layout_marginTop="10dp"
     android:layout_marginEnd="10dp">
 
-    <RelativeLayout
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp">
@@ -22,11 +23,23 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="43dp"
             android:layout_toEndOf="@+id/img_ds"
-            android:text="ten danh sach san pham"
+            android:text="ten san pham"
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
-    </RelativeLayout>
+        <EditText
+            android:id="@+id/edt_gia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="83dp"
+            android:layout_marginEnd="40dp"
+            android:layout_toEndOf="@+id/edt_name"
+            android:text="Giá"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+    </TableLayout>
 
 </androidx.cardview.widget.CardView>
