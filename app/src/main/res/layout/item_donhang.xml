@@ -9,33 +9,36 @@
     android:layout_marginEnd="10dp">
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal">
+        android:layout_height="wrap_content">
         <TableRow
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal">
+            android:paddingLeft="20dp">
+
             <TextView
                 android:id="@+id/txt_namekh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Thong tin khach hang"
-                android:gravity="left"
                 android:layout_span="2"
-                android:paddingLeft="20dp"
+                android:gravity="left"
                 android:paddingTop="5dp"
+                android:text="Thong tin khach hang"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/txt_giadh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="gia tien don hang"
-                android:gravity="right"
-                android:paddingLeft="20dp"
+                android:layout_gravity="right"
                 android:paddingTop="5dp"
+                android:layout_column="2"
+                android:layout_weight="1"
+                android:text="gia tien don hang"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textStyle="bold" />
         </TableRow>
         <TableRow
             android:layout_width="fill_parent"

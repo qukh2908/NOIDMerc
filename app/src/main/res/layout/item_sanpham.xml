@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:stretchColumns="1"
+        android:background="@color/white"
         android:gravity="center_horizontal">
         <TableRow
             android:layout_width="match_parent"
@@ -23,25 +23,26 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:src="@drawable/noidea"/>
-        <TextView
-            android:id="@+id/txt_sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ten san pham"
-            android:gravity="left"
-            android:paddingLeft="20dp"
-            android:paddingTop="20dp"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/txt_gia"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Giá"
-            android:paddingRight="70dp"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+            <TextView
+                android:id="@+id/txt_sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:paddingLeft="20dp"
+                android:paddingTop="20dp"
+                android:layout_weight="1"
+                android:text="ten san pham"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txt_gia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Giá"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
         </TableRow>
     </TableLayout>
 
