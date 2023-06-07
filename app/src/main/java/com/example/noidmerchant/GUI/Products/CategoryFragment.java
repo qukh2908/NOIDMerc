@@ -33,15 +33,11 @@ public class CategoryFragment extends Fragment {
     ArrayList<Category> list = new ArrayList<>();
 
     FirebaseDatabase database;
-
-    DatabaseReference rfDb;
-    
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        binding =FragmentCategoryBinding.inflate(inflater, container, false);
+        binding = FragmentCategoryBinding.inflate(inflater, container, false);
         CategoryAdapter adapter = new CategoryAdapter(list,getContext());
         database = FirebaseDatabase.getInstance();
         database.getReference().child("danhmucsp").addValueEventListener(new ValueEventListener() {
@@ -52,7 +48,6 @@ public class CategoryFragment extends Fragment {
                     Category category = dataSnapshot.getValue(Category.class);
                     category.getNameID(dataSnapshot.getKey());
                     list.add(category);
-
                 }
                 adapter.notifyDataSetChanged();
             }

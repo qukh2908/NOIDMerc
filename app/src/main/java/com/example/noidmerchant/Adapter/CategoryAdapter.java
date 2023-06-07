@@ -36,7 +36,6 @@ public class CategoryAdapter extends  RecyclerView.Adapter<CategoryAdapter.Categ
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
         Category category = list.get(position);
         holder.txtName.setText(category.getTendm());
-//        Picasso.get().load(category.getPic()).placeholder(R.drawable.ic_giaohang).into(holder.imgCt);
     }
 
     @Override

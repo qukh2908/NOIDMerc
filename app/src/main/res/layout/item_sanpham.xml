@@ -24,7 +24,7 @@
             android:layout_height="70dp"
             android:src="@drawable/noidea"/>
         <TextView
-            android:id="@+id/edt_name"
+            android:id="@+id/txt_sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ten san pham"
@@ -35,7 +35,7 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/edt_gia"
+            android:id="@+id/txt_gia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Giá"
