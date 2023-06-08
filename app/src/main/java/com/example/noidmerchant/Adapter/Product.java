@@ -4,54 +4,40 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Product {
-   private String tensp,hinhsp,categoryID,giasp;
+    private String name;
+    private String price;
+    private String imageUrl;
 
-    public Product(String tensp, String hinhsp, String categoryID, String giasp) {
-        this.tensp = tensp;
-        this.hinhsp = hinhsp;
-        this.categoryID = categoryID;
-        this.giasp = giasp;
+    public Product(String name, String price, String imageUrl) {
+        this.name = name;
+        this.price = price;
+        this.imageUrl = imageUrl;
     }
 
     public Product() {
     }
 
-    public String getTensp() {
-        return tensp;
+    public String getName() {
+        return name;
     }
 
-    public void setTensp(String tensp) {
-        this.tensp = tensp;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getHinhsp() {
-        return hinhsp;
+    public String getPrice() {
+        return price;
     }
 
-    public void setHinhsp(String hinhsp) {
-        this.hinhsp = hinhsp;
+    public void setPrice(String price) {
+        this.price = price;
     }
 
-    public String getCategoryID(String key) {
-        return categoryID;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setCategoryID(String categoryID) {
-        this.categoryID = categoryID;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
-
-    public String getGiasp() {
-        return giasp;
-    }
-
-    public void setGiasp(String giasp) {
-        this.giasp = giasp;
-    }
-//    public Map<String, Object> toMap() {
-//        HashMap<String, Object> result = new HashMap<>();
-//        result.put("tensp", tensp);
-//        result.put("giasp",giasp);
-//        result.put("hinhsp",hinhsp);
-//        return result;
-//    }
 }

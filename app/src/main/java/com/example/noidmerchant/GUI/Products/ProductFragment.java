@@ -23,6 +23,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -43,21 +44,49 @@ public class ProductFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        String cafe = "-NX9r4LR1f6twnVU28_R";
+        String smoothies = "-NX9ppXXBjY8T0_6wBy5";
+        String tea = "-NXDtH8cDFrHbWFztoFk";
+        String milktea = "-NXE1ZviRaG07k3xa_rl";
+        String Snack = "-NXOrczCnri2fMR2gUWP";
+        String pakage = "-NXOrczCnri2fMR2gUWP";
+        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference().child("sanpham");
+        Query query = databaseRef.orderByChild("madm").equalTo(cafe);
+        Query query1 = databaseRef.orderByChild("madm").equalTo(smoothies);
+        Query query2 = databaseRef.orderByChild("madm").equalTo(tea);
+        Query query3 = databaseRef.orderByChild("madm").equalTo(milktea);
+        Query query4 = databaseRef.orderByChild("madm").equalTo(Snack);
+        Query query5 = databaseRef.orderByChild("madm").equalTo(pakage);
         // Inflate the layout for this fragment
         binding = FragmentProductBinding.inflate(inflater, container, false);
         ProductAdapter adapter = new ProductAdapter(list,getContext());
         binding.rcvProd.setAdapter(adapter);
-        database = FirebaseDatabase.getInstance();
-        database.getReference().child("sanpham").addValueEventListener(new ValueEventListener() {
+
+        //item smoothies
+        query1.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                list.clear();
-                for (DataSnapshot dataSnapshot:snapshot.getChildren()){
-                    Product product = dataSnapshot.getValue(Product.class);
-                    product.getCategoryID(dataSnapshot.getKey());
-                    list.add(product);
-                }
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                String name = snapshot.child("tensp").getValue(String.class);
+                String price = String.valueOf(snapshot.child("giasp").getValue(Long.class)); // đối với dạng số "50000" // dạng string
+                String imageUrl = snapshot.child("hinhsp").getValue(String.class);
+                Product product = new Product(name, price, imageUrl);
+                list.add(product);
                 adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
             }
 
             @Override
@@ -65,6 +94,203 @@ public class ProductFragment extends Fragment {
 
             }
         });
+        //item cafe
+        query.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                String name = snapshot.child("tensp").getValue(String.class);
+                String price = String.valueOf(snapshot.child("giasp").getValue(Long.class)); // đối với dạng số "50000" // dạng string
+                String imageUrl = snapshot.child("hinhsp").getValue(String.class);
+                Product product = new Product(name, price, imageUrl);
+                list.add(product);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        //item tea
+        query2.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                String name = snapshot.child("tensp").getValue(String.class);
+                String price = String.valueOf(snapshot.child("giasp").getValue(Long.class)); // đối với dạng số "50000" // dạng string
+                String imageUrl = snapshot.child("hinhsp").getValue(String.class);
+                Product product = new Product(name, price, imageUrl);
+                list.add(product);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        //item milktea
+        query3.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                String name = snapshot.child("tensp").getValue(String.class);
+                String price = String.valueOf(snapshot.child("giasp").getValue(Long.class)); // đối với dạng số "50000" // dạng string
+                String imageUrl = snapshot.child("hinhsp").getValue(String.class);
+                Product product = new Product(name, price, imageUrl);
+                list.add(product);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        //item snack
+        query4.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                String name = snapshot.child("tensp").getValue(String.class);
+                String price = String.valueOf(snapshot.child("giasp").getValue(Long.class)); // đối với dạng số "50000" // dạng string
+                String imageUrl = snapshot.child("hinhsp").getValue(String.class);
+                Product product = new Product(name, price, imageUrl);
+                list.add(product);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        //item package
+        query5.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                String name = snapshot.child("tensp").getValue(String.class);
+                String price = String.valueOf(snapshot.child("giasp").getValue(Long.class)); // đối với dạng số "50000" // dạng string
+                String imageUrl = snapshot.child("hinhsp").getValue(String.class);
+                Product product = new Product(name, price, imageUrl);
+                list.add(product);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+                         /////////////////////code tao comment dung xoa lam on//////////////////////////////
+//        query.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                list.clear();
+//                for (DataSnapshot data : snapshot.getChildren()) {
+//                    String name = data.child("tensp").getValue(String.class);
+//                    String price = String.valueOf(data.child("giasp").getValue(Long.class)); // đối với dạng số "50000" // dạng string
+//                    String imageUrl = data.child("hinhsp").getValue(String.class);
+//                    Product product = new Product(name, price, imageUrl);
+//                    list.add(product);
+//                }
+//                adapter.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//        database.getReference().child("sanpham").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                list.clear();
+//                for (DataSnapshot dataSnapshot:snapshot.getChildren()){
+//                    Product product = dataSnapshot.getValue(Product.class);
+//                    product.getCategoryID(dataSnapshot.getKey());
+//                    list.add(product);
+//                }
+//                adapter.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         binding.rcvProd.setLayoutManager(layoutManager);
         return binding.getRoot();
