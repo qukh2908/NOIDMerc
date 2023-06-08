@@ -1,65 +1,63 @@
 package com.example.noidmerchant.Database;
 
 public class DBProduct {
-    String categoryID, productImage, productName, productDescription;
-    int productPrice, productQuantity;
+    String madm, hinhsp, tensp, motasp;
+    int giasp, soluongsp;
 
-    public DBProduct(String categoryID, String productImage, String productName, String productDescription,
-                        int productPrice, int productQuantity) {
-
-        this.categoryID = categoryID;
-        this.productImage = productImage;
-        this.productName = productName;
-        this.productDescription = productDescription;
-        this.productPrice = productPrice;
-        this.productQuantity = productQuantity;
+    public DBProduct(String madm, String hinhsp, String tensp, String motasp, int giasp, int soluongsp) {
+        this.madm = madm;
+        this.hinhsp = hinhsp;
+        this.tensp = tensp;
+        this.motasp = motasp;
+        this.giasp = giasp;
+        this.soluongsp = soluongsp;
     }
 
-    public String getCategoryID() {
-        return categoryID;
+    public String getMadm() {
+        return madm;
     }
 
-    public void setCategoryID(String categoryID) {
-        this.categoryID = categoryID;
+    public void setMadm(String madm) {
+        this.madm = madm;
     }
 
-    public String getProductImage() {
-        return productImage;
+    public String getHinhsp() {
+        return hinhsp;
     }
 
-    public void setProductImage(String productImage) {
-        this.productImage = productImage;
+    public void setHinhsp(String hinhsp) {
+        this.hinhsp = hinhsp;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getTensp() {
+        return tensp;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setTensp(String tensp) {
+        this.tensp = tensp;
     }
 
-    public String getProductDescription() {
-        return productDescription;
+    public String getMotasp() {
+        return motasp;
     }
 
-    public void setProductDescription(String productDescription) {
-        this.productDescription = productDescription;
+    public void setMotasp(String motasp) {
+        this.motasp = motasp;
     }
 
-    public int getProductPrice() {
-        return productPrice;
+    public int getGiasp() {
+        return giasp;
     }
 
-    public void setProductPrice(int productPrice) {
-        this.productPrice = productPrice;
+    public void setGiasp(int giasp) {
+        this.giasp = giasp;
     }
 
-    public int getProductQuantity() {
-        return productQuantity;
+    public int getSoluongsp() {
+        return soluongsp;
     }
 
-    public void setProductQuantity(int productQuantity) {
-        this.productQuantity = productQuantity;
+    public void setSoluongsp(int soluongsp) {
+        this.soluongsp = soluongsp;
     }
 }
