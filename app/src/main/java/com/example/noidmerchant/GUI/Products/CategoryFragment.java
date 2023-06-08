@@ -37,6 +37,7 @@ public class CategoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+
         binding = FragmentCategoryBinding.inflate(inflater, container, false);
         CategoryAdapter adapter = new CategoryAdapter(list,getContext());
         database = FirebaseDatabase.getInstance();

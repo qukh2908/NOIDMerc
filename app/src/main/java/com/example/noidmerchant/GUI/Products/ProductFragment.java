@@ -16,6 +16,8 @@ import com.example.noidmerchant.Adapter.Product;
 import com.example.noidmerchant.Adapter.ProductAdapter;
 import com.example.noidmerchant.R;
 import com.example.noidmerchant.databinding.FragmentProductBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,6 +33,7 @@ public class ProductFragment extends Fragment {
     ArrayList<Product> list = new ArrayList<>();
 
     FirebaseDatabase database;
+    String uid ;
 
     public ProductFragment() {
         // Required empty public constructor
@@ -50,10 +53,6 @@ public class ProductFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
                 for (DataSnapshot dataSnapshot:snapshot.getChildren()){
-//                    String name = dataSnapshot.child("productName").getValue(String.class);
-//                    String price = String.valueOf(dataSnapshot.child("productPrice").getValue(Long.class));
-//                    String imageUrl = dataSnapshot.child("productImage").getValue(String.class);
-//                    Product product =new Product( name, price, imageUrl);
                     Product product = dataSnapshot.getValue(Product.class);
                     product.getCategoryID(dataSnapshot.getKey());
                     list.add(product);
