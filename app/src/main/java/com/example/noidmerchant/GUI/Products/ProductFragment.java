@@ -5,61 +5,229 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.noidmerchant.Adapter.Category;
+import com.example.noidmerchant.Adapter.Product;
+import com.example.noidmerchant.Adapter.ProductAdapter;
 import com.example.noidmerchant.R;
+import com.example.noidmerchant.databinding.FragmentProductBinding;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ProductFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
+
 public class ProductFragment extends Fragment {
+    FragmentProductBinding binding;
+    ArrayList<Product> list = new ArrayList<>();
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public ProductFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment CategoryFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ProductFragment newInstance(String param1, String param2) {
-        ProductFragment fragment = new ProductFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_product, container, false);
+        binding = FragmentProductBinding.inflate(inflater, container, false);
+        ProductAdapter adapter = new ProductAdapter(list,getContext());
+        binding.rcvProd.setAdapter(adapter);
+        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference().child("sanpham");
+        DatabaseReference cafe = databaseRef.child("cafe");
+        DatabaseReference milktea = databaseRef.child("milktea");
+        DatabaseReference pakage = databaseRef.child("package");
+        DatabaseReference snack = databaseRef.child("snack");
+        DatabaseReference tea = databaseRef.child("tea");
+        //Set item cafe
+        cafe.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                String name  = snapshot.child("tensp").getValue(String.class);
+                String price = String.valueOf(snapshot.child("giasp").getValue(Long.class));
+                String imageUrl = snapshot.child("hinhsp").getValue(String.class);
+                Product product = new Product(name,price,imageUrl);
+                if(product != null)
+                {
+                    list.add(product);
+                    adapter.notifyDataSetChanged();
+                }
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        //set item tra sua
+        milktea.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                String name  = snapshot.child("tensp").getValue(String.class);
+                String price = String.valueOf(snapshot.child("giasp").getValue(Long.class));
+                String imageUrl = snapshot.child("hinhsp").getValue(String.class);
+                Product product = new Product(name,price,imageUrl);
+                if(product != null)
+                {
+                    list.add(product);
+                    adapter.notifyDataSetChanged();
+                }
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        // set item cho package
+        pakage.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                String name  = snapshot.child("tensp").getValue(String.class);
+                String price = String.valueOf(snapshot.child("giasp").getValue(Long.class));
+                String imageUrl = snapshot.child("hinhsp").getValue(String.class);
+                Product product = new Product(name,price,imageUrl);
+                if(product != null)
+                {
+                    list.add(product);
+                    adapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        //set item cho banh
+        snack.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                String name  = snapshot.child("tensp").getValue(String.class);
+                String price = String.valueOf(snapshot.child("giasp").getValue(Long.class));
+                String imageUrl = snapshot.child("hinhsp").getValue(String.class);
+                Product product = new Product(name,price,imageUrl);
+                if(product != null)
+                {
+                    list.add(product);
+                    adapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        //set item cho tea
+        tea.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                String name  = snapshot.child("tensp").getValue(String.class);
+                String price = String.valueOf(snapshot.child("giasp").getValue(Long.class));
+                String imageUrl = snapshot.child("hinhsp").getValue(String.class);
+                Product product = new Product(name,price,imageUrl);
+                if(product != null)
+                {
+                    list.add(product);
+                    adapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        binding.rcvProd.setLayoutManager(layoutManager);
+        return binding.getRoot();
     }
 }

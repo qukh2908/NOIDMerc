@@ -9,6 +9,8 @@ import android.widget.ImageView;
 
 import com.example.noidmerchant.R;
 import com.example.noidmerchant.Adapter.ViewPagerAdapter;
+
+import com.example.noidmerchant.databinding.ActivityProductsBinding;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -16,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class ProductsActivity extends AppCompatActivity {
     private TabLayout mTab;
     private ViewPager mView;
+    ActivityProductsBinding binding;
     ImageView back_btn;
 
 
@@ -24,11 +27,12 @@ public class ProductsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_products);
+        binding = ActivityProductsBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         mTab = findViewById(R.id.tab_layout);
         mView = findViewById(R.id.view_pager);
         back_btn = findViewById(R.id.back_btn);
-        ViewPagerAdapter viewPagerAdapter = new     ViewPagerAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        ViewPagerAdapter viewPagerAdapter = new   ViewPagerAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         mView.setAdapter(viewPagerAdapter);
         mTab.setupWithViewPager(mView);
 
