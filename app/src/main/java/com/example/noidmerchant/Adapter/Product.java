@@ -4,45 +4,54 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Product {
-   private String name,price,image;
+   private String productName,productPrice,productImage,categoryID;
 
-    public Product(String name, String price, String image) {
-        this.name = name;
-        this.price = price;
-        this.image = image;
+    public Product(String productName, String productPrice, String productImage, String categoryID) {
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.productImage = productImage;
+        this.categoryID = categoryID;
     }
 
     public Product() {
     }
 
-    public String getName() {
-        return name;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
-    public String getPrice() {
-        return price;
+    public String getProductPrice() {
+        return productPrice;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setProductPrice(String productPrice) {
+        this.productPrice = productPrice;
     }
 
-    public String getImage() {
-        return image;
+    public String getProductImage() {
+        return productImage;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setProductImage(String productImage) {
+        this.productImage = productImage;
     }
-    //    public Map<String, Object> toMap() {
+
+    public String getCategoryID(String key) {
+        return categoryID;
+    }
+
+    public void setCategoryID(String categoryID) {
+        this.categoryID = categoryID;
+    }
+//        public Map<String, Object> toMap() {
 //        HashMap<String, Object> result = new HashMap<>();
-//        result.put("tensp", tensp);
-//        result.put("giasp",giasp);
-//        result.put("cafe",cafe1);
+//        result.put("productName", productName);
+//        result.put("productPrice",productPrice);
+//        result.put("productImage",productImage);
 //        return result;
 //    }
 }
