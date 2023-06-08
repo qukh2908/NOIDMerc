@@ -62,9 +62,14 @@
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:contentDescription="view pager"/>
+            android:contentDescription="view pager">
 
-<!--        <androidx.recyclerview.widget.RecyclerView-->
+
+
+        </androidx.viewpager.widget.ViewPager>
+
+
+        <!--        <androidx.recyclerview.widget.RecyclerView-->
 <!--        android:id="@+id/rcv_danhmuc"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->

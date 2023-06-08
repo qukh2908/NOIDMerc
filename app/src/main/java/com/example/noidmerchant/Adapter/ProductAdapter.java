@@ -35,12 +35,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         Product product = list.get(position);
-        holder.edtName.setText(product.getName());
-        double priceDouble = Double.parseDouble(product.getPrice());
+        holder.edtName.setText(product.getTensp());
+        double priceDouble = Double.parseDouble(product.getGiasp());
         DecimalFormat decimalFormat = new DecimalFormat("#,### đ");
-        String formatgiaten = decimalFormat.format(priceDouble);
-        holder.edtPrice.setText(formatgiaten);
-        String imageUrl = product.getImage();
+        String formattedGiatiensp = decimalFormat.format(priceDouble);
+        holder.edtPrice.setText(formattedGiatiensp);
+        String imageUrl = product.getHinhsp();
         if (imageUrl != null && !imageUrl.isEmpty()) {
             Picasso.get().load(imageUrl).into(holder.imgProd);
         } else {
