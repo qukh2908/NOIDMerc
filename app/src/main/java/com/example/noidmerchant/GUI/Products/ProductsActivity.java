@@ -38,7 +38,7 @@ public class ProductsActivity extends AppCompatActivity {
         mTab.setupWithViewPager(mView);
 
         //Thêm danh mục lên realtime DB
-        //cateRef.push().setValue(new DBCategory("Snack"));
+        //cateRef.push().setValue(new DBCategory("Other"));
         //Thêm danh mục lên realtime DB
 
         //Thêm sản phẩm lên realtime DB
