@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.noidmerchant.R;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -23,7 +24,7 @@ public class InformationsActivity extends AppCompatActivity {
     Button btnSave;
     FirebaseDatabase database;
     DatabaseReference refEmail,refName,refAdd,refPhone,refDb;
-    EditText txtEmail,txtPhone,txtAdd,txtName;
+    TextInputEditText txtEmail,txtPhone,txtAdd,txtName;
     String uid;
     ImageView back_btn;
     @Override
