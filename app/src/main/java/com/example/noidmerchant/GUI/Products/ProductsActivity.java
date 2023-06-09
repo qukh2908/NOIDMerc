@@ -25,6 +25,7 @@ public class ProductsActivity extends AppCompatActivity {
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference cateRef = database.getReference().child("danhmucsp");
     DatabaseReference prodRef = database.getReference().child("sanpham");
+    String masp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +43,8 @@ public class ProductsActivity extends AppCompatActivity {
         //Thêm danh mục lên realtime DB
 
         //Thêm sản phẩm lên realtime DB
-//        prodRef.push().setValue(new DBProduct(
+//        masp = prodRef.push().getKey();
+//        prodRef.child(masp).setValue(new DBProduct(
 //                "-NX9r4LR1f6twnVU28_R",
 //                "https://firebasestorage.googleapis.com/v0/b/noidapp221.appspot.com/o/hinhSanPham%2FCoffee%2Fcafe_1.png?alt=media&token=6d951c58-81be-4b5e-b46e-2c4d59d44f1a",
 //                "Tên SP",
