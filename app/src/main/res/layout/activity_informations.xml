@@ -20,7 +20,6 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
             android:src="@drawable/baseline_arrow_back_24" />
 
         <TextView
@@ -34,28 +33,39 @@
 
     </RelativeLayout>
 
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="50dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:shrinkColumns="0"
+        android:stretchColumns="1"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"
+        android:layout_gravity="center">
 
-        <LinearLayout
-            android:layout_width="400dp"
-            android:layout_height="wrap_content"
-            android:paddingTop="30dp"
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:paddingBottom="40dp"
-            android:layout_gravity="center"
+            android:gravity="center"
             tools:ignore="MissingConstraints">
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="306dp"
-                android:layout_height="200dp"
-                android:layout_marginLeft="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/logoinformation" />
-        </LinearLayout>
+        </TableRow>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="375dp"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:paddingTop="40dp"
             app:cardCornerRadius="20dp"
             app:cardElevation="20dp">
 
@@ -66,6 +76,7 @@
                 <!--Tên cửa hàng-->
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/txtTencuahang"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
@@ -83,6 +94,7 @@
                 <!--địa chỉ-->
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/diachi"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
@@ -100,6 +112,7 @@
                 <!--sdt-->
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/sdt"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
@@ -116,6 +129,7 @@
                 <!--email-->
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/email"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
@@ -133,19 +147,18 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
                     android:orientation="vertical">
 
                     <Button
                         android:id="@+id/btn_luu"
-                        android:layout_width="150dp"
-                        android:layout_height="45dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="SAVE"
-                        android:paddingRight="0dp"
-                        android:layout_gravity="center"
-                        android:background="@drawable/button_rounded"/>
+                        android:paddingRight="20dp"
+                        android:layout_gravity="center"/>
 
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
+    </TableLayout>
 </LinearLayout>
