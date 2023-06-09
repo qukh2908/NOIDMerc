@@ -20,12 +20,12 @@ import com.google.firebase.database.FirebaseDatabase;
 public class ProductsActivity extends AppCompatActivity {
     private TabLayout mTab;
     private ViewPager mView;
-    ActivityProductsBinding binding;
-    ImageView back_btn;
+    private ActivityProductsBinding binding;
+    private ImageView back_btn;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference cateRef = database.getReference().child("danhmucsp");
-    DatabaseReference prodRef = database.getReference().child("sanpham");
-    String masp;
+    private DatabaseReference cateRef = database.getReference().child("danhmucsp");
+    private DatabaseReference prodRef = database.getReference().child("sanpham");
+    private String masp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
