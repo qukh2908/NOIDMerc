@@ -20,6 +20,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
             android:contentDescription="back button"
             android:src="@drawable/baseline_arrow_back_24" />
 
@@ -166,6 +167,7 @@
                 android:id="@+id/btn_luu"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/button_rounded"
                 android:text="Lưu"
                 android:textSize="20dp" />
 
