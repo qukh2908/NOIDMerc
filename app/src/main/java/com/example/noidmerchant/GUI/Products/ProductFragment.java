@@ -1,20 +1,24 @@
 package com.example.noidmerchant.GUI.Products;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.noidmerchant.Adapter.Category;
 import com.example.noidmerchant.Adapter.Product;
 import com.example.noidmerchant.Adapter.ProductAdapter;
 import com.example.noidmerchant.R;
+import com.example.noidmerchant.databinding.AddProductBinding;
 import com.example.noidmerchant.databinding.FragmentProductBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -61,7 +65,17 @@ public class ProductFragment extends Fragment {
         binding = FragmentProductBinding.inflate(inflater, container, false);
         ProductAdapter adapter = new ProductAdapter(list,getContext());
         binding.rcvProd.setAdapter(adapter);
-
+        binding.rcvProd.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                if (dy > 0){
+                    binding.addProd.hide();
+                }else {
+                    binding.addProd.show();
+                }
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
         //item smoothies
         query1.addChildEventListener(new ChildEventListener() {
             @Override
@@ -99,7 +113,7 @@ public class ProductFragment extends Fragment {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 String name = snapshot.child("tensp").getValue(String.class);
-                String price = String.valueOf(snapshot.child("giasp").getValue(Long.class)); // đối với dạng số "50000" // dạng string
+                String price = String.valueOf(snapshot.child("giasp"). getValue(Long.class)); // đối với dạng số "50000" // dạng string
                 String imageUrl = snapshot.child("hinhsp").getValue(String.class);
                 Product product = new Product(name, price, imageUrl);
                 list.add(product);
@@ -172,7 +186,12 @@ public class ProductFragment extends Fragment {
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
+                String name = snapshot.child("tensp").getValue(String.class);
+                String price = String.valueOf(snapshot.child("giasp").getValue(Long.class)); // đối với dạng số "50000" // dạng string
+                String imageUrl = snapshot.child("hinhsp").getValue(String.class);
+                Product product = new Product(name, price, imageUrl);
+                list.add(product);
+                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -293,6 +312,15 @@ public class ProductFragment extends Fragment {
 //        });
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         binding.rcvProd.setLayoutManager(layoutManager);
+        binding.addProd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               startActivity(new Intent(getActivity(),ProductsAdd.class));
+
+            }
+        });
         return binding.getRoot();
     }
+
+
 }

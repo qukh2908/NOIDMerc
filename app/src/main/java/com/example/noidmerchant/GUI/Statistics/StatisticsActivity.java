@@ -17,6 +17,8 @@ public class StatisticsActivity extends AppCompatActivity {
         back_btn = findViewById(R.id.back_btn);
 
         //nút back
-        back_btn.setOnClickListener(v -> finish());
+        back_btn.setOnClickListener(v -> {
+            finish();
+        });
     }
 }

@@ -61,28 +61,7 @@ public class CategoryFragment extends Fragment {
         binding.rcvDir.setAdapter(adapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         binding.rcvDir.setLayoutManager(layoutManager);
-        binding.rcvDir.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                if (dy > 0){
-                    binding.addCate.hide();
-                }else {
-                    binding.addCate.show();
-                }
-                super.onScrolled(recyclerView, dx, dy);
-            }
-        });
-        binding.addCate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // mai code
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                View dialogview = getLayoutInflater().inflate(R.layout.add_category,null);
-                builder.setView(dialogview);
-                AlertDialog dialog = builder.create();
 
-            }
-        });
         return binding.getRoot();
     }
 }
