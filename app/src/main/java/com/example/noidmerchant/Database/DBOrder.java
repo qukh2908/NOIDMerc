@@ -5,15 +5,15 @@ import java.util.Map;
 public class DBOrder {
     String matk, maphi, tinhtrang, ghichu;
     int tonggiadhm;
-    Map<String, String> ngaynhap;
+    Map<String, String> ngaytaodhm;
 
-    public DBOrder(String matk, String maphi, String tinhtrang, String ghichu, int tonggiadhm, Map<String, String> ngaynhap) {
+    public DBOrder(String matk, String maphi, String tinhtrang, String ghichu, int tonggiadhm, Map<String, String> ngaytaodhm) {
         this.matk = matk;
         this.maphi = maphi;
         this.tinhtrang = tinhtrang;
         this.ghichu = ghichu;
         this.tonggiadhm = tonggiadhm;
-        this.ngaynhap = ngaynhap;
+        this.ngaytaodhm = ngaytaodhm;
     }
 
     public String getMatk() {
@@ -56,11 +56,11 @@ public class DBOrder {
         this.tonggiadhm = tonggiadhm;
     }
 
-    public Map<String, String> getNgaynhap() {
-        return ngaynhap;
+    public Map<String, String> getNgaytaodhm() {
+        return ngaytaodhm;
     }
 
-    public void setNgaynhap(Map<String, String> ngaynhap) {
-        this.ngaynhap = ngaynhap;
+    public void setNgaytaodhm(Map<String, String> ngaytaodhm) {
+        this.ngaytaodhm = ngaytaodhm;
     }
 }

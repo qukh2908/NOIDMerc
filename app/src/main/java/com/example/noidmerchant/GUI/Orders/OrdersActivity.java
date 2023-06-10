@@ -30,9 +30,8 @@ public class OrdersActivity extends AppCompatActivity {
     private DatabaseReference expRef = database.getReference().child("xuatban");
     private DatabaseReference ordRef = database.getReference().child("donhangmua");
     private ImageView back_btn;
-    private String masp = "-NXP2U9qvuzfN4bCUk7Z"; //masp tùy khách chọn sp nào thì getkey sp đó gán vào
-    private String maxb; //mã xb tự sinh tự gán mỗi khi tạo
-    private int soluongxb = 3; //số lợng tùy khách nhập
+    private String masp = "-NXasd12szJE21VHadkf"; //masp tùy khách chọn sp nào thì getkey sp đó gán vào
+    private int soluongxb = 2; //số lợng tùy khách nhập
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +45,7 @@ public class OrdersActivity extends AppCompatActivity {
 //            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 //                Object giasp = snapshot.getValue();
 //                int giaxb = giasp.hashCode() * soluongxb;
-//                maxb = expRef.push().getKey();
-//                expRef.child(maxb).setValue(new DBExport(uid, masp, soluongxb, giaxb, " "));
+//                expRef.push().child(maxb).setValue(new DBExport(uid, masp, soluongxb, giaxb, " "));
 //            }
 //
 //            @Override
