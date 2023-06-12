@@ -85,12 +85,16 @@ public class ProductFragment extends Fragment implements RecyclerViewInterface {
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
+                list.clear();
+                databaseRef.removeEventListener(this);
+                databaseRef.addChildEventListener(this);
             }
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
+                list.clear();
+                databaseRef.removeEventListener(this);
+                databaseRef.addChildEventListener(this);
             }
 
             @Override
@@ -117,12 +121,16 @@ public class ProductFragment extends Fragment implements RecyclerViewInterface {
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
+                list.clear();
+                databaseRef.removeEventListener(this);
+                databaseRef.addChildEventListener(this);
             }
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
+                list.clear();
+                databaseRef.removeEventListener(this);
+                databaseRef.addChildEventListener(this);
             }
 
             @Override
@@ -149,12 +157,16 @@ public class ProductFragment extends Fragment implements RecyclerViewInterface {
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
+                list.clear();
+                databaseRef.removeEventListener(this);
+                databaseRef.addChildEventListener(this);
             }
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
+                list.clear();
+                databaseRef.removeEventListener(this);
+                databaseRef.addChildEventListener(this);
             }
 
             @Override
@@ -181,17 +193,16 @@ public class ProductFragment extends Fragment implements RecyclerViewInterface {
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                String name = snapshot.child("tensp").getValue(String.class);
-                String price = String.valueOf(snapshot.child("giasp").getValue(Long.class)); // đối với dạng số "50000" // dạng string
-                String imageUrl = snapshot.child("hinhsp").getValue(String.class);
-                Product product = new Product(name, price, imageUrl);
-                list.add(product);
-                adapter.notifyDataSetChanged();
+                list.clear();
+                databaseRef.removeEventListener(this);
+                databaseRef.addChildEventListener(this);
             }
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
+                list.clear();
+                databaseRef.removeEventListener(this);
+                databaseRef.addChildEventListener(this);
             }
 
             @Override
@@ -218,12 +229,16 @@ public class ProductFragment extends Fragment implements RecyclerViewInterface {
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
+                list.clear();
+                databaseRef.removeEventListener(this);
+                databaseRef.addChildEventListener(this);
             }
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
+                list.clear();
+                databaseRef.removeEventListener(this);
+                databaseRef.addChildEventListener(this);
             }
 
             @Override
@@ -250,12 +265,16 @@ public class ProductFragment extends Fragment implements RecyclerViewInterface {
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
+                list.clear();
+                databaseRef.removeEventListener(this);
+                databaseRef.addChildEventListener(this);
             }
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
+                list.clear();
+                databaseRef.removeEventListener(this);
+                databaseRef.addChildEventListener(this);
             }
 
             @Override
@@ -282,12 +301,16 @@ public class ProductFragment extends Fragment implements RecyclerViewInterface {
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
+                list.clear();
+                databaseRef.removeEventListener(this);
+                databaseRef.addChildEventListener(this);
             }
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
+                list.clear();
+                databaseRef.removeEventListener(this);
+                databaseRef.addChildEventListener(this);
             }
 
             @Override
