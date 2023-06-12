@@ -100,7 +100,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/custum_layouttext"
-                    android:focusable="false"
+
+                    android:enabled="false"
                     android:hint="Chọn Sản Phẩm"
                     android:textSize="20dp"
                     android:textColor="@color/black"
