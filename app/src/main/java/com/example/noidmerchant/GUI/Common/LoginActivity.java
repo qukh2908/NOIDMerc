@@ -10,11 +10,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.noidmerchant.MainActivity;
 import com.example.noidmerchant.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -77,36 +80,55 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
         /* Authentication */
+        txtForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                String email = loginEmail.getText().toString();
+                String email = "kylekhanh1028@gmail.com";
+                auth.sendPasswordResetEmail(email)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(LoginActivity.this,"Email Send",Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(LoginActivity.this,e.getMessage(),Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }
+        });
 
         /* Mở dialog quên mật khẩu */
-        txtForgotPassword.setOnClickListener(v -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-            View dialogview = getLayoutInflater().inflate(R.layout.dialog_forgotpassword, null);
-            TextInputEditText edtForgotEmail = dialogview.findViewById(R.id.edtForgotEmail);
-
-            builder.setView(dialogview);
-            AlertDialog dialog = builder.create();
-
-            dialogview.findViewById(R.id.btnConfirm).setOnClickListener(v1 -> {
-                String userEmail = edtForgotEmail.getText().toString();
-                if (TextUtils.isEmpty(userEmail) && !Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()) {
-                    Toast.makeText(LoginActivity.this, "Nhập email đăng kí tài khoản!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                auth.sendPasswordResetEmail(userEmail).addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        Toast.makeText(LoginActivity.this, "Vui lòng kiểm tra Email!", Toast.LENGTH_SHORT).show();
-                        dialog.dismiss();
-                    } else {
-                        Toast.makeText(LoginActivity.this, "Không thể gửi, vui lòng kiểm tra lại!", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            });
-            dialogview.findViewById(R.id.btnCancel).setOnClickListener(v12 -> dialog.dismiss());
-            if (dialog.getWindow() != null) {
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-            }
-            dialog.show();
-        });
+//        txtForgotPassword.setOnClickListener(v -> {
+//            AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+//            View dialogview = getLayoutInflater().inflate(R.layout.dialog_forgotpassword, null);
+//            TextInputEditText edtForgotEmail = dialogview.findViewById(R.id.edtForgotEmail);
+//
+//            builder.setView(dialogview);
+//            AlertDialog dialog = builder.create();
+//
+//            dialogview.findViewById(R.id.btnConfirm).setOnClickListener(v1 -> {
+//                String userEmail = edtForgotEmail.getText().toString();
+//                if (TextUtils.isEmpty(userEmail) && !Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()) {
+//                    Toast.makeText(LoginActivity.this, "Nhập email đăng kí tài khoản!", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+//                auth.sendPasswordResetEmail(userEmail).addOnCompleteListener(task -> {
+//                    if (task.isSuccessful()) {
+//                        Toast.makeText(LoginActivity.this, "Vui lòng kiểm tra Email!", Toast.LENGTH_SHORT).show();
+//                        dialog.dismiss();
+//                    } else {
+//                        Toast.makeText(LoginActivity.this, "Không thể gửi, vui lòng kiểm tra lại!", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//            });
+//            dialogview.findViewById(R.id.btnCancel).setOnClickListener(v12 -> dialog.dismiss());
+//            if (dialog.getWindow() != null) {
+//                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+//            }
+//            dialog.show();
+//        });
     }
 }
