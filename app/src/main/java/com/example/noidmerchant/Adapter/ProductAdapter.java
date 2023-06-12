@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.noidmerchant.Interface.RecyclerViewInterface;
@@ -71,25 +70,23 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     }
 
     public static class ProductViewHolder extends RecyclerView.ViewHolder{
-        private ImageView imgProd;
-        private TextView edtName, edtPrice;
-        private CardView cardView;
+        private final ImageView imgProd;
+        private final TextView edtName;
+        private final TextView edtPrice;
 
         public ProductViewHolder(@NonNull View itemView,RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
             imgProd = itemView.findViewById(R.id.img_ds);
-            cardView = itemView.findViewById(R.id.cardView);
+//            CardView cardView = itemView.findViewById(R.id.cardView);
             edtName = itemView.findViewById(R.id.txt_sp);
             edtPrice = itemView.findViewById(R.id.txt_gia);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (recyclerViewInterface != null)
-                    {
-                        int  pos = getBindingAdapterPosition();
-                        if (pos!= RecyclerView.NO_POSITION){
-                            recyclerViewInterface.onItemClick(pos);
-                        }
+
+            itemView.setOnClickListener(view -> {
+                if (recyclerViewInterface != null)
+                {
+                    int  pos = getBindingAdapterPosition();
+                    if (pos!= RecyclerView.NO_POSITION){
+                        recyclerViewInterface.onItemClick(pos);
                     }
                 }
             });
