@@ -3,15 +3,16 @@ package com.example.noidmerchant.Database;
 import java.util.Map;
 
 public class DBOrder {
-    String matk, maphi, tinhtrang, ghichu;
-    int tonggiadhm;
+    String matk, tinhtrang, ghichu;
+    int phigiaohang, tonggiadhm;
     Map<String, String> ngaytaodhm;
 
-    public DBOrder(String matk, String maphi, String tinhtrang, String ghichu, int tonggiadhm, Map<String, String> ngaytaodhm) {
+    public DBOrder(String matk, String tinhtrang, String ghichu, int phigiaohang,
+                   int tonggiadhm, Map<String, String> ngaytaodhm) {
         this.matk = matk;
-        this.maphi = maphi;
         this.tinhtrang = tinhtrang;
         this.ghichu = ghichu;
+        this.phigiaohang = phigiaohang;
         this.tonggiadhm = tonggiadhm;
         this.ngaytaodhm = ngaytaodhm;
     }
@@ -22,14 +23,6 @@ public class DBOrder {
 
     public void setMatk(String matk) {
         this.matk = matk;
-    }
-
-    public String getMaphi() {
-        return maphi;
-    }
-
-    public void setMaphi(String maphi) {
-        this.maphi = maphi;
     }
 
     public String getTinhtrang() {
@@ -46,6 +39,14 @@ public class DBOrder {
 
     public void setGhichu(String ghichu) {
         this.ghichu = ghichu;
+    }
+
+    public int getPhigiaohang() {
+        return phigiaohang;
+    }
+
+    public void setPhigiaohang(int phigiaohang) {
+        this.phigiaohang = phigiaohang;
     }
 
     public int getTonggiadhm() {

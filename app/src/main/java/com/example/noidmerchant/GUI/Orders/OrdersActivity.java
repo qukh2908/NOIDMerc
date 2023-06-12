@@ -7,10 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.example.noidmerchant.Database.DBExport;
-import com.example.noidmerchant.Database.DBProduct;
+import com.example.noidmerchant.Database.DBOrder;
 import com.example.noidmerchant.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -19,8 +18,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.ServerValue;
 
 public class OrdersActivity extends AppCompatActivity {
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -30,7 +28,7 @@ public class OrdersActivity extends AppCompatActivity {
     private DatabaseReference expRef = database.getReference().child("xuatban");
     private DatabaseReference ordRef = database.getReference().child("donhangmua");
     private ImageView back_btn;
-    private String masp = "-NXasd12szJE21VHadkf"; //masp tùy khách chọn sp nào thì getkey sp đó gán vào
+    private String masp = ""; //masp tùy khách chọn sp nào thì getkey sp đó gán vào
     private int soluongxb = 2; //số lợng tùy khách nhập
 
     @Override
@@ -45,7 +43,7 @@ public class OrdersActivity extends AppCompatActivity {
 //            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 //                Object giasp = snapshot.getValue();
 //                int giaxb = giasp.hashCode() * soluongxb;
-//                expRef.push().child(maxb).setValue(new DBExport(uid, masp, soluongxb, giaxb, " "));
+//                expRef.push().setValue(new DBExport(uid, masp, soluongxb, giaxb, " "));
 //            }
 //
 //            @Override
@@ -82,8 +80,55 @@ public class OrdersActivity extends AppCompatActivity {
 //            public void onCancelled(@NonNull DatabaseError error) {
 //                //
 //            }
-//        });
-        //Thêm xuất bán lên realtime DB
+//        }); //Thêm xuất bán lên realtime DB
+
+
+        //Thêm don hang mới lên realtime DB
+//        expRef.orderByKey().addChildEventListener(new ChildEventListener() {
+//            int xbLength = -1;
+//            int sum = 0;
+//            @Override
+//            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+//                xbLength++;
+//                DBExport[] export = new DBExport[xbLength + 1];
+//
+//                String matk = snapshot.child("matk").getValue().toString();
+//                String masp = snapshot.child("masp").getValue().toString();
+//                int soluongxb = snapshot.child("soluongxb").getValue().hashCode();
+//                int giaxb = snapshot.child("giaxb").getValue().hashCode();
+//                int phigiaohang = 30000;
+//                String madhm = snapshot.child("madhm").getValue().toString();
+//
+//                export[xbLength] = new DBExport(matk, masp, soluongxb,giaxb,madhm);
+//                sum += export[xbLength].getGiaKhCoMadhm();
+//                Log.i("ADMIN", "Gia tong:" + sum);
+//                if(xbLength==2) {
+//                    sum += phigiaohang;
+//                    ordRef.push().setValue(new DBOrder(matk, "Đang giao", "NOTE",phigiaohang, sum, ServerValue.TIMESTAMP));
+//                }
+//            }
+//            @Override
+//            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+//
+//            }
+//
+//            @Override
+//            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+//
+//            }
+//
+//            @Override
+//            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//
+//
+//        }); //Thêm don hang mới lên realtime DB
 
         //nút back
         back_btn.setOnClickListener(v -> finish());

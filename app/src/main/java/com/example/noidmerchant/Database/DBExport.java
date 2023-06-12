@@ -12,7 +12,12 @@ public class DBExport {
         this.giaxb = giaxb;
         this.madhm = madhm;
     }
-
+    public int getGiaKhCoMadhm() {
+        if (this.madhm.trim().isEmpty()) {
+            return this.giaxb;
+        } else
+            return 0;
+    }
     public String getMatk() {
         return matk;
     }
