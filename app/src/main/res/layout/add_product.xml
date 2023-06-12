@@ -62,8 +62,13 @@
             android:layout_height="wrap_content"
             android:hint="Chọn Danh Mục"
             android:textSize="20dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
             android:focusable="false"
             android:background="@drawable/custum_layouttext"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:textStyle="bold"/>
 
     </TableRow>
