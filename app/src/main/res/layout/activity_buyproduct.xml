@@ -39,7 +39,7 @@
         android:layout_width="360dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="80dp"
+        android:layout_marginVertical="120dp"
         app:cardCornerRadius="5dp"
         app:cardElevation="9dp"
         app:cardBackgroundColor="@color/cardview_light_background">
@@ -69,15 +69,15 @@
                     android:id="@+id/edt_danhmuc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/custum_layouttext"
                     android:dropDownWidth="wrap_content"
                     android:dropDownHeight="wrap_content"
-                    android:background="@drawable/custum_layouttext"
                     android:focusable="false"
                     android:hint="Chọn Danh Mục"
-                    android:textColor="@color/black"
-                    android:paddingTop="20dp"
-                    android:paddingBottom="2dp"
                     android:paddingLeft="5dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:textColor="@color/black"
                     android:textSize="20dp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -106,9 +106,9 @@
                     android:hint="Chọn Sản Phẩm"
                     android:textSize="20dp"
                     android:textColor="@color/black"
-                    android:paddingTop="20dp"
+                    android:paddingTop="15dp"
                     android:paddingLeft="5dp"
-                    android:paddingBottom="5dp"
+                    android:paddingBottom="15dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -138,40 +138,9 @@
                     android:inputType="numberSigned"
                     android:textColor="@color/black"
                     android:textSize="20dp"
-                    android:paddingTop="20dp"
+                    android:paddingTop="15dp"
                     android:paddingLeft="5dp"
-                    android:paddingBottom="5dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-            <!--Ngày nhập-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/textView19"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="20dp"
-                    android:text="Ngày nhập:"
-                    android:paddingTop="20dp"
-                    android:paddingBottom="5dp"
-                    android:textColor="@color/black"
-                    android:textSize="20dp" />
-
-                <EditText
-                    android:id="@+id/edt_ngaynhap"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/custum_layouttext"
-                    android:ems="10"
-                    android:hint="Chọn ngày nhập"
-                    android:inputType="datetime"
-                    android:textColor="@color/black"
-                    android:textSize="20dp"
-                    android:paddingTop="20dp"
-                    android:paddingLeft="5dp"
-                    android:paddingBottom="5dp"
+                    android:paddingBottom="15dp"
                     android:textStyle="bold" />
             </LinearLayout>
             <!-- Button-->
