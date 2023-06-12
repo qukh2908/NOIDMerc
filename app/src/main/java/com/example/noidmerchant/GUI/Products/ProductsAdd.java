@@ -2,6 +2,7 @@ package com.example.noidmerchant.GUI.Products;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -103,6 +104,7 @@ public class ProductsAdd extends AppCompatActivity {
             String motasp = binding.edtMieuta.getText().toString();
             String hinhsp = "https://firebasestorage.googleapis.com/v0/b/noidapp221.appspot.com/o/hinhSanPham%2FCoffee%2Fcafe_1.png?alt=media&token=6d951c58-81be-4b5e-b46e-2c4d59d44f1a";
             prodRef.push().setValue(new DBProduct(madm, hinhsp, tensp, motasp, giasp, soluong));
+            Toast.makeText(this, "Thêm thành công", Toast.LENGTH_SHORT).show();
 
         });
 
