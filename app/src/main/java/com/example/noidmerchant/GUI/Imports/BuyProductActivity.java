@@ -77,10 +77,11 @@ public class BuyProductActivity extends AppCompatActivity {
             dmAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, categories);
             edt_danhmuc.setAdapter(dmAdapter);
             edt_danhmuc.showDropDown();
+            products.clear();
+            edt_sanpham.setText("");
         });
 
         edt_danhmuc.setOnItemClickListener((parent, view, position, id) -> {
-            edt_sanpham.setEnabled(true);
             tendm = edt_danhmuc.getText().toString();
             cateRef.orderByKey().addChildEventListener(new ChildEventListener() {
                 @Override

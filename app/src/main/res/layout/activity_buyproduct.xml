@@ -99,9 +99,10 @@
                     android:id="@+id/edt_sanpham"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:dropDownWidth="wrap_content"
+                    android:dropDownHeight="wrap_content"
                     android:background="@drawable/custum_layouttext"
-
-                    android:enabled="false"
+                    android:focusable="false"
                     android:hint="Chọn Sản Phẩm"
                     android:textSize="20dp"
                     android:textColor="@color/black"
