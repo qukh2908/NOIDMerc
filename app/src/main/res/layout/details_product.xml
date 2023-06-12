@@ -14,7 +14,7 @@
         tools:ignore="MissingConstraints">
 
     <ImageView
-        android:id="@+id/back_btn"
+        android:id="@+id/back_btnDetail"
         android:layout_width="40dp"
         android:layout_height="match_parent"
         android:layout_centerVertical="true"

@@ -8,8 +8,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.noidmerchant.Interface.RecyclerViewInterface;
 import com.example.noidmerchant.R;
 import com.squareup.picasso.Picasso;
 
@@ -19,17 +21,20 @@ import java.util.ArrayList;
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder>{
     ArrayList<Product> list;
     Context context;
+    private final RecyclerViewInterface recyclerViewInterface;
 
-    public ProductAdapter(ArrayList<Product> list, Context context) {
+
+    public ProductAdapter(ArrayList<Product> list, Context context,RecyclerViewInterface recyclerViewInterface) {
         this.list = list;
         this.context = context;
+        this.recyclerViewInterface = recyclerViewInterface;
     }
 
     @NonNull
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_sanpham,parent,false);
-        return new ProductViewHolder(view);
+        return new ProductViewHolder(view,recyclerViewInterface);
     }
 
     @Override
@@ -48,22 +53,46 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             // For example, you can set a default image to ImageView
             holder.imgProd.setImageResource(R.drawable.noidea);
         }
+//        holder.cardView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                onClickGoToDetail(product);
+//            }
+//        });
     }
+//    private void onClickGoToDetail(Product product){
+//        Intent intent = new Intent(context, DetailsProduct.class);
+//        context.startActivity(intent);
+//    }
 
     @Override
     public int getItemCount() {
         return list.size();
     }
 
-    public class ProductViewHolder extends RecyclerView.ViewHolder{
+    public static class ProductViewHolder extends RecyclerView.ViewHolder{
         private ImageView imgProd;
         private TextView edtName, edtPrice;
+        private CardView cardView;
 
-        public ProductViewHolder(@NonNull View itemView) {
+        public ProductViewHolder(@NonNull View itemView,RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
             imgProd = itemView.findViewById(R.id.img_ds);
+            cardView = itemView.findViewById(R.id.cardView);
             edtName = itemView.findViewById(R.id.txt_sp);
             edtPrice = itemView.findViewById(R.id.txt_gia);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (recyclerViewInterface != null)
+                    {
+                        int  pos = getBindingAdapterPosition();
+                        if (pos!= RecyclerView.NO_POSITION){
+                            recyclerViewInterface.onItemClick(pos);
+                        }
+                    }
+                }
+            });
         }
     }
 }

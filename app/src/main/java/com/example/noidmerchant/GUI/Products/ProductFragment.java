@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.noidmerchant.Adapter.Category;
 import com.example.noidmerchant.Adapter.Product;
 import com.example.noidmerchant.Adapter.ProductAdapter;
+import com.example.noidmerchant.Interface.RecyclerViewInterface;
 import com.example.noidmerchant.R;
 import com.example.noidmerchant.databinding.AddProductBinding;
 import com.example.noidmerchant.databinding.FragmentProductBinding;
@@ -33,7 +34,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 
-public class ProductFragment extends Fragment {
+public class ProductFragment extends Fragment implements RecyclerViewInterface {
     FragmentProductBinding binding;
     ArrayList<Product> list = new ArrayList<>();
 
@@ -63,7 +64,7 @@ public class ProductFragment extends Fragment {
         Query query5 = databaseRef.orderByChild("madm").equalTo(pakage);
         // Inflate the layout for this fragment
         binding = FragmentProductBinding.inflate(inflater, container, false);
-        ProductAdapter adapter = new ProductAdapter(list,getContext());
+        ProductAdapter adapter = new ProductAdapter(list,getContext(),this);
         binding.rcvProd.setAdapter(adapter);
         binding.rcvProd.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -323,4 +324,9 @@ public class ProductFragment extends Fragment {
     }
 
 
+    @Override
+    public void onItemClick(int position) {
+        Intent intent = new Intent(getActivity(), DetailsActivity.class);
+        startActivity(intent);
+    }
 }
