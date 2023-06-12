@@ -1,23 +1,17 @@
 package com.example.noidmerchant.GUI.Common;
+
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.noidmerchant.MainActivity;
 import com.example.noidmerchant.R;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -80,24 +74,11 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
         /* Authentication */
-        txtForgotPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        txtForgotPassword.setOnClickListener(view -> {
 //                String email = loginEmail.getText().toString();
-                String email = "kylekhanh1028@gmail.com";
-                auth.sendPasswordResetEmail(email)
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void unused) {
-                                Toast.makeText(LoginActivity.this,"Email Send",Toast.LENGTH_SHORT).show();
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(LoginActivity.this,e.getMessage(),Toast.LENGTH_SHORT).show();
-                            }
-                        });
-            }
+            String email = "kylekhanh1028@gmail.com";
+            auth.sendPasswordResetEmail(email)
+                    .addOnSuccessListener(unused -> Toast.makeText(LoginActivity.this,"Email Send",Toast.LENGTH_SHORT).show()).addOnFailureListener(e -> Toast.makeText(LoginActivity.this,e.getMessage(),Toast.LENGTH_SHORT).show());
         });
 
         /* Mở dialog quên mật khẩu */

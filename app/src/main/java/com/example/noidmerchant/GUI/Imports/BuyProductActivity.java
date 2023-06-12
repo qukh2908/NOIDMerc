@@ -1,11 +1,10 @@
 package com.example.noidmerchant.GUI.Imports;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -19,9 +18,11 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ServerValue;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 
 public class BuyProductActivity extends AppCompatActivity {
@@ -30,19 +31,24 @@ public class BuyProductActivity extends AppCompatActivity {
     DatabaseReference cateRef = database.getReference().child("danhmucsp");
     DatabaseReference prodRef = database.getReference().child("sanpham");
     AutoCompleteTextView edt_danhmuc, edt_sanpham;
+    EditText edt_soluong;
     ArrayAdapter<String> dmAdapter;
     ArrayAdapter<String> spAdapter;
     ImageView back_btn;
+    Button btn_luu;
     String tendm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buyproduct);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
 
         edt_danhmuc = findViewById(R.id.edt_danhmuc);
         edt_sanpham = findViewById(R.id.edt_sanpham);
+        edt_soluong = findViewById(R.id.edt_soluong);
         back_btn = findViewById(R.id.back_btn);
+        btn_luu = findViewById(R.id.btn_luu);
 
         ArrayList<String> categories = new ArrayList<>();
         ArrayList<String> products = new ArrayList<>();
@@ -147,9 +153,44 @@ public class BuyProductActivity extends AppCompatActivity {
             edt_sanpham.showDropDown();
         });
 
-        //Thêm nhập hàng lên realtime DB
-        //impRef.push().setValue(new DBImport("example", 0, ServerValue.TIMESTAMP));
-        //Thêm nhập hàng lên realtime DB
+        btn_luu.setOnClickListener(v -> {
+            String tensp = edt_sanpham.getText().toString();
+            int soluongnhap = Integer.parseInt(edt_soluong.getText().toString());
+            String currentDateAndTime = sdf.format(new Date());
+
+            prodRef.orderByKey().addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                    if(snapshot.child("tensp").getValue().toString().equals(tensp)) {
+                        String masp = snapshot.getKey();
+                        assert masp != null;
+                        int soluong = snapshot.child("soluong").getValue().hashCode() + soluongnhap;
+                        prodRef.child(masp).child("soluong").setValue(soluong);
+                        impRef.push().setValue(new DBImport(masp,soluongnhap,currentDateAndTime));
+                    }
+                }
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        });
 
         //nút back
         back_btn.setOnClickListener(v -> finish());

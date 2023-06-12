@@ -5,9 +5,9 @@ import java.util.Map;
 public class DBImport {
     String masp;
     int soluongnhap;
-    Map<String, String> ngaynhap;
+    String ngaynhap;
 
-    public DBImport(String masp, int soluongnhap, Map<String, String> ngaynhap) {
+    public DBImport(String masp, int soluongnhap, String ngaynhap) {
         this.masp = masp;
         this.soluongnhap = soluongnhap;
         this.ngaynhap = ngaynhap;
@@ -29,11 +29,11 @@ public class DBImport {
         this.soluongnhap = soluongnhap;
     }
 
-    public Map<String, String> getNgaynhap() {
+    public String getNgaynhap() {
         return ngaynhap;
     }
 
-    public void setNgaynhap(Map<String, String> ngaynhap) {
+    public void setNgaynhap(String ngaynhap) {
         this.ngaynhap = ngaynhap;
     }
 }
