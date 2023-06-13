@@ -14,12 +14,7 @@ public class ProductDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DetailsProductBinding.inflate(getLayoutInflater());
-        binding.backBtnDetail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        binding.backBtnDetail.setOnClickListener(view -> finish());
         setContentView(binding.getRoot());
     }
 }
