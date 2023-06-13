@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".GUI.Products.ProductAdd">
+    tools:context=".MainActivity">
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -37,197 +37,248 @@
             android:textSize="25sp" />
     </RelativeLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
+    <androidx.cardview.widget.CardView
+        android:layout_width="380dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        app:cardBackgroundColor="@color/cardview_light_background"
+        app:cardElevation="9dp"
+        app:cardCornerRadius="5dp">
 
-        <TableLayout
-            android:id="@+id/tableLayout"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingLeft="20dp"
-            android:paddingTop="20dp"
-            android:shrinkColumns="0"
-            android:stretchColumns="1"
-            tools:ignore="MissingConstraints">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
 
-            <TableRow
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                tools:ignore="MissingConstraints">
-
-                <TextView
-                    android:id="@+id/textView11"
-                    android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custum_layouttext"
+                android:orientation="vertical"
+                android:padding="20dp">
+                <!--Danh mục-->
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Danh Mục:"
-                    android:textColor="@color/black"
-                    android:textSize="20dp" />
+                    android:orientation="vertical">
 
-                <AutoCompleteTextView
-                    android:id="@+id/ed_danhmuc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:layout_gravity="center"
+                    <TextView
+                        android:id="@+id/textview20"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="5dp"
+                        android:text="Danh Mục"
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
+
+                    <AutoCompleteTextView
+                        android:id="@+id/ed_danhmuc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/custum_layouttext"
+                        android:dropDownWidth="wrap_content"
+                        android:dropDownHeight="wrap_content"
+                        android:focusable="false"
+                        android:hint="Chọn Danh Mục"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <!--Tên sản phẩm-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textview21"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="5dp"
+                        android:text="Tên Sản Phẩm"
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
+
+                    <EditText
+                        android:id="@+id/edt_tensp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/custum_layouttext"
+                        android:ems="10"
+                        android:hint="Nhập Tên Sản Phẩm"
+                        android:inputType="text"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <!--Giá sản phẩm-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textview22"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="5dp"
+                        android:text="Giá Sản Phẩm"
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
+
+                    <EditText
+                        android:id="@+id/edt_gia"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/custum_layouttext"
+                        android:ems="10"
+                        android:hint="Nhập Tên Sản Phẩm"
+                        android:inputType="number"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <!--Số lượng-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textview23"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="5dp"
+                        android:text="Số Lượng"
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
+
+                    <EditText
+                        android:id="@+id/edt_soluong"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/custum_layouttext"
+                        android:ems="10"
+                        android:hint="Nhập Số Lượng"
+                        android:inputType="number"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <!--Mô tả-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textview24"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="5dp"
+                        android:text="Mô Tả"
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
+
+                    <EditText
+                        android:id="@+id/edt_mieuta"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/custum_layouttext"
+                        android:ems="10"
+                        android:hint="Mô Tả Sản Phẩm"
+                        android:inputType="number"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <!--Hình ảnh-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="5dp">
+
+                    <TextView
+                        android:id="@+id/textview25"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="5dp"
+                        android:text="Hình Ảnh"
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
+
+                    <Button
+                        android:id="@+id/btn_inputhinh"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Chọn Hình"
+                        android:textColor="@color/black"
+                        android:backgroundTint="#A7ECEE"
+                        app:cornerRadius="10dp"/>
+
+                </LinearLayout>
+                <!--Frame Hình-->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="240dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/custum_layouttext"
-                    android:focusable="false"
-                    android:hint="Chọn Danh Mục"
-                    android:paddingLeft="30dp"
-                    android:paddingRight="30dp"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:layout_marginBottom="10dp">
 
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/textView8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="30dp"
-                    android:text="Tên Sản Phẩm:"
-                    android:textColor="@color/black"
-                    android:textSize="20dp" />
-
-                <EditText
-                    android:id="@+id/edt_tensp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Nhập Tên Sản Phẩm"
-                    android:inputType="text"
-                    android:textSize="20dp" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="30dp"
-                    android:text="Giá:"
-                    android:textColor="@color/black"
-                    android:textSize="20dp" />
-
-                <EditText
-                    android:id="@+id/edt_gia"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Nhập Giá Sản Phẩm"
-                    android:inputType="number"
-                    android:textSize="20dp" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/textView10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="30dp"
-                    android:text="Số Lượng:"
-                    android:textColor="@color/black"
-                    android:textSize="20dp" />
-
-                <EditText
-                    android:id="@+id/edt_soluong"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Nhập Số Lượng"
-                    android:inputType="number"
-                    android:textSize="20dp" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/textView12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="30dp"
-                    android:text="Miêu Tả:"
-                    android:textColor="@color/black"
-                    android:textSize="20dp" />
-
-                <EditText
-                    android:id="@+id/edt_mieuta"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="Miêu Tả Sản Phẩm"
-                    android:inputType="text"
-                    android:textSize="20dp" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="83dp">
-
-                <TextView
-                    android:id="@+id/textView13"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="30dp"
-                    android:text="Hình ảnh:"
-                    android:textColor="@color/black"
-                    android:textSize="20dp" />
-
-                <Button
-                    android:id="@+id/btn_inputhinh"
+                    <ImageView
+                        android:id="@+id/img_hinhanh"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#EAE4E4"
+                        android:scaleType="centerInside"
+                        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+                </FrameLayout>
+                <!--Buttun-->
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/button_rounded"
-                    android:text="Chọn Hình"
-                    android:textColor="@color/black" />
-            </TableRow>
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="240dp">
-
-                <ImageView
-                    android:id="@+id/img_hinhanh"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#EAE4E4"
-                    android:scaleType="centerInside"
-                    tools:srcCompat="@tools:sample/backgrounds/scenic" />
-            </FrameLayout>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="right">
-
-                <Button
-                    android:id="@+id/btn_luu"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/button_rounded"
-                    android:text="Lưu"
-                    android:textSize="20dp" />
+                    android:gravity="center">
 
-            </TableRow>
-        </TableLayout>
-    </ScrollView>
+                    <Button
+                        android:id="@+id/btn_luu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Lưu"
+                        android:textSize="20dp"
+                        android:background="@drawable/button_rounded"/>
 
+                </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
