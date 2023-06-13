@@ -40,16 +40,16 @@ public class ProductFragment extends Fragment implements RecyclerViewInterface {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        String cafe = "-NX9r4LR1f6twnVU28_R";
-        String smoothies = "-NX9ppXXBjY8T0_6wBy5";
+        String milktea = "-NX9r4LR1f6twnVU28_R";
+        String cafe = "-NX9ppXXBjY8T0_6wBy5";
         String tea = "-NXDtH8cDFrHbWFztoFk";
-        String milktea = "-NXE1ZviRaG07k3xa_rl";
+        String smoothie = "-NXE1ZviRaG07k3xa_rl";
         String Snack = "-NXOrczCnri2fMR2gUWP";
-        String pakage = "-NXOrczCnri2fMR2gUWP";
+        String pakage = "-NXOrczHNuTFoEhXKwfe";
         String other = "-NXPMMB0Gglb68aK9Svr";
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference().child("sanpham");
         Query query = databaseRef.orderByChild("madm").equalTo(cafe);
-        Query query1 = databaseRef.orderByChild("madm").equalTo(smoothies);
+        Query query1 = databaseRef.orderByChild("madm").equalTo(smoothie);
         Query query2 = databaseRef.orderByChild("madm").equalTo(tea);
         Query query3 = databaseRef.orderByChild("madm").equalTo(milktea);
         Query query4 = databaseRef.orderByChild("madm").equalTo(Snack);
@@ -71,7 +71,7 @@ public class ProductFragment extends Fragment implements RecyclerViewInterface {
                 super.onScrolled(recyclerView, dx, dy);
             }
         });
-        //item smoothies
+        //item smoothie
         query1.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
