@@ -5,10 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.noidmerchant.R;
 import com.example.noidmerchant.databinding.DetailsProductBinding;
 
-public class DetailsActivity extends AppCompatActivity {
+public class ProductDetails extends AppCompatActivity {
     private DetailsProductBinding binding;
 
     @Override

@@ -18,7 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-public class ProductsAdd extends AppCompatActivity {
+public class ProductAdd extends AppCompatActivity {
     private AddProductBinding binding;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     private final DatabaseReference cateRef = database.getReference().child("danhmucsp");
@@ -59,7 +59,7 @@ public class ProductsAdd extends AppCompatActivity {
         });
 
         binding.edDanhmuc.setOnClickListener(view -> {
-            dmAdapter = new ArrayAdapter<> (ProductsAdd.this, android.R.layout.simple_dropdown_item_1line, categories);
+            dmAdapter = new ArrayAdapter<> (ProductAdd.this, android.R.layout.simple_dropdown_item_1line, categories);
             binding.edDanhmuc.setAdapter(dmAdapter);
             binding.edDanhmuc.showDropDown();
             madm = null;

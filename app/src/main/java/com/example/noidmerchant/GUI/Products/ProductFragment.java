@@ -364,12 +364,12 @@ public class ProductFragment extends Fragment implements RecyclerViewInterface {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         binding.rcvProd.setLayoutManager(layoutManager);
-        binding.addProd.setOnClickListener(v -> startActivity(new Intent(getActivity(),ProductsAdd.class)));
+        binding.addProd.setOnClickListener(v -> startActivity(new Intent(getActivity(), ProductAdd.class)));
         return binding.getRoot();
     }
     @Override
     public void onItemClick(int position) {
-        Intent intent = new Intent(getActivity(), DetailsActivity.class);
+        Intent intent = new Intent(getActivity(), ProductDetails.class);
         startActivity(intent);
     }
 }

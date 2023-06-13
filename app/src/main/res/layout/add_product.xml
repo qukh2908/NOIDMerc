@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".GUI.Products.ProductsAdd">
+    tools:context=".GUI.Products.ProductAdd">
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
