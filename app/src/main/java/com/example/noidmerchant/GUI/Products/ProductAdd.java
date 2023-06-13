@@ -28,12 +28,12 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class ProductAdd extends AppCompatActivity {
+    final int PICK_IMAGE_REQUEST = 22;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private final int PICK_IMAGE_REQUEST = 22;
-    private final DatabaseReference cateRef = database.getReference().child("danhmucsp");
-    private final DatabaseReference prodRef = database.getReference().child("sanpham");
-    private FirebaseStorage storage = FirebaseStorage.getInstance();
-    private StorageReference storageReference = storage.getReference();
+    final FirebaseStorage storage = FirebaseStorage.getInstance();
+    final StorageReference storageReference = storage.getReference();
+    final DatabaseReference prodRef = database.getReference().child("sanpham");
+    final DatabaseReference cateRef = database.getReference().child("danhmucsp");
     private Uri filePath;
     private AddProductBinding binding;
     private ArrayAdapter<String> dmAdapter;
