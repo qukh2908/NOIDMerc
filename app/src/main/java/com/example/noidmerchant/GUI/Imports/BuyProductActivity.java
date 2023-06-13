@@ -42,6 +42,7 @@ public class BuyProductActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buyproduct);
+        tendm = null; //reset tendm
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
 
         edt_danhmuc = findViewById(R.id.edt_danhmuc);
@@ -83,11 +84,11 @@ public class BuyProductActivity extends AppCompatActivity {
             dmAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, categories);
             edt_danhmuc.setAdapter(dmAdapter);
             edt_danhmuc.showDropDown();
-            products.clear();
-            edt_sanpham.setText("");
         });
 
         edt_danhmuc.setOnItemClickListener((parent, view, position, id) -> {
+            products.clear();
+            edt_sanpham.setText("");
             tendm = edt_danhmuc.getText().toString();
             cateRef.orderByKey().addChildEventListener(new ChildEventListener() {
                 @Override
