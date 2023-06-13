@@ -21,9 +21,8 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
             case 0:
                 return new CategoryFragment();
             case 1:
-                return new ProductFragment();
             default:
-                return new CategoryFragment();
+                return new ProductFragment();
         }
     }
 
