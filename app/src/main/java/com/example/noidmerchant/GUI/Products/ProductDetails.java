@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import com.example.noidmerchant.Adapter.Product;
 import com.example.noidmerchant.Database.DBProduct;
 import com.example.noidmerchant.R;
 import com.example.noidmerchant.databinding.DetailsProductBinding;
@@ -42,7 +43,7 @@ public class ProductDetails extends AppCompatActivity {
     private DetailsProductBinding binding;
     private ArrayAdapter<String> dmAdapter;
     private ArrayList<String> categories = new ArrayList<>();
-    private String madm,imageUrl,masp="-NXsJxH2-ytUL5GMyP0c";
+    private String madm,imageUrl,masp;
     private Uri filePath;
 
     @Override
@@ -50,6 +51,16 @@ public class ProductDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DetailsProductBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        Bundle bundle = getIntent().getExtras();
+        if (bundle==null){
+            return;
+        }
+        Product product  = (Product) bundle.get("sanpham");
+        binding.edDanhmuc.setText(madm);
+        binding.edtTensp.setText(product.getName());
+        binding.edtGia.setText(product.getPrice());
+        binding.edtSoluong.setText(product.getQuanl());
+        binding.edtMieuta.setText(product.getDes());
         imageUrl = null; //reset url
         madm = null; //reset madm
         //Gán madm từ masp

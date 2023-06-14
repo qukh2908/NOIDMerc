@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.noidmerchant.Adapter.Product;
 import com.example.noidmerchant.Adapter.ProductAdapter;
-import com.example.noidmerchant.Interface.RecyclerViewInterface;
 import com.example.noidmerchant.databinding.FragmentProductBinding;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -26,7 +25,7 @@ import com.google.firebase.database.Query;
 import java.util.ArrayList;
 
 
-public class ProductFragment extends Fragment implements RecyclerViewInterface {
+public class ProductFragment extends Fragment  {
     FragmentProductBinding binding;
     ArrayList<Product> list = new ArrayList<>();
 
@@ -58,7 +57,7 @@ public class ProductFragment extends Fragment implements RecyclerViewInterface {
 
         // Inflate the layout for this fragment
         binding = FragmentProductBinding.inflate(inflater, container, false);
-        ProductAdapter adapter = new ProductAdapter(list,getContext(),this);
+        ProductAdapter adapter = new ProductAdapter(list,getContext());
         binding.rcvProd.setAdapter(adapter);
         binding.rcvProd.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -78,7 +77,9 @@ public class ProductFragment extends Fragment implements RecyclerViewInterface {
                 String name = snapshot.child("tensp").getValue(String.class);
                 String price = String.valueOf(snapshot.child("giasp").getValue(Long.class)); // đối với dạng số "50000" // dạng string
                 String imageUrl = snapshot.child("hinhsp").getValue(String.class);
-                Product product = new Product(name, price, imageUrl);
+                String quanl = String.valueOf(snapshot.child("soluongsp").getValue(Long.class));
+                String des = snapshot.child("motasp").getValue(String.class);
+                Product product = new Product(name, price, imageUrl,quanl,des);
                 list.add(product);
                 adapter.notifyDataSetChanged();
             }
@@ -112,9 +113,11 @@ public class ProductFragment extends Fragment implements RecyclerViewInterface {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 String name = snapshot.child("tensp").getValue(String.class);
-                String price = String.valueOf(snapshot.child("giasp"). getValue(Long.class)); // đối với dạng số "50000" // dạng string
+                String price = String.valueOf(snapshot.child("giasp").getValue(Long.class)); // đối với dạng số "50000" // dạng string
                 String imageUrl = snapshot.child("hinhsp").getValue(String.class);
-                Product product = new Product(name, price, imageUrl);
+                String quanl = String.valueOf(snapshot.child("soluongsp").getValue(Long.class));
+                String des = snapshot.child("motasp").getValue(String.class);
+                Product product = new Product(name, price, imageUrl,quanl,des);
                 list.add(product);
                 adapter.notifyDataSetChanged();
             }
@@ -150,7 +153,9 @@ public class ProductFragment extends Fragment implements RecyclerViewInterface {
                 String name = snapshot.child("tensp").getValue(String.class);
                 String price = String.valueOf(snapshot.child("giasp").getValue(Long.class)); // đối với dạng số "50000" // dạng string
                 String imageUrl = snapshot.child("hinhsp").getValue(String.class);
-                Product product = new Product(name, price, imageUrl);
+                String quanl = String.valueOf(snapshot.child("soluongsp").getValue(Long.class));
+                String des = snapshot.child("motasp").getValue(String.class);
+                Product product = new Product(name, price, imageUrl,quanl,des);
                 list.add(product);
                 adapter.notifyDataSetChanged();
             }
@@ -186,7 +191,9 @@ public class ProductFragment extends Fragment implements RecyclerViewInterface {
                 String name = snapshot.child("tensp").getValue(String.class);
                 String price = String.valueOf(snapshot.child("giasp").getValue(Long.class)); // đối với dạng số "50000" // dạng string
                 String imageUrl = snapshot.child("hinhsp").getValue(String.class);
-                Product product = new Product(name, price, imageUrl);
+                String quanl = String.valueOf(snapshot.child("soluongsp").getValue(Long.class));
+                String des = snapshot.child("motasp").getValue(String.class);
+                Product product = new Product(name, price, imageUrl,quanl,des);
                 list.add(product);
                 adapter.notifyDataSetChanged();
             }
@@ -222,7 +229,9 @@ public class ProductFragment extends Fragment implements RecyclerViewInterface {
                 String name = snapshot.child("tensp").getValue(String.class);
                 String price = String.valueOf(snapshot.child("giasp").getValue(Long.class)); // đối với dạng số "50000" // dạng string
                 String imageUrl = snapshot.child("hinhsp").getValue(String.class);
-                Product product = new Product(name, price, imageUrl);
+                String quanl = String.valueOf(snapshot.child("soluongsp").getValue(Long.class));
+                String des = snapshot.child("motasp").getValue(String.class);
+                Product product = new Product(name, price, imageUrl,quanl,des);
                 list.add(product);
                 adapter.notifyDataSetChanged();
             }
@@ -258,7 +267,9 @@ public class ProductFragment extends Fragment implements RecyclerViewInterface {
                 String name = snapshot.child("tensp").getValue(String.class);
                 String price = String.valueOf(snapshot.child("giasp").getValue(Long.class)); // đối với dạng số "50000" // dạng string
                 String imageUrl = snapshot.child("hinhsp").getValue(String.class);
-                Product product = new Product(name, price, imageUrl);
+                String quanl = String.valueOf(snapshot.child("soluongsp").getValue(Long.class));
+                String des = snapshot.child("motasp").getValue(String.class);
+                Product product = new Product(name, price, imageUrl,quanl,des);
                 list.add(product);
                 adapter.notifyDataSetChanged();
             }
@@ -294,7 +305,9 @@ public class ProductFragment extends Fragment implements RecyclerViewInterface {
                 String name = snapshot.child("tensp").getValue(String.class);
                 String price = String.valueOf(snapshot.child("giasp").getValue(Long.class)); // đối với dạng số "50000" // dạng string
                 String imageUrl = snapshot.child("hinhsp").getValue(String.class);
-                Product product = new Product(name, price, imageUrl);
+                String quanl = String.valueOf(snapshot.child("soluongsp").getValue(Long.class));
+                String des = snapshot.child("motasp").getValue(String.class);
+                Product product = new Product(name, price, imageUrl,quanl,des);
                 list.add(product);
                 adapter.notifyDataSetChanged();
             }
@@ -367,9 +380,9 @@ public class ProductFragment extends Fragment implements RecyclerViewInterface {
         binding.addProd.setOnClickListener(v -> startActivity(new Intent(getActivity(), ProductAdd.class)));
         return binding.getRoot();
     }
-    @Override
-    public void onItemClick(int position) {
-        Intent intent = new Intent(getActivity(), ProductDetails.class);
-        startActivity(intent);
-    }
+//    @Override
+//    public void onItemClick(int position) {
+//        Intent intent = new Intent(getActivity(), ProductDetails.class);
+//        startActivity(intent);
+//    }
 }
