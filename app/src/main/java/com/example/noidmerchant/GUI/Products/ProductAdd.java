@@ -31,19 +31,20 @@ public class ProductAdd extends AppCompatActivity {
     final int PICK_IMAGE_REQUEST = 22;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final FirebaseStorage storage = FirebaseStorage.getInstance();
-    final StorageReference storageReference = storage.getReference();
+    final StorageReference prodStorageRef = storage.getReference().child("hinhSanPham");
     final DatabaseReference prodRef = database.getReference().child("sanpham");
     final DatabaseReference cateRef = database.getReference().child("danhmucsp");
     private Uri filePath;
     private AddProductBinding binding;
     private ArrayAdapter<String> dmAdapter;
+    private ArrayList<String> categories = new ArrayList<>();
     private String madm, tensp, giasp, soluong, motasp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = AddProductBinding.inflate(getLayoutInflater());
-        ArrayList<String> categories = new ArrayList<>();
+
         madm = null; //reset madm
         cateRef.orderByKey().addChildEventListener(new ChildEventListener() {
             @Override
@@ -121,7 +122,7 @@ public class ProductAdd extends AppCompatActivity {
             soluong = binding.edtSoluong.getText().toString();
             motasp = binding.edtMieuta.getText().toString();
             if (validateInput(madm, tensp, giasp, soluong, motasp)) {
-                StorageReference imgRef = storageReference.child("hinhSanPham/" + madm + "/" + UUID.randomUUID());
+                StorageReference imgRef = prodStorageRef.child( madm + "/" + UUID.randomUUID());
                 uploadProduct(imgRef,tensp, motasp, Integer.parseInt(giasp), Integer.parseInt(soluong));
             }
         });
@@ -129,7 +130,7 @@ public class ProductAdd extends AppCompatActivity {
         setContentView(binding.getRoot());
         binding.backBtnAdd.setOnClickListener(v -> finish());
     }
-
+    //Kiểm tra điều kiện
     private boolean validateInput(String madm, String tensp, String giasp, String soluong, String motasp) {
         if (madm == null) {
             Toast.makeText(ProductAdd.this, "Danh mục trống", Toast.LENGTH_SHORT).show();

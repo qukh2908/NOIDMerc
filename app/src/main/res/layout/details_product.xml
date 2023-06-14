@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="Thêm Sản Phẩm"
+            android:text="Chi Tiết Sản Phẩm"
             android:textColor="@color/black"
             android:textSize="25sp" />
     </RelativeLayout>
@@ -279,13 +279,24 @@
                     android:gravity="center">
 
                     <Button
+                        android:id="@+id/btn_xoa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_rounded_delete"
+                        android:text="Xóa"
+                        android:textSize="20sp" />
+
+                    <Button
                         android:id="@+id/btn_luu"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_rounded"
                         android:text="Lưu"
-                        android:textSize="20sp"
-                        android:background="@drawable/button_rounded"/>
+                        android:textSize="20sp" />
 
                 </LinearLayout>
 
