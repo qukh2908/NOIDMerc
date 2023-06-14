@@ -112,6 +112,8 @@ public class ProductAdd extends AppCompatActivity {
         });
         //Khi nhấn vào ô chon hình
         binding.btnInputhinh.setOnClickListener(v -> SelectImage());
+        binding.imgHinhanh.setOnClickListener(v-> SelectImage());
+
         //Khi nhấn nút lưu
         binding.btnLuu.setOnClickListener(v -> {
             tensp = binding.edtTensp.getText().toString();

@@ -24,7 +24,7 @@
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:layout_marginStart="10dp"
-            android:contentDescription="back btn"
+            android:contentDescription="hinh san pham"
             android:src="@drawable/baseline_arrow_back_24" />
 
         <TextView
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="Chi Tiết Sản Phẩm"
+            android:text="Thêm Sản Phẩm"
             android:textColor="@color/black"
             android:textSize="25sp" />
     </RelativeLayout>
@@ -151,7 +151,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/custum_layouttext"
                         android:ems="10"
-                        android:hint="Nhập Tên Sản Phẩm"
+                        android:hint="Nhập Giá Sản Phẩm"
                         android:inputType="number"
                         android:minHeight="48dp"
                         android:paddingStart="5dp"
@@ -198,7 +198,7 @@
                 <!--Mô tả-->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="150dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -214,24 +214,24 @@
                     <EditText
                         android:id="@+id/edt_mieuta"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:background="@drawable/custum_layouttext"
                         android:ems="10"
                         android:hint="Mô Tả Sản Phẩm"
-                        android:inputType="number"
+                        android:importantForAutofill="no"
+                        android:inputType="text|textMultiLine"
                         android:minHeight="48dp"
                         android:paddingStart="5dp"
                         android:paddingTop="10dp"
                         android:paddingBottom="10dp"
                         android:textColor="@color/black"
                         android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:importantForAutofill="no" />
+                        android:textStyle="bold" />
                 </LinearLayout>
                 <!--Hình ảnh-->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:orientation="horizontal"
                     android:paddingBottom="5dp">
 
@@ -248,11 +248,11 @@
                     <Button
                         android:id="@+id/btn_inputhinh"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="48dp"
+                        android:backgroundTint="#A7ECEE"
                         android:text="Chọn Hình"
                         android:textColor="@color/black"
-                        android:backgroundTint="#A7ECEE"
-                        app:cornerRadius="10dp"/>
+                        app:cornerRadius="10dp" />
 
                 </LinearLayout>
                 <!--Frame Hình-->
@@ -266,10 +266,11 @@
                         android:id="@+id/img_hinhanh"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:autofillHints="Choose image"
                         android:background="#EAE4E4"
+                        android:importantForAccessibility="no"
                         android:scaleType="centerInside"
-                        tools:srcCompat="@tools:sample/backgrounds/scenic"
-                        android:importantForAccessibility="no" />
+                        tools:srcCompat="@tools:sample/backgrounds/scenic" />
                 </FrameLayout>
                 <!--Buttun-->
                 <LinearLayout

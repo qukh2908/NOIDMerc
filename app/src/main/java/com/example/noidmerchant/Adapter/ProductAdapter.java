@@ -50,7 +50,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         } else {
             // Handle case when imageUrl is empty or null
             // For example, you can set a default image to ImageView
-            holder.imgProd.setImageResource(R.drawable.noidea);
+            holder.imgProd.setImageResource(R.mipmap.ic_launcher);
         }
 //        holder.cardView.setOnClickListener(new View.OnClickListener() {
 //            @Override
