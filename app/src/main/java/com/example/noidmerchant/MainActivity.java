@@ -12,32 +12,27 @@ import com.example.noidmerchant.GUI.Imports.BuyProductActivity;
 import com.example.noidmerchant.GUI.Orders.OrdersActivity;
 import com.example.noidmerchant.GUI.Products.ProductsActivity;
 import com.example.noidmerchant.GUI.Statistics.StatisticsActivity;
+import com.example.noidmerchant.databinding.ActivityMainBinding;
+import com.example.noidmerchant.databinding.DetailsProductBinding;
 
 public class MainActivity extends AppCompatActivity {
+    private ActivityMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        CardView products,orders,statistics,helps,info,settings;
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        products = findViewById(R.id.productCard);
-        orders = findViewById(R.id.ordersCard);
-        statistics = findViewById(R.id.statisticsCard);
-        helps = findViewById(R.id.helpCard);
-        info = findViewById(R.id.informationCard);
-        settings = findViewById(R.id.settingsCard);
+        binding.productCard.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, ProductsActivity.class)));
 
-        //Bat su kien Product
-        products.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, ProductsActivity.class)));
-        //Bat su kien Order
-        orders.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, OrdersActivity.class)));
+        binding.ordersCard.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, OrdersActivity.class)));
 
-        statistics.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, StatisticsActivity.class)));
+        binding.settingsCard.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, StatisticsActivity.class)));
 
-        helps.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, BuyProductActivity.class)));
+        binding.helpCard.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, BuyProductActivity.class)));
 
-        info.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, InformationsActivity.class)));
+        binding.informationCard.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, InformationsActivity.class)));
 
-        settings.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, SettingsActivity.class)));
+        binding.settingsCard.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, SettingsActivity.class)));
     }
 }

@@ -18,11 +18,11 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position){
-            case 0:
-                return new CategoryFragment();
-            case 1:
             default:
+            case 0:
                 return new ProductFragment();
+            case 1:
+                return new CategoryFragment();
         }
     }
 
@@ -38,10 +38,10 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         switch (position)
         {
             case 0 :
-                title= "DANH MỤC";
+                title= "SẢN PHẨM";
                 break;
             case 1:
-                title= "SẢN PHẨM";
+                title= "DANH MỤC";
                 break;
         }
         return title;
