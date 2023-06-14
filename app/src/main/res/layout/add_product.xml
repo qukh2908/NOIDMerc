@@ -23,7 +23,7 @@
             android:layout_width="40dp"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:contentDescription="hinh san pham"
             android:src="@drawable/baseline_arrow_back_24" />
 
@@ -76,7 +76,7 @@
                         android:paddingBottom="5dp"
                         android:text="Danh Mục"
                         android:textColor="@color/black"
-                        android:textSize="20dp" />
+                        android:textSize="20sp" />
 
                     <AutoCompleteTextView
                         android:id="@+id/ed_danhmuc"
@@ -88,11 +88,12 @@
                         android:dropDownHeight="wrap_content"
                         android:focusable="false"
                         android:hint="Chọn Danh Mục"
-                        android:paddingLeft="5dp"
+                        android:minHeight="48dp"
+                        android:paddingStart="5dp"
                         android:paddingTop="10dp"
                         android:paddingBottom="10dp"
                         android:textColor="@color/black"
-                        android:textSize="20dp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
                 </LinearLayout>
                 <!--Tên sản phẩm-->
@@ -109,7 +110,7 @@
                         android:paddingBottom="5dp"
                         android:text="Tên Sản Phẩm"
                         android:textColor="@color/black"
-                        android:textSize="20dp" />
+                        android:textSize="20sp" />
 
                     <EditText
                         android:id="@+id/edt_tensp"
@@ -119,12 +120,14 @@
                         android:ems="10"
                         android:hint="Nhập Tên Sản Phẩm"
                         android:inputType="text"
-                        android:paddingLeft="5dp"
+                        android:minHeight="48dp"
+                        android:paddingStart="5dp"
                         android:paddingTop="10dp"
                         android:paddingBottom="10dp"
                         android:textColor="@color/black"
-                        android:textSize="20dp"
-                        android:textStyle="bold" />
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:importantForAutofill="no" />
                 </LinearLayout>
                 <!--Giá sản phẩm-->
                 <LinearLayout
@@ -140,7 +143,7 @@
                         android:paddingBottom="5dp"
                         android:text="Giá Sản Phẩm"
                         android:textColor="@color/black"
-                        android:textSize="20dp" />
+                        android:textSize="20sp" />
 
                     <EditText
                         android:id="@+id/edt_gia"
@@ -150,12 +153,14 @@
                         android:ems="10"
                         android:hint="Nhập Tên Sản Phẩm"
                         android:inputType="number"
-                        android:paddingLeft="5dp"
+                        android:minHeight="48dp"
+                        android:paddingStart="5dp"
                         android:paddingTop="10dp"
                         android:paddingBottom="10dp"
                         android:textColor="@color/black"
-                        android:textSize="20dp"
-                        android:textStyle="bold" />
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:autofillHints="" />
                 </LinearLayout>
                 <!--Số lượng-->
                 <LinearLayout
@@ -171,7 +176,7 @@
                         android:paddingBottom="5dp"
                         android:text="Số Lượng"
                         android:textColor="@color/black"
-                        android:textSize="20dp" />
+                        android:textSize="20sp" />
 
                     <EditText
                         android:id="@+id/edt_soluong"
@@ -181,12 +186,14 @@
                         android:ems="10"
                         android:hint="Nhập Số Lượng"
                         android:inputType="number"
-                        android:paddingLeft="5dp"
+                        android:minHeight="48dp"
+                        android:paddingStart="5dp"
                         android:paddingTop="10dp"
                         android:paddingBottom="10dp"
                         android:textColor="@color/black"
-                        android:textSize="20dp"
-                        android:textStyle="bold" />
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:autofillHints="" />
                 </LinearLayout>
                 <!--Mô tả-->
                 <LinearLayout
@@ -202,7 +209,7 @@
                         android:paddingBottom="5dp"
                         android:text="Mô Tả"
                         android:textColor="@color/black"
-                        android:textSize="20dp" />
+                        android:textSize="20sp" />
 
                     <EditText
                         android:id="@+id/edt_mieuta"
@@ -212,12 +219,14 @@
                         android:ems="10"
                         android:hint="Mô Tả Sản Phẩm"
                         android:inputType="number"
-                        android:paddingLeft="5dp"
+                        android:minHeight="48dp"
+                        android:paddingStart="5dp"
                         android:paddingTop="10dp"
                         android:paddingBottom="10dp"
                         android:textColor="@color/black"
-                        android:textSize="20dp"
-                        android:textStyle="bold" />
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:importantForAutofill="no" />
                 </LinearLayout>
                 <!--Hình ảnh-->
                 <LinearLayout
@@ -234,7 +243,7 @@
                         android:paddingBottom="5dp"
                         android:text="Hình Ảnh"
                         android:textColor="@color/black"
-                        android:textSize="20dp" />
+                        android:textSize="20sp" />
 
                     <Button
                         android:id="@+id/btn_inputhinh"
@@ -259,7 +268,8 @@
                         android:layout_height="match_parent"
                         android:background="#EAE4E4"
                         android:scaleType="centerInside"
-                        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+                        tools:srcCompat="@tools:sample/backgrounds/scenic"
+                        android:importantForAccessibility="no" />
                 </FrameLayout>
                 <!--Buttun-->
                 <LinearLayout
@@ -273,7 +283,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Lưu"
-                        android:textSize="20dp"
+                        android:textSize="20sp"
                         android:background="@drawable/button_rounded"/>
 
                 </LinearLayout>

@@ -7,9 +7,11 @@
     android:background="@color/white"
     android:layout_marginTop="10dp"
     android:layout_marginEnd="10dp">
+
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,10 +42,12 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
         </TableRow>
+
         <TableRow
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal">
+
             <TextView
                 android:id="@+id/txt_madh"
                 android:layout_width="match_parent"
@@ -55,6 +59,7 @@
                 android:paddingTop="5dp"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
+
             <TextView
                 android:id="@+id/txt_time"
                 android:layout_width="match_parent"
@@ -65,6 +70,7 @@
                 android:paddingTop="5dp"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
+
             <TextView
                 android:id="@+id/txt_tinhtrangdh"
                 android:layout_width="wrap_content"
