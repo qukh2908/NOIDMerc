@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import com.example.noidmerchant.Adapter.Category;
 import com.example.noidmerchant.Adapter.Product;
 import com.example.noidmerchant.Database.DBProduct;
 import com.example.noidmerchant.R;
@@ -56,7 +57,7 @@ public class ProductDetails extends AppCompatActivity {
             return;
         }
         Product product  = (Product) bundle.get("sanpham");
-        binding.edDanhmuc.setText(madm);
+        binding.edDanhmuc.setText(product.getNameID());
         binding.edtTensp.setText(product.getName());
         binding.edtGia.setText(product.getPrice());
         binding.edtSoluong.setText(product.getQuanl());
@@ -64,19 +65,19 @@ public class ProductDetails extends AppCompatActivity {
         imageUrl = null; //reset url
         madm = null; //reset madm
         //Gán madm từ masp
-        if(masp!=null) {
-            prodRef.child(masp).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    madm = snapshot.child("madm").getValue().toString();
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
-        }
+//        if(masp!=null) {
+//            prodRef.child(masp).addListenerForSingleValueEvent(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                    madm = snapshot.child("madm").getValue().toString();
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError error) {
+//
+//                }
+//            });
+//        }
         //Gán tên danh mục vào input
         cateRef.orderByKey().addChildEventListener(new ChildEventListener() {
             @Override

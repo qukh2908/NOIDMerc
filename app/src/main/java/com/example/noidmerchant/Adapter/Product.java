@@ -6,20 +6,20 @@ import java.util.Map;
 
 public class Product implements Serializable {
     private String name;
-//    private String nameID;
+
     private String price;
     private String imageUrl;
     private String quanl;
     private String des;
+    private String nameID;
 
-    public Product(String name, String price, String imageUrl,String quanl,String des) {
-//        this.nameID = nameID;
+    public Product(String name, String price, String imageUrl,String quanl,String des,String nameID) {
         this.name = name;
         this.price = price;
         this.imageUrl = imageUrl;
         this.quanl= quanl;
         this.des= des;
-
+        this.nameID = nameID;
     }
 
     public Product() {
@@ -40,13 +40,14 @@ public class Product implements Serializable {
     public void setDes(String des) {
         this.des = des;
     }
-    //    public String getNameID() {
-//        return nameID;
-//    }
-//
-//    public void setNameID(String nameID) {
-//        this.nameID = nameID;
-//    }
+
+    public String getNameID() {
+        return nameID;
+    }
+
+    public void setNameID(String nameID) {
+        this.nameID = nameID;
+    }
 
     public String getName() {
         return name;

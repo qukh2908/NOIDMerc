@@ -79,7 +79,8 @@ public class ProductFragment extends Fragment  {
                 String imageUrl = snapshot.child("hinhsp").getValue(String.class);
                 String quanl = String.valueOf(snapshot.child("soluongsp").getValue(Long.class));
                 String des = snapshot.child("motasp").getValue(String.class);
-                Product product = new Product(name, price, imageUrl,quanl,des);
+                String id = snapshot.getKey().toString();
+                Product product = new Product(name, price, imageUrl,quanl,des,id);
                 list.add(product);
                 adapter.notifyDataSetChanged();
             }
@@ -117,7 +118,8 @@ public class ProductFragment extends Fragment  {
                 String imageUrl = snapshot.child("hinhsp").getValue(String.class);
                 String quanl = String.valueOf(snapshot.child("soluongsp").getValue(Long.class));
                 String des = snapshot.child("motasp").getValue(String.class);
-                Product product = new Product(name, price, imageUrl,quanl,des);
+                String id = snapshot.getKey().toString();
+                Product product = new Product(name, price, imageUrl,quanl,des,id);
                 list.add(product);
                 adapter.notifyDataSetChanged();
             }
@@ -155,7 +157,8 @@ public class ProductFragment extends Fragment  {
                 String imageUrl = snapshot.child("hinhsp").getValue(String.class);
                 String quanl = String.valueOf(snapshot.child("soluongsp").getValue(Long.class));
                 String des = snapshot.child("motasp").getValue(String.class);
-                Product product = new Product(name, price, imageUrl,quanl,des);
+                String id = snapshot.getKey().toString();
+                Product product = new Product(name, price, imageUrl,quanl,des,id);
                 list.add(product);
                 adapter.notifyDataSetChanged();
             }
@@ -193,7 +196,8 @@ public class ProductFragment extends Fragment  {
                 String imageUrl = snapshot.child("hinhsp").getValue(String.class);
                 String quanl = String.valueOf(snapshot.child("soluongsp").getValue(Long.class));
                 String des = snapshot.child("motasp").getValue(String.class);
-                Product product = new Product(name, price, imageUrl,quanl,des);
+                String id = snapshot.getKey().toString();
+                Product product = new Product(name, price, imageUrl,quanl,des,id);
                 list.add(product);
                 adapter.notifyDataSetChanged();
             }
@@ -231,7 +235,8 @@ public class ProductFragment extends Fragment  {
                 String imageUrl = snapshot.child("hinhsp").getValue(String.class);
                 String quanl = String.valueOf(snapshot.child("soluongsp").getValue(Long.class));
                 String des = snapshot.child("motasp").getValue(String.class);
-                Product product = new Product(name, price, imageUrl,quanl,des);
+                String id = snapshot.getKey().toString();
+                Product product = new Product(name, price, imageUrl,quanl,des,id);
                 list.add(product);
                 adapter.notifyDataSetChanged();
             }
@@ -269,7 +274,8 @@ public class ProductFragment extends Fragment  {
                 String imageUrl = snapshot.child("hinhsp").getValue(String.class);
                 String quanl = String.valueOf(snapshot.child("soluongsp").getValue(Long.class));
                 String des = snapshot.child("motasp").getValue(String.class);
-                Product product = new Product(name, price, imageUrl,quanl,des);
+                String id = snapshot.getKey().toString();
+                Product product = new Product(name, price, imageUrl,quanl,des,id);
                 list.add(product);
                 adapter.notifyDataSetChanged();
             }
@@ -307,7 +313,8 @@ public class ProductFragment extends Fragment  {
                 String imageUrl = snapshot.child("hinhsp").getValue(String.class);
                 String quanl = String.valueOf(snapshot.child("soluongsp").getValue(Long.class));
                 String des = snapshot.child("motasp").getValue(String.class);
-                Product product = new Product(name, price, imageUrl,quanl,des);
+                String id = snapshot.getKey().toString();
+                Product product = new Product(name, price, imageUrl,quanl,des,id);
                 list.add(product);
                 adapter.notifyDataSetChanged();
             }

@@ -1,9 +1,10 @@
 package com.example.noidmerchant.Adapter;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Category {
+public class Category implements Serializable {
     private String tendm,nameID;
 
     public Category(String tendm, String nameID) {
