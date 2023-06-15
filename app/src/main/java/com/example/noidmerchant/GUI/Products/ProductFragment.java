@@ -1,5 +1,6 @@
 package com.example.noidmerchant.GUI.Products;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,7 +23,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-import java.sql.Array;
 import java.util.ArrayList;
 
 
@@ -64,6 +64,7 @@ public class ProductFragment extends Fragment  {
         for (int i = 0; i < categoryKeys.length; i++) {
             queries[i] = databaseRef.orderByChild("madm").equalTo(categoryKeys[i]);
             queries[i].addChildEventListener(new ChildEventListener() {
+                @SuppressLint("NotifyDataSetChanged")
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                     String name = snapshot.child("tensp").getValue(String.class);
