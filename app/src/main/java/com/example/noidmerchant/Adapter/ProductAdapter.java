@@ -55,12 +55,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             // For example, you can set a default image to ImageView
             holder.imgProd.setImageResource(R.mipmap.ic_launcher);
         }
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onClickDetail(product);
-            }
-        });
+        holder.cardView.setOnClickListener(view -> onClickDetail(product));
     }
     private void onClickDetail(Product product){
         Intent intent = new Intent(context, ProductDetails.class);
@@ -68,7 +63,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         bundle.putSerializable("sanpham",product);
         intent.putExtras(bundle);
         context.startActivity(intent);
-
     }
 
 //    private void onClickGoToDetail(Product product){

@@ -22,6 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
+import java.sql.Array;
 import java.util.ArrayList;
 
 
@@ -35,26 +36,8 @@ public class ProductFragment extends Fragment  {
     public ProductFragment() {
         // Required empty public constructor
     }
-
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        String milktea = "-NX9r4LR1f6twnVU28_R";
-        String cafe = "-NX9ppXXBjY8T0_6wBy5";
-        String tea = "-NXDtH8cDFrHbWFztoFk";
-        String smoothie = "-NXE1ZviRaG07k3xa_rl";
-        String Snack = "-NXOrczCnri2fMR2gUWP";
-        String pakage = "-NXOrczHNuTFoEhXKwfe";
-        String other = "-NXPMMB0Gglb68aK9Svr";
-        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference().child("sanpham");
-        Query query = databaseRef.orderByChild("madm").equalTo(cafe);
-        Query query1 = databaseRef.orderByChild("madm").equalTo(smoothie);
-        Query query2 = databaseRef.orderByChild("madm").equalTo(tea);
-        Query query3 = databaseRef.orderByChild("madm").equalTo(milktea);
-        Query query4 = databaseRef.orderByChild("madm").equalTo(Snack);
-        Query query5 = databaseRef.orderByChild("madm").equalTo(pakage);
-        Query query6 = databaseRef.orderByChild("madm").equalTo(other);
-
         // Inflate the layout for this fragment
         binding = FragmentProductBinding.inflate(inflater, container, false);
         ProductAdapter adapter = new ProductAdapter(list,getContext());
@@ -70,279 +53,61 @@ public class ProductFragment extends Fragment  {
                 super.onScrolled(recyclerView, dx, dy);
             }
         });
-        //item smoothie
-        query1.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                String name = snapshot.child("tensp").getValue(String.class);
-                String price = String.valueOf(snapshot.child("giasp").getValue(Long.class)); // đối với dạng số "50000" // dạng string
-                String imageUrl = snapshot.child("hinhsp").getValue(String.class);
-                String quanl = String.valueOf(snapshot.child("soluongsp").getValue(Long.class));
-                String des = snapshot.child("motasp").getValue(String.class);
-                String id = snapshot.getKey().toString();
-                Product product = new Product(name, price, imageUrl,quanl,des,id);
-                list.add(product);
-                adapter.notifyDataSetChanged();
-            }
 
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                list.clear();
-                databaseRef.removeEventListener(this);
-                databaseRef.addChildEventListener(this);
-            }
+        String[] categoryKeys = {"-NX9r4LR1f6twnVU28_R", "-NX9ppXXBjY8T0_6wBy5", "-NXDtH8cDFrHbWFztoFk",
+                                "-NXE1ZviRaG07k3xa_rl", "-NXOrczCnri2fMR2gUWP", "-NXOrczHNuTFoEhXKwfe",
+                                "-NXPMMB0Gglb68aK9Svr"};
 
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-                list.clear();
-                databaseRef.removeEventListener(this);
-                databaseRef.addChildEventListener(this);
-            }
+        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference().child("sanpham");
+        Query[] queries = new Query[categoryKeys.length];
 
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+        for (int i = 0; i < categoryKeys.length; i++) {
+            queries[i] = databaseRef.orderByChild("madm").equalTo(categoryKeys[i]);
+            queries[i].addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                    String name = snapshot.child("tensp").getValue(String.class);
+                    String price = String.valueOf(snapshot.child("giasp").getValue(Long.class)); // đối với dạng số "50000" // dạng string
+                    String imageUrl = snapshot.child("hinhsp").getValue(String.class);
+                    String quant = String.valueOf(snapshot.child("soluongsp").getValue(Long.class));
+                    String des = snapshot.child("motasp").getValue(String.class);
+                    String madm = snapshot.child("tendm").getValue(String.class);
+                    String key = snapshot.getKey();
+                    Product product = new Product(name, price, imageUrl,quant,des,key,madm);
+                    list.add(product);
+                    adapter.notifyDataSetChanged();
+                }
 
-            }
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                    list.clear();
+                    databaseRef.removeEventListener(this);
+                    databaseRef.addChildEventListener(this);
+                }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                    list.clear();
+                    databaseRef.removeEventListener(this);
+                    databaseRef.addChildEventListener(this);
+                }
 
-            }
-        });
-        //item cafe
-        query.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                String name = snapshot.child("tensp").getValue(String.class);
-                String price = String.valueOf(snapshot.child("giasp").getValue(Long.class)); // đối với dạng số "50000" // dạng string
-                String imageUrl = snapshot.child("hinhsp").getValue(String.class);
-                String quanl = String.valueOf(snapshot.child("soluongsp").getValue(Long.class));
-                String des = snapshot.child("motasp").getValue(String.class);
-                String id = snapshot.getKey().toString();
-                Product product = new Product(name, price, imageUrl,quanl,des,id);
-                list.add(product);
-                adapter.notifyDataSetChanged();
-            }
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                list.clear();
-                databaseRef.removeEventListener(this);
-                databaseRef.addChildEventListener(this);
-            }
+                }
 
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-                list.clear();
-                databaseRef.removeEventListener(this);
-                databaseRef.addChildEventListener(this);
-            }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                }
+            });
+        }
 
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-        //item tea
-        query2.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                String name = snapshot.child("tensp").getValue(String.class);
-                String price = String.valueOf(snapshot.child("giasp").getValue(Long.class)); // đối với dạng số "50000" // dạng string
-                String imageUrl = snapshot.child("hinhsp").getValue(String.class);
-                String quanl = String.valueOf(snapshot.child("soluongsp").getValue(Long.class));
-                String des = snapshot.child("motasp").getValue(String.class);
-                String id = snapshot.getKey().toString();
-                Product product = new Product(name, price, imageUrl,quanl,des,id);
-                list.add(product);
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                list.clear();
-                databaseRef.removeEventListener(this);
-                databaseRef.addChildEventListener(this);
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-                list.clear();
-                databaseRef.removeEventListener(this);
-                databaseRef.addChildEventListener(this);
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-        //item milktea
-        query3.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                String name = snapshot.child("tensp").getValue(String.class);
-                String price = String.valueOf(snapshot.child("giasp").getValue(Long.class)); // đối với dạng số "50000" // dạng string
-                String imageUrl = snapshot.child("hinhsp").getValue(String.class);
-                String quanl = String.valueOf(snapshot.child("soluongsp").getValue(Long.class));
-                String des = snapshot.child("motasp").getValue(String.class);
-                String id = snapshot.getKey().toString();
-                Product product = new Product(name, price, imageUrl,quanl,des,id);
-                list.add(product);
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                list.clear();
-                databaseRef.removeEventListener(this);
-                databaseRef.addChildEventListener(this);
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-                list.clear();
-                databaseRef.removeEventListener(this);
-                databaseRef.addChildEventListener(this);
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-        //item snack
-        query4.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                String name = snapshot.child("tensp").getValue(String.class);
-                String price = String.valueOf(snapshot.child("giasp").getValue(Long.class)); // đối với dạng số "50000" // dạng string
-                String imageUrl = snapshot.child("hinhsp").getValue(String.class);
-                String quanl = String.valueOf(snapshot.child("soluongsp").getValue(Long.class));
-                String des = snapshot.child("motasp").getValue(String.class);
-                String id = snapshot.getKey().toString();
-                Product product = new Product(name, price, imageUrl,quanl,des,id);
-                list.add(product);
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                list.clear();
-                databaseRef.removeEventListener(this);
-                databaseRef.addChildEventListener(this);
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-                list.clear();
-                databaseRef.removeEventListener(this);
-                databaseRef.addChildEventListener(this);
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-        //item package
-        query5.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                String name = snapshot.child("tensp").getValue(String.class);
-                String price = String.valueOf(snapshot.child("giasp").getValue(Long.class)); // đối với dạng số "50000" // dạng string
-                String imageUrl = snapshot.child("hinhsp").getValue(String.class);
-                String quanl = String.valueOf(snapshot.child("soluongsp").getValue(Long.class));
-                String des = snapshot.child("motasp").getValue(String.class);
-                String id = snapshot.getKey().toString();
-                Product product = new Product(name, price, imageUrl,quanl,des,id);
-                list.add(product);
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                list.clear();
-                databaseRef.removeEventListener(this);
-                databaseRef.addChildEventListener(this);
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-                list.clear();
-                databaseRef.removeEventListener(this);
-                databaseRef.addChildEventListener(this);
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-        //item other
-        query6.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                String name = snapshot.child("tensp").getValue(String.class);
-                String price = String.valueOf(snapshot.child("giasp").getValue(Long.class)); // đối với dạng số "50000" // dạng string
-                String imageUrl = snapshot.child("hinhsp").getValue(String.class);
-                String quanl = String.valueOf(snapshot.child("soluongsp").getValue(Long.class));
-                String des = snapshot.child("motasp").getValue(String.class);
-                String id = snapshot.getKey().toString();
-                Product product = new Product(name, price, imageUrl,quanl,des,id);
-                list.add(product);
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                list.clear();
-                databaseRef.removeEventListener(this);
-                databaseRef.addChildEventListener(this);
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-                list.clear();
-                databaseRef.removeEventListener(this);
-                databaseRef.addChildEventListener(this);
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        binding.rcvProd.setLayoutManager(layoutManager);
+        binding.addProd.setOnClickListener(v -> startActivity(new Intent(getActivity(), ProductAdd.class)));
+        return binding.getRoot();
 
                          /////////////////////code tao comment dung xoa lam on//////////////////////////////
 //        query.addValueEventListener(new ValueEventListener() {
@@ -382,10 +147,6 @@ public class ProductFragment extends Fragment  {
 //            }
 //        });
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        binding.rcvProd.setLayoutManager(layoutManager);
-        binding.addProd.setOnClickListener(v -> startActivity(new Intent(getActivity(), ProductAdd.class)));
-        return binding.getRoot();
     }
 //    @Override
 //    public void onItemClick(int position) {

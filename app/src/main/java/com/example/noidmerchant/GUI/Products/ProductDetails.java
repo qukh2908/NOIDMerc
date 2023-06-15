@@ -1,20 +1,17 @@
 package com.example.noidmerchant.GUI.Products;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
-import com.example.noidmerchant.Adapter.Category;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.noidmerchant.Adapter.Product;
 import com.example.noidmerchant.Database.DBProduct;
 import com.example.noidmerchant.R;
@@ -30,7 +27,6 @@ import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -44,7 +40,7 @@ public class ProductDetails extends AppCompatActivity {
     private DetailsProductBinding binding;
     private ArrayAdapter<String> dmAdapter;
     private ArrayList<String> categories = new ArrayList<>();
-    private String madm,imageUrl,masp;
+    private String madm,masp,imageUrl;
     private Uri filePath;
 
     @Override
@@ -52,32 +48,33 @@ public class ProductDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DetailsProductBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        Bundle bundle = getIntent().getExtras();
-        if (bundle==null){
-            return;
-        }
-        Product product  = (Product) bundle.get("sanpham");
-        binding.edDanhmuc.setText(product.getNameID());
-        binding.edtTensp.setText(product.getName());
-        binding.edtGia.setText(product.getPrice());
-        binding.edtSoluong.setText(product.getQuanl());
-        binding.edtMieuta.setText(product.getDes());
-        imageUrl = null; //reset url
-        madm = null; //reset madm
+
+        Bundle bundle = getIntent().getExtras(); if (bundle==null){ return; }
+        Product product = (Product) bundle.get("sanpham");
+
+        madm = product.getKey();
+        masp = product.getKey();
+        imageUrl = product.getImageUrl();
+
+//        binding.edtTensp.setText(product.getName());
+//        binding.edtGia.setText(product.getPrice());
+//        binding.edtSoluong.setText(product.getQuantity());
+//        binding.edtMieuta.setText(product.getDescription());
+
         //Gán madm từ masp
-//        if(masp!=null) {
-//            prodRef.child(masp).addListenerForSingleValueEvent(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                    madm = snapshot.child("madm").getValue().toString();
-//                }
-//
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError error) {
-//
-//                }
-//            });
-//        }
+        if(masp!=null) {
+            prodRef.child(masp).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    madm = snapshot.child("madm").getValue().toString();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
         //Gán tên danh mục vào input
         cateRef.orderByKey().addChildEventListener(new ChildEventListener() {
             @Override
