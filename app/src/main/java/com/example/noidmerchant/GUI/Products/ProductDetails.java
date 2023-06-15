@@ -1,5 +1,6 @@
 package com.example.noidmerchant.GUI.Products;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -10,12 +11,15 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.noidmerchant.Adapter.Product;
 import com.example.noidmerchant.Database.DBProduct;
-import com.example.noidmerchant.R;
+import com.example.noidmerchant.GUI.Common.LoginActivity;
+import com.example.noidmerchant.GUI.Common.SettingsActivity;
 import com.example.noidmerchant.databinding.DetailsProductBinding;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,6 +33,7 @@ import com.squareup.picasso.Picasso;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.UUID;
 
 public class ProductDetails extends AppCompatActivity {
     final int PICK_IMAGE_REQUEST = 22;
@@ -37,10 +42,11 @@ public class ProductDetails extends AppCompatActivity {
     final DatabaseReference prodRef = database.getReference().child("sanpham");
     final DatabaseReference cateRef = database.getReference().child("danhmucsp");
     final StorageReference prodStorageRef = storage.getReference().child("hinhSanPham");
-    private DetailsProductBinding binding;
+    final ArrayList<String> categories = new ArrayList<>();
+    private DialogInterface.OnClickListener dialogClickListener;
     private ArrayAdapter<String> dmAdapter;
-    private ArrayList<String> categories = new ArrayList<>();
-    private String madm,masp,imageUrl;
+    private DetailsProductBinding binding;
+    private String madm, masp, defaultImageUrl, tensp, giasp, soluong, motasp;
     private Uri filePath;
 
     @Override
@@ -48,25 +54,15 @@ public class ProductDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DetailsProductBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-        Bundle bundle = getIntent().getExtras(); if (bundle==null){ return; }
-        Product product = (Product) bundle.get("sanpham");
-
-        madm = product.getKey();
-        masp = product.getKey();
-        imageUrl = product.getImageUrl();
-
-//        binding.edtTensp.setText(product.getName());
-//        binding.edtGia.setText(product.getPrice());
-//        binding.edtSoluong.setText(product.getQuantity());
-//        binding.edtMieuta.setText(product.getDescription());
-
-        //Gán madm từ masp
-        if(masp!=null) {
-            prodRef.child(masp).addListenerForSingleValueEvent(new ValueEventListener() {
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null) {
+            Product product = (Product) bundle.get("sanpham");
+            madm = product.getCateKey();
+            masp = product.getKey();
+            cateRef.child(madm).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    madm = snapshot.child("madm").getValue().toString();
+                    binding.edDanhmuc.setText(Objects.requireNonNull(snapshot.child("tendm").getValue()).toString());
                 }
 
                 @Override
@@ -74,14 +70,20 @@ public class ProductDetails extends AppCompatActivity {
 
                 }
             });
+            defaultImageUrl = product.getImageUrl(); filePath = null;
+            binding.edtTensp.setText(product.getName());
+            binding.edtGia.setText(product.getPrice());
+            binding.edtSoluong.setText(product.getQuantity());
+            binding.edtMieuta.setText(product.getDescription());
+            Picasso.get().load(defaultImageUrl).into(binding.imgHinhanh);
+        } else {
+            Toast.makeText(ProductDetails.this, "Không lấy được thông tin sản phẩm", Toast.LENGTH_SHORT).show();
+            finish();
         }
-        //Gán tên danh mục vào input
+        //Thêm tên danh mục vào mảng
         cateRef.orderByKey().addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                if(madm!=null && snapshot.getKey().equals(madm)) {
-                    binding.edDanhmuc.setText(snapshot.child("tendm").getValue().toString());
-                }
                 categories.add(Objects.requireNonNull(snapshot.child("tendm").getValue()).toString());
             }
 
@@ -144,61 +146,45 @@ public class ProductDetails extends AppCompatActivity {
                 }
             });
         });
-        //Gán hình và thông tin sản phẩm vào các input
-        prodRef.orderByKey().addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                if(masp!=null && snapshot.getKey().equals(masp)) {
-                    if (snapshot.child("hinhsp").getValue() != null) {
-                        imageUrl = Objects.requireNonNull(snapshot.child("hinhsp").getValue().toString());
-                        Picasso.get().load(imageUrl).into(binding.imgHinhanh);
-                    } else {
-                        binding.imgHinhanh.setImageResource(R.mipmap.ic_launcher);
-                    }
-                }
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
+        //Khi nhấn chon hình
+        binding.btnInputhinh.setOnClickListener(v -> SelectImage());
+        binding.imgHinhanh.setOnClickListener(v-> SelectImage());
         //Nút lưu
         binding.btnLuu.setOnClickListener(v-> {
-
+            tensp = binding.edtTensp.getText().toString();
+            giasp = binding.edtGia.getText().toString();
+            soluong = binding.edtSoluong.getText().toString();
+            motasp = binding.edtMieuta.getText().toString();
+            if (validateInput(madm, tensp, giasp, soluong, motasp, filePath)) {
+                if(filePath != null) { //Nếu chọn hình mới (đường dẫn cũ trống)
+                    StorageReference newImgRef = prodStorageRef.child( madm + "/" + UUID.randomUUID());
+                    updateProduct(masp, newImgRef, tensp, motasp, Integer.parseInt(giasp), Integer.parseInt(soluong));
+                } else {
+                    updateProduct(masp, null, tensp, motasp, Integer.parseInt(giasp), Integer.parseInt(soluong));
+                }
+            }
         });
-
         //Nút xóa
-        binding.btnXoa.setOnClickListener(v-> deleteProduct(imageUrl, masp));
-
+        binding.btnXoa.setOnClickListener(v-> {
+            dialogClickListener = (dialog, which) -> {
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        deleteProduct(defaultImageUrl, masp);
+                        break;
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        dialog.dismiss();
+                }
+            };
+            AlertDialog.Builder builder = new AlertDialog.Builder(ProductDetails.this);
+            builder.setMessage("Bạn có chắc muốn xóa sản phẩm này?")
+                    .setPositiveButton("Có", dialogClickListener)
+                    .setNegativeButton("Không", dialogClickListener)
+                    .show();
+        });
         //Nút back
         binding.backBtnAdd.setOnClickListener(view -> finish());
     }
-    // Select Image method
-    @SuppressWarnings("deprecation")
-    private void SelectImage() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Image from here..."), PICK_IMAGE_REQUEST);
-    }
-    // Override onActivityResult method
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -218,8 +204,17 @@ public class ProductDetails extends AppCompatActivity {
             }
         }
     }
+    // Select Image method
+    @SuppressWarnings("deprecation")
+    private void SelectImage() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Image from here..."), PICK_IMAGE_REQUEST);
+    }
     //Kiểm tra điều kiện
-    private boolean validateInput(String madm, String tensp, String giasp, String soluong, String motasp) {
+    private boolean validateInput(String madm, String tensp, String giasp,
+                                  String soluong, String motasp, Uri filePath) {
         if (madm == null) {
             Toast.makeText(ProductDetails.this, "Danh mục trống", Toast.LENGTH_SHORT).show();
             return false;
@@ -232,30 +227,39 @@ public class ProductDetails extends AppCompatActivity {
             Toast.makeText(ProductDetails.this, "Vui lòng nhập chính xác tất cả thông tin", Toast.LENGTH_SHORT).show();
             return false;
         }
-        if (filePath == null) {
+        if (filePath == null && defaultImageUrl == null) {
             Toast.makeText(ProductDetails.this, "Hình ảnh trống", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
     }
-    // uploadProduct method
-    private void updateProduct(StorageReference imgRef, String tensp, String motasp, int giasp, int soluong) {
-        imgRef.putFile(filePath)
-                .addOnSuccessListener(taskSnapshot ->
-                        Toast.makeText(this, "Image upload success", Toast.LENGTH_SHORT).show())
-                .addOnFailureListener(e ->
-                        Toast.makeText(this, "Image upload fail", Toast.LENGTH_SHORT).show());
-
-        imgRef.putFile(filePath).continueWithTask(task -> {
-            if (!task.isSuccessful()) {
-                throw Objects.requireNonNull(task.getException());
-            } return imgRef.getDownloadUrl();
-        }).addOnCompleteListener(task -> {
-            String imageUri = task.getResult().toString();
-            prodRef.push().setValue(new DBProduct(madm, imageUri, tensp, motasp, giasp, soluong));
+    //updateProduct method
+    private void updateProduct(String masp, StorageReference newImgRef, String tensp,
+                               String motasp, int giasp, int soluong) {
+        if (newImgRef != null) {
+            StorageReference previousImgRef = storage.getReferenceFromUrl(defaultImageUrl);
+            previousImgRef.delete();
+            newImgRef.putFile(filePath)
+                    .addOnSuccessListener(taskSnapshot ->
+                            Toast.makeText(this, "Image upload success", Toast.LENGTH_SHORT).show())
+                    .addOnFailureListener(e ->
+                            Toast.makeText(this, "Image upload fail", Toast.LENGTH_SHORT).show());
+            newImgRef.putFile(filePath).continueWithTask(task -> {
+                if (!task.isSuccessful()) {
+                    throw Objects.requireNonNull(task.getException());
+                }
+                return newImgRef.getDownloadUrl();
+            }).addOnCompleteListener(task -> {
+                String newImageUrl = task.getResult().toString();
+                prodRef.child(masp).setValue(new DBProduct(madm, newImageUrl, tensp, motasp, giasp, soluong));
+                Toast.makeText(ProductDetails.this, "Lưu sản phẩm thành công", Toast.LENGTH_SHORT).show();
+                finish();
+            });
+        } else {
+            prodRef.child(masp).setValue(new DBProduct(madm, defaultImageUrl, tensp, motasp, giasp, soluong));
             Toast.makeText(ProductDetails.this, "Lưu sản phẩm thành công", Toast.LENGTH_SHORT).show();
             finish();
-        });
+        }
     }
     //deleteProduct method
     private void deleteProduct(String imageUrl, String masp) {

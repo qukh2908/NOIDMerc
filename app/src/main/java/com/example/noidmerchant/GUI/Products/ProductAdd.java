@@ -34,10 +34,10 @@ public class ProductAdd extends AppCompatActivity {
     final StorageReference prodStorageRef = storage.getReference().child("hinhSanPham");
     final DatabaseReference prodRef = database.getReference().child("sanpham");
     final DatabaseReference cateRef = database.getReference().child("danhmucsp");
+    final ArrayList<String> categories = new ArrayList<>();
+    private ArrayAdapter<String> dmAdapter;
     private Uri filePath;
     private AddProductBinding binding;
-    private ArrayAdapter<String> dmAdapter;
-    private ArrayList<String> categories = new ArrayList<>();
     private String madm, tensp, giasp, soluong, motasp;
 
     @Override

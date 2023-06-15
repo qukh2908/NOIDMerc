@@ -45,12 +45,9 @@ public class ProductFragment extends Fragment  {
         binding.rcvProd.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                if (dy > 0){
-                    binding.addProd.hide();
-                }else {
-                    binding.addProd.show();
-                }
-                super.onScrolled(recyclerView, dx, dy);
+            if (dy > 0){ binding.addProd.hide();
+            } else { binding.addProd.show(); }
+            super.onScrolled(recyclerView, dx, dy);
             }
         });
 
@@ -72,7 +69,7 @@ public class ProductFragment extends Fragment  {
                     String imageUrl = snapshot.child("hinhsp").getValue(String.class);
                     String quant = String.valueOf(snapshot.child("soluongsp").getValue(Long.class));
                     String des = snapshot.child("motasp").getValue(String.class);
-                    String madm = snapshot.child("tendm").getValue(String.class);
+                    String madm = snapshot.child("madm").getValue(String.class);
                     String key = snapshot.getKey();
                     Product product = new Product(name, price, imageUrl,quant,des,key,madm);
                     list.add(product);
