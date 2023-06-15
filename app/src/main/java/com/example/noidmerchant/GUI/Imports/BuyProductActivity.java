@@ -6,6 +6,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -165,9 +166,10 @@ public class BuyProductActivity extends AppCompatActivity {
                     if(snapshot.child("tensp").getValue().toString().equals(tensp)) {
                         String masp = snapshot.getKey();
                         assert masp != null;
-                        int soluong = snapshot.child("soluong").getValue().hashCode() + soluongnhap;
-                        prodRef.child(masp).child("soluong").setValue(soluong);
+                        int soluong = snapshot.child("soluongsp").getValue().hashCode() + soluongnhap;
+                        prodRef.child(masp).child("soluongsp").setValue(soluong);
                         impRef.push().setValue(new DBImport(masp,soluongnhap,currentDateAndTime));
+                        Toast.makeText(BuyProductActivity.this, "Nhập thành công! Số lượng hiện tại là:" + soluong, Toast.LENGTH_SHORT).show();
                     }
                 }
 

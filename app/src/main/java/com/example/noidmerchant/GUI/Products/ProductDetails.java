@@ -16,10 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.noidmerchant.Adapter.Product;
 import com.example.noidmerchant.Database.DBProduct;
-import com.example.noidmerchant.GUI.Common.LoginActivity;
-import com.example.noidmerchant.GUI.Common.SettingsActivity;
 import com.example.noidmerchant.databinding.DetailsProductBinding;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
