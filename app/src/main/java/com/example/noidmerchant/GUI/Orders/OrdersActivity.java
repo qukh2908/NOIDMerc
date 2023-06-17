@@ -15,6 +15,7 @@ public class OrdersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityOrdersBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         //nút back
         binding.backBtn.setOnClickListener(v -> finish());
