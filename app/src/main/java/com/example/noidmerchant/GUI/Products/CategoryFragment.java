@@ -35,11 +35,12 @@ public class CategoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         binding = FragmentCategoryBinding.inflate(inflater, container, false);
         CategoryAdapter adapter = new CategoryAdapter(list,getContext());
-        list.clear();
+
         database = FirebaseDatabase.getInstance();
         database.getReference().child("danhmucsp").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                list.clear();
                 for (DataSnapshot dataSnapshot:snapshot.getChildren()){
                     Category category = dataSnapshot.getValue(Category.class);
                     category.getNameID(dataSnapshot.getKey());
