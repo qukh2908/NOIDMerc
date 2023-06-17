@@ -24,7 +24,7 @@
                 android:layout_span="2"
                 android:gravity="left"
                 android:paddingTop="5dp"
-                android:text="Thong tin khach hang"
+                android:text="Tên khach hang"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -77,7 +77,7 @@
                 android:layout_height="wrap_content"
                 android:text="tinh trang don hang"
                 android:gravity="right"
-                android:paddingRight="5dp"
+                android:paddingRight="10dp"
                 android:layout_weight="1"
                 android:paddingTop="5dp"
                 android:textColor="@color/black"

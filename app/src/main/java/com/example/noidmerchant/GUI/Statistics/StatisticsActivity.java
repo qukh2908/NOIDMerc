@@ -49,7 +49,7 @@ public class StatisticsActivity extends AppCompatActivity {
         back_btn.setOnClickListener(v -> finish());
         lineChart = findViewById(R.id.linechart);
         Description description = new Description();
-        description.setText("so do doanh thu");
+        description.setText("");
         description.setPosition(150f, 15f);
         lineChart.setDescription(description);
         lineChart.getAxisRight().setDrawLabels(false);
