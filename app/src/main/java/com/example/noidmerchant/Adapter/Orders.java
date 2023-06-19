@@ -4,22 +4,31 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Orders {
-    String makh, madh, thoigiandh, ghichudh, tinhtrang,nameID;
+    String makh, madh, thoigiandh, ghichudh, tinhtrang, tenkh;
     int soluongdh, tongtiendh;
-    private Map<String, Cart> sanpham;
-
-    public Orders(String makh, String madh, String thoigiandh, String ghichudh, String tinhtrang, String nameID, int soluongdh, int tongtiendh, Map<String, Cart> sanpham) {
+    Map<String, Cart> sanpham;
+    public Orders() { };
+    public Orders(String makh, String madh, String thoigiandh, String ghichudh, String tinhtrang, String tenkh, int soluongdh, int tongtiendh, Map<String, Cart> sanpham) {
         this.makh = makh;
         this.madh = madh;
         this.thoigiandh = thoigiandh;
         this.ghichudh = ghichudh;
         this.tinhtrang = tinhtrang;
-        this.nameID = nameID;
+        this.tenkh = tenkh;
         this.soluongdh = soluongdh;
         this.tongtiendh = tongtiendh;
         this.sanpham = sanpham;
     }
-
+//    public Map<String, Object> toMap() {
+//        HashMap<String, Object> result = new HashMap<>();
+//        result.put("makh", makh);
+//        result.put("madh", madh);
+//        result.put("");
+//        result.put("tinhtrang", tinhtrang);
+//        result.put("thoigiandh", thoigiandh);
+//        result.put("tongtiendh", tongtiendh);
+//        return result;
+//    }
     public String getMakh() {
         return makh;
     }
@@ -60,12 +69,12 @@ public class Orders {
         this.tinhtrang = tinhtrang;
     }
 
-    public String getNameID(String key) {
-        return nameID;
+    public String getTenkh() {
+        return tenkh;
     }
 
-    public void setNameID(String nameID) {
-        this.nameID = nameID;
+    public void setTenkh(String tenkh) {
+        this.tenkh = tenkh;
     }
 
     public int getSoluongdh() {
@@ -92,18 +101,5 @@ public class Orders {
         this.sanpham = sanpham;
     }
 
-    public Orders() {
-    }
-    public Map<String, Object> toMap() {
-        HashMap<String, Object> result = new HashMap<>();
-        result.put("makh", makh);
-        result.put("madh", madh);
-        result.put("tinhtrang", tinhtrang);
-        result.put("thoigiandh", thoigiandh);
-        result.put("tongtiendh", tongtiendh);
-
-
-        return result;
-    }
 
 }
