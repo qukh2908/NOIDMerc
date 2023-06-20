@@ -46,8 +46,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp">
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp">
 
             <!--            Mã đơn          -->
             <LinearLayout
@@ -61,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:text="Mã đơn"
                     android:textColor="@color/black"
-                    android:textSize="20dp"
+                    android:textSize="17dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -70,7 +70,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="right"
                     android:hint="mã đơn hàng"
-                    android:textSize="20dp"
+                    android:textSize="17dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -86,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:text="Trạng thái"
                     android:textColor="@color/black"
-                    android:textSize="20dp"
+                    android:textSize="17dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -95,7 +95,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="right"
                     android:hint="trạng thái đơn"
-                    android:textSize="20dp"
+                    android:textSize="17dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -113,15 +113,15 @@
             android:layout_height="wrap_content"
             android:baselineAligned="false"
             android:orientation="vertical"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp">
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Thông tin khách hàng"
-                android:textSize="15dp"
+                android:textSize="10dp"
                 android:textStyle="bold" />
 
             <!--             Tên kh         -->
@@ -136,7 +136,7 @@
                     android:layout_height="wrap_content"
                     android:text="Tên KH"
                     android:textColor="@color/black"
-                    android:textSize="20dp"
+                    android:textSize="17dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -145,7 +145,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="right"
                     android:hint="họ và tên"
-                    android:textSize="20dp"
+                    android:textSize="17dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -161,7 +161,7 @@
                     android:layout_height="wrap_content"
                     android:text="Số DT"
                     android:textColor="@color/black"
-                    android:textSize="20dp"
+                    android:textSize="17dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -170,7 +170,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="right"
                     android:hint="số điện thoại"
-                    android:textSize="20dp"
+                    android:textSize="17dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -186,7 +186,7 @@
                     android:layout_height="wrap_content"
                     android:text="Địa chỉ"
                     android:textColor="@color/black"
-                    android:textSize="20dp"
+                    android:textSize="17dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -195,7 +195,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="right"
                     android:hint="địa chỉ giao"
-                    android:textSize="20dp"
+                    android:textSize="17dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -213,15 +213,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp">
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Chi tiết đơn hàng"
-                android:textSize="15dp"
+                android:textSize="10dp"
                 android:textStyle="bold" />
 
             <View
@@ -238,8 +238,8 @@
                     android:id="@+id/rcv_detail_dh"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp" />
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp" />
             </ScrollView>
 
         </LinearLayout>
@@ -254,11 +254,72 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp">
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Chi tiết thanh toán"
+                android:textSize="10dp"
+                android:textStyle="bold" />
             <!--             Phí vận chuyển          -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="Phí vận chuyển"
+                    android:textColor="@color/black"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txt_phigiao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:hint="tiền vận chuyển"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
             <!--               Giảm giá            -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="Giảm giá"
+                    android:textColor="@color/black"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txt_tiengiam"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:hint="tiền vận chuyển"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="2dp"
+                android:layout_marginTop="10dp"
+                android:background="#C4D7B2" />
 
             <!--                Tổng tiền               -->
             <LinearLayout
@@ -272,7 +333,7 @@
                     android:layout_height="wrap_content"
                     android:text="Tổng"
                     android:textColor="@color/black"
-                    android:textSize="20dp"
+                    android:textSize="17dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -281,7 +342,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="right"
                     android:hint="tổng tiền"
-                    android:textSize="20dp"
+                    android:textSize="17dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
