@@ -36,7 +36,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/txt_gia"
+                android:id="@+id/txt_giachitiet"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="Giá"

@@ -235,6 +235,7 @@
                 android:layout_height="315dp">
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcv_detail_dh"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingLeft="20dp"

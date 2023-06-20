@@ -1,15 +1,20 @@
 package com.example.noidmerchant.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.noidmerchant.Database.DBOrder;
+import com.example.noidmerchant.GUI.Orders.OrdersDetailActivity;
+import com.example.noidmerchant.GUI.Products.ProductDetails;
 import com.example.noidmerchant.R;
 
 import java.text.DecimalFormat;
@@ -31,7 +36,7 @@ public class OrdersAdapter extends  RecyclerView.Adapter<OrdersAdapter.OrdersVie
     }
     @Override
     public void onBindViewHolder(@NonNull OrdersViewHolder holder, int position) {
-        Orders order = list.get(position);
+        final Orders order = list.get(position);
         holder.txtMaDH.setText(order.madh);
         holder.txtTime.setText(order.thoigiandh);
         holder.txtTinhTrang.setText(order.tinhtrang);
@@ -40,6 +45,19 @@ public class OrdersAdapter extends  RecyclerView.Adapter<OrdersAdapter.OrdersVie
         String formattedPrice = decimalFormat.format(updatedPrice);
         holder.txtGiaDH.setText(formattedPrice);
         holder.txtNamekh.setText(order.tenkh);
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickOrder(order);
+            }
+        });
+    }
+    private void onClickOrder (Orders orders){
+        Intent intent = new Intent(context, OrdersDetailActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("dathang",orders);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
     }
     @Override
     public int getItemCount() {
@@ -47,6 +65,7 @@ public class OrdersAdapter extends  RecyclerView.Adapter<OrdersAdapter.OrdersVie
     }
     public class OrdersViewHolder extends RecyclerView.ViewHolder{
         private TextView txtNamekh,txtGiaDH,txtMaDH,txtTime,txtTinhTrang;
+        private CardView cardView;
         public OrdersViewHolder(@NonNull View itemView) {
             super(itemView);
             txtNamekh = itemView.findViewById(R.id.txt_namekh);
@@ -54,6 +73,7 @@ public class OrdersAdapter extends  RecyclerView.Adapter<OrdersAdapter.OrdersVie
             txtMaDH = itemView.findViewById(R.id.txt_madh);
             txtTime = itemView.findViewById(R.id.txt_time);
             txtTinhTrang = itemView.findViewById(R.id.txt_tinhtrangdh);
+            cardView = itemView.findViewById(R.id.card_order);
         }
     }
 }

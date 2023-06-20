@@ -1,12 +1,13 @@
 package com.example.noidmerchant.Adapter;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Orders {
+public class Orders implements Serializable {
     String makh, madh, thoigiandh, ghichudh, tinhtrang, tenkh;
     int soluongdh, tongtiendh;
-    Map<String, Cart> sanpham;
+//    Map<String, Cart> sanpham;
     public Orders() { };
     public Orders(String makh, String madh, String thoigiandh, String ghichudh, String tinhtrang, String tenkh, int soluongdh, int tongtiendh, Map<String, Cart> sanpham) {
         this.makh = makh;
@@ -17,7 +18,7 @@ public class Orders {
         this.tenkh = tenkh;
         this.soluongdh = soluongdh;
         this.tongtiendh = tongtiendh;
-        this.sanpham = sanpham;
+//        this.sanpham = sanpham;
     }
 //    public Map<String, Object> toMap() {
 //        HashMap<String, Object> result = new HashMap<>();
@@ -93,13 +94,13 @@ public class Orders {
         this.tongtiendh = tongtiendh;
     }
 
-    public Map<String, Cart> getSanpham() {
-        return sanpham;
-    }
-
-    public void setSanpham(Map<String, Cart> sanpham) {
-        this.sanpham = sanpham;
-    }
+//    public Map<String, Cart> getSanpham() {
+//        return sanpham;
+//    }
+//
+//    public void setSanpham(Map<String, Cart> sanpham) {
+//        this.sanpham = sanpham;
+//    }
 
 
 }

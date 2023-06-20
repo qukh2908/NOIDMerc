@@ -1,11 +1,14 @@
 package com.example.noidmerchant.Adapter;
 
-public class Cart {
-    private String magiohang, makh, masp, tensp, ghichu, thoigian;
-    private int soluong,giasp, tongtien;
+import java.util.Map;
 
-    public Cart(String magiohang, String makh, String masp, String tensp, String ghichu, String thoigian, int soluong, int giasp, int tongtien) {
-        this.magiohang = magiohang;
+public class Cart {
+    private String madh, makh, masp, tensp, ghichu, thoigian;
+    private int soluong,giasp, tongtien;
+    Map<String, Cart> sanpham;
+
+    public Cart(String madh, String makh, String masp, String tensp, String ghichu, String thoigian, int soluong, int giasp, int tongtien, Map<String, Cart> sanpham) {
+        this.madh = madh;
         this.makh = makh;
         this.masp = masp;
         this.tensp = tensp;
@@ -14,17 +17,18 @@ public class Cart {
         this.soluong = soluong;
         this.giasp = giasp;
         this.tongtien = tongtien;
+        this.sanpham = sanpham;
     }
 
     public Cart() {
     }
 
-    public String getMagiohang() {
-        return magiohang;
+    public String getMadh() {
+        return madh;
     }
 
-    public void setMagiohang(String magiohang) {
-        this.magiohang = magiohang;
+    public void setMadh(String madh) {
+        this.madh = madh;
     }
 
     public String getMakh() {
@@ -89,5 +93,13 @@ public class Cart {
 
     public void setTongtien(int tongtien) {
         this.tongtien = tongtien;
+    }
+
+    public Map<String, Cart> getSanpham() {
+        return sanpham;
+    }
+
+    public void setSanpham(Map<String, Cart> sanpham) {
+        this.sanpham = sanpham;
     }
 }
