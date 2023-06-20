@@ -60,16 +60,15 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Chọn ngày tra cứu"
-                android:inputType="date"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:background="@color/transparent"
                 android:textSize="20dp"
                 tools:layout_editor_absoluteX="156dp"
                 tools:layout_editor_absoluteY="87dp" />
-            <Button
-                android:id="@+id/btn_tracuu"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
 
-                android:text="Tra Cứu"/>
         </TableRow>
         <TableRow
             android:layout_width="match_parent"
@@ -130,14 +129,32 @@
         </TableRow>
 
     </TableLayout>
-    <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Biểu đồ thu chi:"
         android:paddingTop="10dp"
         android:paddingLeft="10dp"
         android:textColor="@color/black"
         android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btn_tracuu"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:text="Tra Cứu"
+        android:layout_marginLeft="80dp"
+        android:background="@drawable/button_rounded"
+        android:paddingRight="30dp"
+        android:paddingLeft="30dp"/>
+
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
