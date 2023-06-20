@@ -44,7 +44,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:paddingLeft="25dp"
             android:paddingRight="25dp">
@@ -110,7 +110,7 @@
         <!--                Thông tin KH         -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:baselineAligned="false"
             android:orientation="vertical"
             android:paddingLeft="25dp"
@@ -212,7 +212,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:paddingLeft="25dp"
             android:paddingRight="25dp">
@@ -234,7 +234,7 @@
             <!--        RecyclerView chi tiết đơn hàng      -->
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="315dp">
+                android:layout_height="380dp">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rcv_detail_dh"
@@ -254,7 +254,7 @@
         <!--                Chi tiết thanh toán             -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="161dp"
             android:orientation="vertical"
             android:paddingLeft="25dp"
             android:paddingRight="25dp">
@@ -290,7 +290,7 @@
             <!--         Button          -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="87dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal"
