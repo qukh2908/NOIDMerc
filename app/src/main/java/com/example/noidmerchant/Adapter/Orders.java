@@ -6,10 +6,11 @@ import java.util.Map;
 
 public class Orders implements Serializable {
     String makh, madh, thoigiandh, ghichudh, tinhtrang, tenkh;
-    int soluongdh, tongtiendh;
-//    Map<String, Cart> sanpham;
-    public Orders() { };
-    public Orders(String makh, String madh, String thoigiandh, String ghichudh, String tinhtrang, String tenkh, int soluongdh, int tongtiendh, Map<String, Cart> sanpham) {
+    long soluongdh, tongtiendh;
+    //Map<String, Cart> sanpham;
+    public Orders() { }
+
+    public Orders(String makh, String madh, String thoigiandh, String ghichudh, String tinhtrang, String tenkh, long soluongdh, long tongtiendh) {
         this.makh = makh;
         this.madh = madh;
         this.thoigiandh = thoigiandh;
@@ -18,18 +19,18 @@ public class Orders implements Serializable {
         this.tenkh = tenkh;
         this.soluongdh = soluongdh;
         this.tongtiendh = tongtiendh;
-//        this.sanpham = sanpham;
     }
-//    public Map<String, Object> toMap() {
+
+    //    public Map<String, Object> toMap() {
 //        HashMap<String, Object> result = new HashMap<>();
 //        result.put("makh", makh);
 //        result.put("madh", madh);
-//        result.put("");
 //        result.put("tinhtrang", tinhtrang);
 //        result.put("thoigiandh", thoigiandh);
 //        result.put("tongtiendh", tongtiendh);
 //        return result;
 //    }
+
     public String getMakh() {
         return makh;
     }
@@ -78,21 +79,22 @@ public class Orders implements Serializable {
         this.tenkh = tenkh;
     }
 
-    public int getSoluongdh() {
+    public long getSoluongdh() {
         return soluongdh;
     }
 
-    public void setSoluongdh(int soluongdh) {
+    public void setSoluongdh(long soluongdh) {
         this.soluongdh = soluongdh;
     }
 
-    public int getTongtiendh() {
+    public long getTongtiendh() {
         return tongtiendh;
     }
 
-    public void setTongtiendh(int tongtiendh) {
+    public void setTongtiendh(long tongtiendh) {
         this.tongtiendh = tongtiendh;
     }
+
 
 //    public Map<String, Cart> getSanpham() {
 //        return sanpham;
@@ -101,6 +103,4 @@ public class Orders implements Serializable {
 //    public void setSanpham(Map<String, Cart> sanpham) {
 //        this.sanpham = sanpham;
 //    }
-
-
 }

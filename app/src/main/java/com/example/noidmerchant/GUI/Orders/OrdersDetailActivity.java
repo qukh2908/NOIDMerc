@@ -22,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -92,15 +93,14 @@ public class OrdersDetailActivity extends AppCompatActivity {
             });
             binding.txtMd.setText(orders.getMadh());
             binding.txtTt.setText(orders.getTinhtrang());
-        }else {
+            double updatedPrice = orders.getTongtiendh();
+            DecimalFormat decimalFormat = new DecimalFormat("#,### đ");
+            String formattedPrice = decimalFormat.format(updatedPrice);
+            binding.txtTongtien.setText(formattedPrice);
+        } else {
             Toast.makeText(OrdersDetailActivity.this, "Không lấy được thông tin sản phẩm", Toast.LENGTH_SHORT).show();
             finish();
         }
-        binding.backBtnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        binding.backBtnAdd.setOnClickListener(view -> finish());
     }
 }

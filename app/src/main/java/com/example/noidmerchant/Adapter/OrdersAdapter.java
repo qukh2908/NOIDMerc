@@ -45,12 +45,7 @@ public class OrdersAdapter extends  RecyclerView.Adapter<OrdersAdapter.OrdersVie
         String formattedPrice = decimalFormat.format(updatedPrice);
         holder.txtGiaDH.setText(formattedPrice);
         holder.txtNamekh.setText(order.tenkh);
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onClickOrder(order);
-            }
-        });
+        holder.cardView.setOnClickListener(view -> onClickOrder(order));
     }
     private void onClickOrder (Orders orders){
         Intent intent = new Intent(context, OrdersDetailActivity.class);
