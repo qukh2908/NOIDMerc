@@ -80,7 +80,7 @@ public class OrdersDetailActivity extends AppCompatActivity {
             Orders orders = (Orders) bundle.get("dathang");
             makh = orders.getMakh();
             madh = orders.getMadh();
-            if(orders.getTinhtrang().equals("Đã hủy")) {
+            if(!orders.getTinhtrang().equals("Đang chờ xác nhận")) {
                 binding.btnHuy.setVisibility(View.INVISIBLE);
                 binding.btnXacnhan.setVisibility(View.INVISIBLE);
             }
@@ -109,7 +109,10 @@ public class OrdersDetailActivity extends AppCompatActivity {
         }
         //Nút xác nhận
         binding.btnXacnhan.setOnClickListener(v -> {
-
+            if(madh != null) {
+                ordRef.child(madh).child("tinhtrang").setValue("Đang giao");
+                finish();
+            }
         });
         //Nút hủy
         binding.btnHuy.setOnClickListener(v -> {
@@ -118,8 +121,6 @@ public class OrdersDetailActivity extends AppCompatActivity {
                     case DialogInterface.BUTTON_POSITIVE:
                         if(madh != null) {
                             ordRef.child(madh).child("tinhtrang").setValue("Đã hủy");
-                            binding.btnHuy.setEnabled(false);
-                            binding.btnXacnhan.setEnabled(false);
                             finish();
                         }
                     case DialogInterface.BUTTON_NEGATIVE:
