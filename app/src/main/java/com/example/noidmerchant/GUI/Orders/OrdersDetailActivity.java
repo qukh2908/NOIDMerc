@@ -30,7 +30,6 @@ public class OrdersDetailActivity extends AppCompatActivity {
     private String makh;
     ArrayList<Cart> list = new ArrayList<>();
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
-    final FirebaseStorage storage = FirebaseStorage.getInstance();
     final DatabaseReference stasRef = database.getReference().child("dathang");
     final DatabaseReference authRef = database.getReference().child("taikhoan");
     private DetailsOrderBinding binding;
@@ -101,6 +100,15 @@ public class OrdersDetailActivity extends AppCompatActivity {
             Toast.makeText(OrdersDetailActivity.this, "Không lấy được thông tin sản phẩm", Toast.LENGTH_SHORT).show();
             finish();
         }
-        binding.backBtnAdd.setOnClickListener(view -> finish());
+        binding.btnXacnhan.setOnClickListener(v -> {
+
+        });
+
+        binding.btnHuy.setOnClickListener(v -> {
+            binding.btnHuy.setEnabled(false);
+            binding.btnXacnhan.setEnabled(false);
+        });
+
+        binding.backBtnAdd.setOnClickListener(v -> finish());
     }
 }

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".MainActivity">
 
@@ -122,7 +122,8 @@
                 android:layout_marginTop="10dp"
                 android:text="Thông tin khách hàng"
                 android:textSize="10dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="TextSizeCheck" />
 
             <!--             Tên kh         -->
             <LinearLayout
@@ -222,7 +223,8 @@
                 android:layout_marginTop="10dp"
                 android:text="Chi tiết đơn hàng"
                 android:textSize="10dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="TextSizeCheck" />
 
             <View
                 android:layout_width="match_parent"
@@ -257,69 +259,8 @@
             android:paddingLeft="25dp"
             android:paddingRight="25dp">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Chi tiết thanh toán"
-                android:textSize="10dp"
-                android:textStyle="bold" />
             <!--             Phí vận chuyển          -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:text="Phí vận chuyển"
-                    android:textColor="@color/black"
-                    android:textSize="17dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/txt_phigiao"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:hint="tiền vận chuyển"
-                    android:textSize="17dp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
             <!--               Giảm giá            -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:text="Giảm giá"
-                    android:textColor="@color/black"
-                    android:textSize="17dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/txt_tiengiam"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:hint="tiền vận chuyển"
-                    android:textSize="17dp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="2dp"
-                android:layout_marginTop="10dp"
-                android:background="#C4D7B2" />
 
             <!--                Tổng tiền               -->
             <LinearLayout
@@ -349,29 +290,31 @@
             <!--         Button          -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal"
                 android:padding="10dp">
 
                 <Button
-                    android:id="@+id/btn_xacnhan"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_huy"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="15dp"
-                    android:background="@drawable/button_rounded"
-                    android:text="HOÀN THÀNH" />
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_rounded_delete"
+                    android:text="HỦY" />
 
                 <Button
-                    android:id="@+id/btn_huy"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_xacnhan"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_weight="1"
                     android:background="@drawable/button_rounded"
-                    android:text="HỦY" />
+                    android:text="HOÀN THÀNH" />
 
             </LinearLayout>
         </LinearLayout>
