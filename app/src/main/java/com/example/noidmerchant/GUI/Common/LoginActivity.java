@@ -16,11 +16,12 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.Objects;
+
 public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private TextInputEditText loginEmail, loginPassword;
-    private Button btnSignIn;
-    private TextView txtForgotPassword;
+
     @Override
     public void onStart() {
         super.onStart();
@@ -41,13 +42,13 @@ public class LoginActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         loginEmail = findViewById(R.id.loginEmail);
         loginPassword = findViewById(R.id.loginPassword);
-        btnSignIn = findViewById(R.id.btnSignIn);
-        txtForgotPassword = findViewById(R.id.txtForgotPassword);
+        Button btnSignIn = findViewById(R.id.btnSignIn);
+        TextView txtForgotPassword = findViewById(R.id.txtForgotPassword);
 
         /* Authentication */
         btnSignIn.setOnClickListener(v -> {
-            String email = loginEmail.getText().toString().trim();
-            String password = loginPassword.getText().toString().trim();
+            String email = Objects.requireNonNull(loginEmail.getText()).toString().trim();
+            String password = Objects.requireNonNull(loginPassword.getText()).toString().trim();
 
             /* Kiểm tra Email cửa hàng */
             if (!email.equals("kylekhanh1028@gmail.com")) {

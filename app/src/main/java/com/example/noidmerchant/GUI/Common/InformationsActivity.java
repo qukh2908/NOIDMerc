@@ -2,7 +2,6 @@ package com.example.noidmerchant.GUI.Common;
 
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -18,6 +17,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.Objects;
 
 public class InformationsActivity extends AppCompatActivity {
     String path = "taikhoan/";
@@ -99,19 +100,17 @@ public class InformationsActivity extends AppCompatActivity {
         });
 
 
-        btnSave.setOnClickListener(v -> {
-            refDb.child(path).setValue(uid)
-                    .addOnSuccessListener(unused -> {
-                        refEmail.setValue(txtEmail.getText().toString());
-                        refAdd.setValue(txtAdd.getText().toString());
-                        refName.setValue(txtName.getText().toString());
-                        refPhone.setValue(txtPhone.getText().toString());
-                        Toast.makeText(InformationsActivity.this, "Lưu thành công", Toast.LENGTH_SHORT).show();
-                    })
-                    .addOnFailureListener(e ->
-                            Toast.makeText(InformationsActivity.this, "Không thành công", Toast.LENGTH_SHORT).show()
-                    );
-        });
+        btnSave.setOnClickListener(v -> refDb.child(path).setValue(uid)
+                .addOnSuccessListener(unused -> {
+                    refEmail.setValue(Objects.requireNonNull(txtEmail.getText()).toString());
+                    refAdd.setValue(Objects.requireNonNull(txtAdd.getText()).toString());
+                    refName.setValue(Objects.requireNonNull(txtName.getText()).toString());
+                    refPhone.setValue(Objects.requireNonNull(txtPhone.getText()).toString());
+                    Toast.makeText(InformationsActivity.this, "Lưu thành công", Toast.LENGTH_SHORT).show();
+                })
+                .addOnFailureListener(e ->
+                        Toast.makeText(InformationsActivity.this, "Không thành công", Toast.LENGTH_SHORT).show()
+                ));
 
         //nút back
         back_btn.setOnClickListener(v -> finish());

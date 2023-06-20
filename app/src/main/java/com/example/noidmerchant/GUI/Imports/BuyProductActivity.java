@@ -24,6 +24,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 
 
 public class BuyProductActivity extends AppCompatActivity {
@@ -57,7 +58,7 @@ public class BuyProductActivity extends AppCompatActivity {
         cateRef.orderByKey().addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                categories.add(snapshot.child("tendm").getValue().toString());
+                categories.add(Objects.requireNonNull(snapshot.child("tendm").getValue()).toString());
             }
 
             @Override
@@ -94,13 +95,13 @@ public class BuyProductActivity extends AppCompatActivity {
             cateRef.orderByKey().addChildEventListener(new ChildEventListener() {
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                    if(snapshot.child("tendm").getValue().toString().equals(tendm)) {
+                    if(Objects.requireNonNull(snapshot.child("tendm").getValue()).toString().equals(tendm)) {
                         String madm = snapshot.getKey();
                         prodRef.orderByKey().addChildEventListener(new ChildEventListener() {
                             @Override
                             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                              if(snapshot.child("madm").getValue().toString().equals(madm)) {
-                                  products.add(snapshot.child("tensp").getValue().toString());
+                              if(Objects.requireNonNull(snapshot.child("madm").getValue()).toString().equals(madm)) {
+                                  products.add(Objects.requireNonNull(snapshot.child("tensp").getValue()).toString());
                               }
                             }
 
@@ -163,10 +164,10 @@ public class BuyProductActivity extends AppCompatActivity {
             prodRef.orderByKey().addChildEventListener(new ChildEventListener() {
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                    if(snapshot.child("tensp").getValue().toString().equals(tensp)) {
+                    if(Objects.requireNonNull(snapshot.child("tensp").getValue()).toString().equals(tensp)) {
                         String masp = snapshot.getKey();
                         assert masp != null;
-                        int soluong = snapshot.child("soluongsp").getValue().hashCode() + soluongnhap;
+                        int soluong = Objects.requireNonNull(snapshot.child("soluongsp").getValue()).hashCode() + soluongnhap;
                         prodRef.child(masp).child("soluongsp").setValue(soluong);
                         impRef.push().setValue(new DBImport(masp,soluongnhap,currentDateAndTime));
                         Toast.makeText(BuyProductActivity.this, "Nhập thành công! Số lượng hiện tại là:" + soluong, Toast.LENGTH_SHORT).show();

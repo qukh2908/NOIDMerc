@@ -13,18 +13,15 @@ import com.example.noidmerchant.databinding.ActivityProductsBinding;
 import com.google.android.material.tabs.TabLayout;
 
 public class ProductsActivity extends AppCompatActivity {
-    private TabLayout mTab;
-    private ViewPager mView;
-    private ActivityProductsBinding binding;
-    private ImageView back_btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityProductsBinding.inflate(getLayoutInflater());
+        com.example.noidmerchant.databinding.ActivityProductsBinding binding = ActivityProductsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        mTab = findViewById(R.id.tab_layout);
-        mView = findViewById(R.id.view_pager);
-        back_btn = findViewById(R.id.back_btn);
+        TabLayout mTab = findViewById(R.id.tab_layout);
+        ViewPager mView = findViewById(R.id.view_pager);
+        ImageView back_btn = findViewById(R.id.back_btn);
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         mView.setAdapter(viewPagerAdapter);
         mTab.setupWithViewPager(mView);
