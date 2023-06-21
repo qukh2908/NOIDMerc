@@ -14,7 +14,7 @@ import com.example.noidmerchant.R;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder>{
+public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder> {
     private ArrayList<Cart>list;
     private Context context;
 

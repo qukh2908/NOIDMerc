@@ -54,18 +54,15 @@ public class StatisticsActivity extends AppCompatActivity {
     LineData lineData;
 
     private LineChart lineChart;
-    FirebaseDatabase database;
-    DatabaseReference myRef;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference("dathang");;
     private EditText editTextDate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistics);
         back_btn = findViewById(R.id.back_btn);
-        back_btn.setOnClickListener(v -> finish());
         lineChart = findViewById(R.id.linechart);
-        database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("dathang");
         lineDataSet.setLineWidth(4);
         editTextDate = findViewById(R.id.editTextDate);
 
@@ -114,10 +111,10 @@ public class StatisticsActivity extends AppCompatActivity {
 
             }
         });
-
-
         //nút back
-
+        back_btn.setOnClickListener(v-> {
+            finish();
+        });
     }
 
     private void showChart(ArrayList<Entry> dataVal) {
@@ -129,6 +126,5 @@ public class StatisticsActivity extends AppCompatActivity {
         lineChart.clear();
         lineChart.setData(lineData);
         lineChart.invalidate();
-
     }
 }

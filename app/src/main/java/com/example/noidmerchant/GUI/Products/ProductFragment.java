@@ -29,16 +29,11 @@ import java.util.ArrayList;
 public class ProductFragment extends Fragment  {
     FragmentProductBinding binding;
     ArrayList<Product> list = new ArrayList<>();
-
-//    FirebaseDatabase database;
-//    String uid ;
-
     public ProductFragment() {
         // Required empty public constructor
     }
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         binding = FragmentProductBinding.inflate(inflater, container, false);
         ProductAdapter adapter = new ProductAdapter(list,getContext());
         binding.rcvProd.setAdapter(adapter);

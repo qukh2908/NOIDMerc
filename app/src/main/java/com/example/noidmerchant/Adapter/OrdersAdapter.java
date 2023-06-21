@@ -2,10 +2,12 @@ package com.example.noidmerchant.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -40,6 +42,21 @@ public class OrdersAdapter extends  RecyclerView.Adapter<OrdersAdapter.OrdersVie
         holder.txtMaDH.setText(order.madh);
         holder.txtTime.setText(order.thoigiandh);
         holder.txtTinhTrang.setText(order.tinhtrang);
+        switch (order.tinhtrang) {
+            default:
+                holder.table_order.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                break;
+            case "Đã hủy":
+                holder.table_order.setBackgroundColor(Color.parseColor("#FF9191"));
+                break;
+            case "Đã giao":
+                holder.table_order.setBackgroundColor(Color.parseColor("#BBFF91"));
+                break;
+            case "Đang giao":
+                holder.table_order.setBackgroundColor(Color.parseColor("#FFF48D"));
+                break;
+        }
+
         double updatedPrice = order.getTongtiendh();
         DecimalFormat decimalFormat = new DecimalFormat("#,### đ");
         String formattedPrice = decimalFormat.format(updatedPrice);
@@ -61,6 +78,7 @@ public class OrdersAdapter extends  RecyclerView.Adapter<OrdersAdapter.OrdersVie
     public class OrdersViewHolder extends RecyclerView.ViewHolder{
         private TextView txtNamekh,txtGiaDH,txtMaDH,txtTime,txtTinhTrang;
         private CardView cardView;
+        private TableLayout table_order;
         public OrdersViewHolder(@NonNull View itemView) {
             super(itemView);
             txtNamekh = itemView.findViewById(R.id.txt_namekh);
@@ -69,6 +87,7 @@ public class OrdersAdapter extends  RecyclerView.Adapter<OrdersAdapter.OrdersVie
             txtTime = itemView.findViewById(R.id.txt_time);
             txtTinhTrang = itemView.findViewById(R.id.txt_tinhtrangdh);
             cardView = itemView.findViewById(R.id.card_order);
+            table_order = itemView.findViewById(R.id.table_order);
         }
     }
 }
