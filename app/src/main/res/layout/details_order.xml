@@ -233,7 +233,7 @@
                 <!--        RecyclerView chi tiết đơn hàng      -->
                 <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
+                    android:layout_height="320dp"
                     android:background="#F3F3F3">
 
                     <androidx.recyclerview.widget.RecyclerView
