@@ -233,15 +233,15 @@
                 <!--        RecyclerView chi tiết đơn hàng      -->
                 <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="250dp"
                     android:background="#F3F3F3">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rcv_products_list"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:paddingLeft="25dp"
-                        android:paddingRight="25dp" />
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp" />
                 </ScrollView>
 
             </LinearLayout>
