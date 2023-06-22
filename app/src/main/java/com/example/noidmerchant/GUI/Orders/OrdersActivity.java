@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.noidmerchant.Adapter.Orders;
+import com.example.noidmerchant.Database.DBOrder;
 import com.example.noidmerchant.Adapter.OrdersAdapter;
 import com.example.noidmerchant.MainActivity;
 import com.example.noidmerchant.databinding.ActivityOrdersBinding;
@@ -27,7 +27,8 @@ public class OrdersActivity extends AppCompatActivity {
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference authRef = database.getReference().child("taikhoan");
     final DatabaseReference ordRef = database.getReference().child("dathang");
-    ArrayList<Orders> list = new ArrayList<>();
+    ArrayList<DBOrder> list = new ArrayList<>();
+    //ArrayList<DBProductsInOrder> productItems = new ArrayList<>();
     private ActivityOrdersBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,20 +41,22 @@ public class OrdersActivity extends AppCompatActivity {
 
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                String makh = snapshot.child("makh").getValue().toString();
-                String madh = snapshot.child("madh").getValue().toString();
+                String makh = Objects.requireNonNull(snapshot.child("makh").getValue()).toString();
+                String madh = Objects.requireNonNull(snapshot.child("madh").getValue()).toString();
                 String thoigiandh = Objects.requireNonNull(snapshot.child("thoigiandh").getValue()).toString();
                 String ghichudh = Objects.requireNonNull(snapshot.child("ghichudh").getValue()).toString();
                 String tinhtrang = Objects.requireNonNull(snapshot.child("tinhtrang").getValue()).toString();
                 long soluongdh = snapshot.child("soluongdh").getValue(long.class);
                 long tongtiendh =  snapshot.child("tongtiendh").getValue(long.class);
+                //DBProductsInOrder sanpham = snapshot.child("sanpham").getValue(DBProductsInOrder.class);
+                //productItems.add(sanpham);
                 authRef.child(makh).addValueEventListener(new ValueEventListener() {
                     @SuppressLint("NotifyDataSetChanged")
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         String tenkh = Objects.requireNonNull(snapshot.child("name").getValue()).toString();
-                        Orders orders = new Orders(makh,madh,thoigiandh,ghichudh,tinhtrang,tenkh,soluongdh,tongtiendh);
-                        list.add(orders);
+                        DBOrder DBOrder = new DBOrder(makh,madh,thoigiandh,ghichudh,tinhtrang,tenkh,soluongdh,tongtiendh);
+                        list.add(DBOrder);
                         adapter.notifyDataSetChanged();
                     }
 
@@ -96,4 +99,10 @@ public class OrdersActivity extends AppCompatActivity {
             finish();
         });
     }
+//    private Map<String, DBProductsInOrder> convertProductItemsToMap(ArrayList<DBProductsInOrder> items) {
+//        Map<String, DBProductsInOrder> itemsMap = new HashMap<>();
+//        for (DBProductsInOrder item : items) {
+//            itemsMap.put(item.getMasp(), item);
+//        } return itemsMap;
+//    }
 }

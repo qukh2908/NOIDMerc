@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.noidmerchant.Adapter.Category;
+import com.example.noidmerchant.Database.DBCategory;
 import com.example.noidmerchant.Adapter.CategoryAdapter;
 import com.example.noidmerchant.databinding.FragmentCategoryBinding;
 import com.google.firebase.database.DataSnapshot;
@@ -26,7 +26,7 @@ public class CategoryFragment extends Fragment {
         // Required empty public constructor
     }
     FragmentCategoryBinding binding;
-    ArrayList<Category> list = new ArrayList<>();
+    ArrayList<DBCategory> list = new ArrayList<>();
 
     FirebaseDatabase database;
     @Override
@@ -41,10 +41,10 @@ public class CategoryFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
                 for (DataSnapshot dataSnapshot:snapshot.getChildren()){
-                    Category category = dataSnapshot.getValue(Category.class);
-                    assert category != null;
-                    category.getNameID(dataSnapshot.getKey());
-                    list.add(category);
+                    DBCategory DBCategory = dataSnapshot.getValue(DBCategory.class);
+                    assert DBCategory != null;
+                    DBCategory.getNameID(dataSnapshot.getKey());
+                    list.add(DBCategory);
                 }
                 adapter.notifyDataSetChanged();
             }

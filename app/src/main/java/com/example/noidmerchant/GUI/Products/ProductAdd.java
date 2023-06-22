@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.noidmerchant.Database.DBProduct;
+import com.example.noidmerchant.Database.DBProductToAdd;
 import com.example.noidmerchant.databinding.AddProductBinding;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -194,7 +194,7 @@ public class ProductAdd extends AppCompatActivity {
             } return imgRef.getDownloadUrl();
         }).addOnCompleteListener(task -> {
             String imageUri = task.getResult().toString();
-            prodRef.push().setValue(new DBProduct(madm, imageUri, tensp, motasp, giasp, soluong));
+            prodRef.push().setValue(new DBProductToAdd(madm, imageUri, tensp, motasp, giasp, soluong));
             Toast.makeText(ProductAdd.this, "Thêm sản phẩm thành công", Toast.LENGTH_SHORT).show();
             finish();
         });

@@ -1,6 +1,8 @@
 package com.example.noidmerchant.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,16 +11,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.noidmerchant.Database.DBOrder;
+import com.example.noidmerchant.Database.DBProductsInOrder;
+import com.example.noidmerchant.GUI.Orders.OrdersDetailActivity;
 import com.example.noidmerchant.R;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder> {
-    private ArrayList<Cart>list;
+public class ProductsInOrderAdapter extends RecyclerView.Adapter<ProductsInOrderAdapter.CartViewHolder> {
+    private ArrayList<DBProductsInOrder>list;
     private Context context;
 
-    public CartAdapter(ArrayList<Cart> list, Context context) {
+    public ProductsInOrderAdapter(ArrayList<DBProductsInOrder> list, Context context) {
         this.list = list;
         this.context = context;
     }
@@ -32,15 +37,21 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull CartViewHolder holder, int position) {
-        Cart cart = list.get(position);
-        holder.txtTensp.setText(cart.getTensp());
-        holder.txtSL.setText(String.valueOf(cart.getSoluong()));
-        double updatedPrice = cart.getGiasp();
+        DBProductsInOrder DBProductsInOrder = list.get(position);
+        holder.txtTensp.setText(DBProductsInOrder.getTensp());
+        holder.txtSL.setText(String.valueOf(DBProductsInOrder.getSoluong()));
+        double updatedPrice = DBProductsInOrder.getGiasp();
         DecimalFormat decimalFormat = new DecimalFormat("#,### đ");
         String formattedPrice = decimalFormat.format(updatedPrice);
         holder.txtGia.setText(formattedPrice);
     }
-
+//    private void onClickOrder (DBOrder DBOrder) {
+//        Intent intent = new Intent(context, OrdersDetailActivity.class);
+//        Bundle bundle = new Bundle();
+//        bundle.putSerializable("dathang", DBOrder);
+//        intent.putExtras(bundle);
+//        context.startActivity(intent);
+//    }
     @Override
     public int getItemCount() {
         return list.size();

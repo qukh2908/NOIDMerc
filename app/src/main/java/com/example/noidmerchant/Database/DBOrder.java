@@ -1,28 +1,58 @@
 package com.example.noidmerchant.Database;
 
-import java.util.Map;
+import java.io.Serializable;
 
-public class DBOrder {
-    String matk, tinhtrang, ghichu;
-    int phigiaohang, tonggiadhm;
-    Map<String, String> ngaytaodhm;
+public class DBOrder implements Serializable {
+    String makh, madh, thoigiandh, ghichudh, tinhtrang, tenkh;
+    long soluongdh, tongtiendh;
+    //Map<String, DBProductsInOrder> sanpham;
+    public DBOrder() {
 
-    public DBOrder(String matk, String tinhtrang, String ghichu, int phigiaohang,
-                   int tonggiadhm, Map<String, String> ngaytaodhm) {
-        this.matk = matk;
+    }
+    public DBOrder(String makh, String madh,
+                   String thoigiandh, String ghichudh,
+                   String tinhtrang, String tenkh,
+                   long soluongdh, long tongtiendh) {
+        this.makh = makh;
+        this.madh = madh;
+        this.thoigiandh = thoigiandh;
+        this.ghichudh = ghichudh;
         this.tinhtrang = tinhtrang;
-        this.ghichu = ghichu;
-        this.phigiaohang = phigiaohang;
-        this.tonggiadhm = tonggiadhm;
-        this.ngaytaodhm = ngaytaodhm;
+        this.tenkh = tenkh;
+        this.soluongdh = soluongdh;
+        this.tongtiendh = tongtiendh;
     }
 
-    public String getMatk() {
-        return matk;
+    public String getMakh() {
+        return makh;
     }
 
-    public void setMatk(String matk) {
-        this.matk = matk;
+    public void setMakh(String makh) {
+        this.makh = makh;
+    }
+
+    public String getMadh() {
+        return madh;
+    }
+
+    public void setMadh(String madh) {
+        this.madh = madh;
+    }
+
+    public String getThoigiandh() {
+        return thoigiandh;
+    }
+
+    public void setThoigiandh(String thoigiandh) {
+        this.thoigiandh = thoigiandh;
+    }
+
+    public String getGhichudh() {
+        return ghichudh;
+    }
+
+    public void setGhichudh(String ghichudh) {
+        this.ghichudh = ghichudh;
     }
 
     public String getTinhtrang() {
@@ -33,35 +63,27 @@ public class DBOrder {
         this.tinhtrang = tinhtrang;
     }
 
-    public String getGhichu() {
-        return ghichu;
+    public String getTenkh() {
+        return tenkh;
     }
 
-    public void setGhichu(String ghichu) {
-        this.ghichu = ghichu;
+    public void setTenkh(String tenkh) {
+        this.tenkh = tenkh;
     }
 
-    public int getPhigiaohang() {
-        return phigiaohang;
+    public long getSoluongdh() {
+        return soluongdh;
     }
 
-    public void setPhigiaohang(int phigiaohang) {
-        this.phigiaohang = phigiaohang;
+    public void setSoluongdh(long soluongdh) {
+        this.soluongdh = soluongdh;
     }
 
-    public int getTonggiadhm() {
-        return tonggiadhm;
+    public long getTongtiendh() {
+        return tongtiendh;
     }
 
-    public void setTonggiadhm(int tonggiadhm) {
-        this.tonggiadhm = tonggiadhm;
-    }
-
-    public Map<String, String> getNgaytaodhm() {
-        return ngaytaodhm;
-    }
-
-    public void setNgaytaodhm(Map<String, String> ngaytaodhm) {
-        this.ngaytaodhm = ngaytaodhm;
+    public void setTongtiendh(long tongtiendh) {
+        this.tongtiendh = tongtiendh;
     }
 }

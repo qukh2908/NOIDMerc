@@ -1,8 +1,8 @@
-package com.example.noidmerchant.Adapter;
+package com.example.noidmerchant.Database;
 
 import java.io.Serializable;
 
-public class Product implements Serializable {
+public class DBProductToDisplay implements Serializable {
     private String name;
     private String price;
     private String imageUrl;
@@ -11,7 +11,7 @@ public class Product implements Serializable {
     private String key;
     private String cateKey;
 
-    public Product(String name, String price, String imageUrl, String quantity, String description, String key, String cateKey) {
+    public DBProductToDisplay(String name, String price, String imageUrl, String quantity, String description, String key, String cateKey) {
         this.name = name;
         this.price = price;
         this.imageUrl = imageUrl;

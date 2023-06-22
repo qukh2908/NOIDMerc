@@ -16,19 +16,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.noidmerchant.Database.DBOrder;
 import com.example.noidmerchant.GUI.Orders.OrdersDetailActivity;
-import com.example.noidmerchant.GUI.Products.ProductDetails;
 import com.example.noidmerchant.R;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.List;
 
 public class OrdersAdapter extends  RecyclerView.Adapter<OrdersAdapter.OrdersViewHolder>{
-    private ArrayList<Orders> list;
+    private ArrayList<DBOrder> ordersList;
     private Context context;
-    public OrdersAdapter(Context context, ArrayList<Orders> list) {
+    public OrdersAdapter(Context context, ArrayList<DBOrder> ordersList) {
         this.context = context;
-        this.list = list;
+        this.ordersList = ordersList;
     }
     @NonNull
     @Override
@@ -38,11 +36,11 @@ public class OrdersAdapter extends  RecyclerView.Adapter<OrdersAdapter.OrdersVie
     }
     @Override
     public void onBindViewHolder(@NonNull OrdersViewHolder holder, int position) {
-        final Orders order = list.get(position);
-        holder.txtMaDH.setText(order.madh);
-        holder.txtTime.setText(order.thoigiandh);
-        holder.txtTinhTrang.setText(order.tinhtrang);
-        switch (order.tinhtrang) {
+        DBOrder order = ordersList.get(position);
+        holder.txtMaDH.setText(order.getMakh());
+        holder.txtTime.setText(order.getThoigiandh());
+        holder.txtTinhTrang.setText(order.getTinhtrang());
+        switch (order.getTinhtrang()) {
             default:
                 holder.table_order.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 break;
@@ -61,19 +59,19 @@ public class OrdersAdapter extends  RecyclerView.Adapter<OrdersAdapter.OrdersVie
         DecimalFormat decimalFormat = new DecimalFormat("#,### đ");
         String formattedPrice = decimalFormat.format(updatedPrice);
         holder.txtGiaDH.setText(formattedPrice);
-        holder.txtNamekh.setText(order.tenkh);
+        holder.txtNamekh.setText(order.getTenkh());
         holder.cardView.setOnClickListener(view -> onClickOrder(order));
     }
-    private void onClickOrder (Orders orders){
+    private void onClickOrder (DBOrder DBOrder){
         Intent intent = new Intent(context, OrdersDetailActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putSerializable("dathang",orders);
+        bundle.putSerializable("dathang", DBOrder);
         intent.putExtras(bundle);
         context.startActivity(intent);
     }
     @Override
     public int getItemCount() {
-        return list.size();
+        return ordersList.size();
     }
     public class OrdersViewHolder extends RecyclerView.ViewHolder{
         private TextView txtNamekh,txtGiaDH,txtMaDH,txtTime,txtTinhTrang;

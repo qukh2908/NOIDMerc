@@ -10,15 +10,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.noidmerchant.Database.DBCategory;
 import com.example.noidmerchant.R;
 
 import java.util.ArrayList;
 
 public class CategoryAdapter extends  RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>{
-    private ArrayList<Category> list;
+    private ArrayList<DBCategory> list;
     Context context;
 
-    public CategoryAdapter(ArrayList<Category> list, Context context) {
+    public CategoryAdapter(ArrayList<DBCategory> list, Context context) {
         this.list = list;
         this.context = context;
     }
@@ -32,8 +33,8 @@ public class CategoryAdapter extends  RecyclerView.Adapter<CategoryAdapter.Categ
 
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
-        Category category = list.get(position);
-        holder.txtName.setText(category.getTendm());
+        DBCategory DBCategory = list.get(position);
+        holder.txtName.setText(DBCategory.getTendm());
     }
 
     @Override

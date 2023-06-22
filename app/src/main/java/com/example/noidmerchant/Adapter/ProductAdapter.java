@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.noidmerchant.Database.DBProductToDisplay;
 import com.example.noidmerchant.GUI.Products.ProductDetails;
 import com.example.noidmerchant.R;
 import com.squareup.picasso.Picasso;
@@ -21,12 +22,12 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder>{
-    ArrayList<Product> list;
+    ArrayList<DBProductToDisplay> list;
     Context context;
 //    private final RecyclerViewInterface recyclerViewInterface;
 
 
-    public ProductAdapter(ArrayList<Product> list, Context context) {
+    public ProductAdapter(ArrayList<DBProductToDisplay> list, Context context) {
         this.list = list;
         this.context = context;
 //        this.recyclerViewInterface = recyclerViewInterface;
@@ -41,26 +42,24 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
-        final Product product = list.get(position);
-        holder.edtName.setText(product.getName());
-        double priceDouble = Double.parseDouble(product.getPrice());
+        final DBProductToDisplay DBProductToDisplay = list.get(position);
+        holder.edtName.setText(DBProductToDisplay.getName());
+        double priceDouble = Double.parseDouble(DBProductToDisplay.getPrice());
         DecimalFormat decimalFormat = new DecimalFormat("#,### đ");
         String formattedGiatiensp = decimalFormat.format(priceDouble);
         holder.edtPrice.setText(formattedGiatiensp);
-        String imageUrl = product.getImageUrl();
+        String imageUrl = DBProductToDisplay.getImageUrl();
         if (imageUrl != null && !imageUrl.isEmpty()) {
             Picasso.get().load(imageUrl).into(holder.imgProd);
         } else {
-            // Handle case when imageUrl is empty or null
-            // For example, you can set a default image to ImageView
             holder.imgProd.setImageResource(R.mipmap.ic_launcher);
         }
-        holder.cardView.setOnClickListener(view -> onClickDetail(product));
+        holder.cardView.setOnClickListener(view -> onClickDetail(DBProductToDisplay));
     }
-    private void onClickDetail(Product product){
+    private void onClickDetail(DBProductToDisplay DBProductToDisplay){
         Intent intent = new Intent(context, ProductDetails.class);
         Bundle bundle = new Bundle();
-        bundle.putSerializable("sanpham",product);
+        bundle.putSerializable("sanpham", DBProductToDisplay);
         intent.putExtras(bundle);
         context.startActivity(intent);
     }

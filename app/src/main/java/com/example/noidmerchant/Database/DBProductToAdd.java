@@ -1,10 +1,10 @@
 package com.example.noidmerchant.Database;
 
-public class DBProduct {
+public class DBProductToAdd {
     String madm, hinhsp, tensp, motasp;
     int giasp, soluongsp;
 
-    public DBProduct(String madm, String hinhsp, String tensp, String motasp, int giasp, int soluongsp) {
+    public DBProductToAdd(String madm, String hinhsp, String tensp, String motasp, int giasp, int soluongsp) {
         this.madm = madm;
         this.hinhsp = hinhsp;
         this.tensp = tensp;

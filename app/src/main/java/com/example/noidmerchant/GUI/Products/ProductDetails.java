@@ -14,8 +14,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.noidmerchant.Adapter.Product;
-import com.example.noidmerchant.Database.DBProduct;
+import com.example.noidmerchant.Database.DBProductToDisplay;
+import com.example.noidmerchant.Database.DBProductToAdd;
 import com.example.noidmerchant.databinding.DetailsProductBinding;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -53,9 +53,9 @@ public class ProductDetails extends AppCompatActivity {
         setContentView(binding.getRoot());
         Bundle bundle = getIntent().getExtras();
         if(bundle != null) {
-            Product product = (Product) bundle.get("sanpham");
-            madm = product.getCateKey();
-            masp = product.getKey();
+            DBProductToDisplay DBProductToDisplay = (DBProductToDisplay) bundle.get("sanpham");
+            madm = DBProductToDisplay.getCateKey();
+            masp = DBProductToDisplay.getKey();
             cateRef.child(madm).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -67,11 +67,11 @@ public class ProductDetails extends AppCompatActivity {
 
                 }
             });
-            defaultImageUrl = product.getImageUrl(); filePath = null;
-            binding.edtTensp.setText(product.getName());
-            binding.edtGia.setText(product.getPrice());
-            binding.edtSoluong.setText(product.getQuantity());
-            binding.edtMieuta.setText(product.getDescription());
+            defaultImageUrl = DBProductToDisplay.getImageUrl(); filePath = null;
+            binding.edtTensp.setText(DBProductToDisplay.getName());
+            binding.edtGia.setText(DBProductToDisplay.getPrice());
+            binding.edtSoluong.setText(DBProductToDisplay.getQuantity());
+            binding.edtMieuta.setText(DBProductToDisplay.getDescription());
             Picasso.get().load(defaultImageUrl).into(binding.imgHinhanh);
         } else {
             Toast.makeText(ProductDetails.this, "Không lấy được thông tin sản phẩm", Toast.LENGTH_SHORT).show();
@@ -248,12 +248,12 @@ public class ProductDetails extends AppCompatActivity {
                 return newImgRef.getDownloadUrl();
             }).addOnCompleteListener(task -> {
                 String newImageUrl = task.getResult().toString();
-                prodRef.child(masp).setValue(new DBProduct(madm, newImageUrl, tensp, motasp, giasp, soluong));
+                prodRef.child(masp).setValue(new DBProductToAdd(madm, newImageUrl, tensp, motasp, giasp, soluong));
                 Toast.makeText(ProductDetails.this, "Lưu sản phẩm thành công", Toast.LENGTH_SHORT).show();
                 finish();
             });
         } else {
-            prodRef.child(masp).setValue(new DBProduct(madm, defaultImageUrl, tensp, motasp, giasp, soluong));
+            prodRef.child(masp).setValue(new DBProductToAdd(madm, defaultImageUrl, tensp, motasp, giasp, soluong));
             Toast.makeText(ProductDetails.this, "Lưu sản phẩm thành công", Toast.LENGTH_SHORT).show();
             finish();
         }

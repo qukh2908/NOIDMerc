@@ -1,10 +1,19 @@
 package com.example.noidmerchant.Database;
 
-public class DBCategory {
-    public String tendm;
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
-    public DBCategory(String tendm) {
+public class DBCategory implements Serializable {
+    private String tendm, nameID;
+
+    public DBCategory(String tendm, String nameID) {
         this.tendm = tendm;
+
+        this.nameID = nameID;
+    }
+
+    public DBCategory() {
     }
 
     public String getTendm() {
@@ -15,6 +24,19 @@ public class DBCategory {
         this.tendm = tendm;
     }
 
-    public DBCategory() {
+
+    public String getNameID(String key) {
+        return nameID;
+    }
+
+    public void setNameID(String nameID) {
+        this.nameID = nameID;
+    }
+
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("tendm", tendm);
+
+        return result;
     }
 }

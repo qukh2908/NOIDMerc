@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.noidmerchant.Adapter.Product;
+import com.example.noidmerchant.Database.DBProductToDisplay;
 import com.example.noidmerchant.Adapter.ProductAdapter;
 import com.example.noidmerchant.databinding.FragmentProductBinding;
 import com.google.firebase.database.ChildEventListener;
@@ -28,7 +28,7 @@ import java.util.ArrayList;
 
 public class ProductFragment extends Fragment  {
     FragmentProductBinding binding;
-    ArrayList<Product> list = new ArrayList<>();
+    ArrayList<DBProductToDisplay> list = new ArrayList<>();
     public ProductFragment() {
         // Required empty public constructor
     }
@@ -66,8 +66,8 @@ public class ProductFragment extends Fragment  {
                     String des = snapshot.child("motasp").getValue(String.class);
                     String madm = snapshot.child("madm").getValue(String.class);
                     String key = snapshot.getKey();
-                    Product product = new Product(name, price, imageUrl,quant,des,key,madm);
-                    list.add(product);
+                    DBProductToDisplay DBProductToDisplay = new DBProductToDisplay(name, price, imageUrl,quant,des,key,madm);
+                    list.add(DBProductToDisplay);
                     adapter.notifyDataSetChanged();
                 }
 

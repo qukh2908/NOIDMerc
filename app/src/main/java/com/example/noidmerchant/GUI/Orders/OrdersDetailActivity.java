@@ -1,20 +1,22 @@
 package com.example.noidmerchant.GUI.Orders;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.noidmerchant.Adapter.Cart;
-import com.example.noidmerchant.Adapter.CartAdapter;
-import com.example.noidmerchant.Adapter.Orders;
+import com.example.noidmerchant.Database.DBProductsInOrder;
+import com.example.noidmerchant.Adapter.ProductsInOrderAdapter;
+import com.example.noidmerchant.Database.DBOrder;
 import com.example.noidmerchant.databinding.DetailsOrderBinding;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,7 +31,7 @@ public class OrdersDetailActivity extends AppCompatActivity {
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference ordRef = database.getReference().child("dathang");
     final DatabaseReference authRef = database.getReference().child("taikhoan");
-    ArrayList<Cart> list = new ArrayList<>();
+    final ArrayList<DBProductsInOrder> productsList = new ArrayList<>();
     private String makh, madh;
     private DialogInterface.OnClickListener dialogClickListener;
     private DetailsOrderBinding binding;
@@ -38,55 +40,18 @@ public class OrdersDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DetailsOrderBinding.inflate(getLayoutInflater());
-        CartAdapter adapter = new CartAdapter(list, this);
-        binding.rcvDetailDh.setAdapter(adapter);
+        setContentView(binding.getRoot());
+        //Reset khi khởi động
         makh = null;
         madh = null;
-        list.clear();
-        database.getReference().child("dathang").addValueEventListener(new ValueEventListener() {
-            @SuppressLint("NotifyDataSetChanged")
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Cart cart = dataSnapshot.getValue(Cart.class);
-                    //String masp = cart.getMasp();
-                    ordRef.child("sanpham").orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            assert cart != null;
-                            cart.setTensp((String) snapshot.child("tensp").getValue());
-                            cart.setSoluong(Math.toIntExact(snapshot.child("soluong").getChildrenCount()));
-                            cart.setGiasp(Math.toIntExact(snapshot.child("giasp").getChildrenCount()));
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-                    list.add(cart);
-                }
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        binding.rcvDetailDh.setLayoutManager(layoutManager);
-        setContentView(binding.getRoot());
+        productsList.clear();
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            Orders orders = (Orders) bundle.get("dathang");
-            makh = orders.getMakh();
-            madh = orders.getMadh();
-            if (!orders.getTinhtrang().equals("Đang chờ xác nhận")) {
-                binding.btnHuy.setVisibility(View.INVISIBLE);
-                binding.btnXacnhan.setVisibility(View.INVISIBLE);
-            }
+            DBOrder DBOrder = (DBOrder) bundle.get("dathang");
+            makh = DBOrder.getMakh();
+            madh = DBOrder.getMadh();
+            //Lấy thông tin từ mã khách hàng
             authRef.child(makh).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -101,11 +66,79 @@ public class OrdersDetailActivity extends AppCompatActivity {
                 }
             });
             binding.txtMd.setText(madh);
-            binding.txtTt.setText(orders.getTinhtrang());
-            double updatedPrice = orders.getTongtiendh();
+            binding.txtTt.setText(DBOrder.getTinhtrang());
+            //Ẩn hiện nút tùy vào tình trạng đơn
+            if (!DBOrder.getTinhtrang().equals("Đang chờ xác nhận")) {
+                binding.btnHuy.setVisibility(View.INVISIBLE);
+                binding.btnXacnhan.setVisibility(View.INVISIBLE);
+            }
+            double updatedPrice = DBOrder.getTongtiendh();
             DecimalFormat decimalFormat = new DecimalFormat("#,### đ");
             String formattedPrice = decimalFormat.format(updatedPrice);
             binding.txtTongtien.setText(formattedPrice);
+            //Set layout cho rcv sản phẩm
+            LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+            binding.rcvProductsList.setLayoutManager(layoutManager);
+            //Set adapter cho rcv sản phẩm
+            ProductsInOrderAdapter adapter = new ProductsInOrderAdapter(productsList, this);
+            binding.rcvProductsList.setAdapter(adapter);
+            ordRef.child(madh).orderByKey().addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                    Log.i("ADMIN", "data is" + snapshot.getValue());
+
+                }
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+            ordRef.addValueEventListener(new ValueEventListener() {
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        DBProductsInOrder DBProductsInOrder = dataSnapshot.getValue(DBProductsInOrder.class);
+                        ordRef.child(madh).child("sanpham").addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                assert DBProductsInOrder != null;
+                                DBProductsInOrder.setTensp((String) snapshot.child("tensp").getValue());
+                                DBProductsInOrder.setSoluong(snapshot.child("soluong").getValue(long.class));
+                                DBProductsInOrder.setGiasp(snapshot.child("giasp").getValue(long.class));
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                        productsList.add(DBProductsInOrder);
+                        adapter.notifyDataSetChanged();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
         } else {
             Toast.makeText(OrdersDetailActivity.this, "Không lấy được thông tin sản phẩm", Toast.LENGTH_SHORT).show();
             finish();
@@ -137,6 +170,7 @@ public class OrdersDetailActivity extends AppCompatActivity {
                     .setNegativeButton("Không", dialogClickListener)
                     .show();
         });
+        //Nút quay lại
         binding.backBtnAdd.setOnClickListener(v -> finish());
     }
 }

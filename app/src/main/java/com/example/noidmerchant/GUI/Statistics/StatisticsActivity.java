@@ -4,45 +4,27 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
-import android.graphics.Color;
-import android.media.audiofx.AudioEffect;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import com.example.noidmerchant.Adapter.Orders;
+import com.example.noidmerchant.Database.DBOrder;
 import com.example.noidmerchant.R;
 import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.components.Description;
-import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.data.RadarEntry;
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
-import com.github.mikephil.charting.utils.ColorTemplate;
-import com.google.android.gms.fitness.data.DataPoint;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.ktx.Firebase;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
-import java.util.List;
-import java.util.logging.SimpleFormatter;
 
 public class StatisticsActivity extends AppCompatActivity {
 
@@ -95,8 +77,8 @@ public class StatisticsActivity extends AppCompatActivity {
                 if(snapshot.hasChildren()){
                     for (DataSnapshot data : snapshot.getChildren())
                     {
-                        Orders orders = data.getValue(Orders.class);
-                        dataVal.add(new Entry(orders.getThoigiandh().length(),orders.getTongtiendh()));
+                        DBOrder DBOrder = data.getValue(DBOrder.class);
+                        dataVal.add(new Entry(DBOrder.getThoigiandh().length(), DBOrder.getTongtiendh()));
                     }
                     showChart(dataVal);
                 }
