@@ -41,11 +41,11 @@ public class OrdersDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DetailsOrderBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        ProductsInOrderAdapter productsInOrderAdapter = new ProductsInOrderAdapter(productsList, this);
         //Reset khi khởi động
         makh = null;
         madh = null;
         productsList.clear();
-
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             DBOrder DBOrder = (DBOrder) bundle.get("dathang");
@@ -82,11 +82,19 @@ public class OrdersDetailActivity extends AppCompatActivity {
             //Set adapter cho rcv sản phẩm
             ProductsInOrderAdapter adapter = new ProductsInOrderAdapter(productsList, this);
             binding.rcvProductsList.setAdapter(adapter);
-            ordRef.child(madh).orderByKey().addChildEventListener(new ChildEventListener() {
+            ordRef.child(madh).child("sanpham").orderByKey().addChildEventListener(new ChildEventListener() {
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                    Log.i("ADMIN", "data is" + snapshot.getValue());
+                    Log.i("ADMIN",madh + "/sanpham/" + snapshot.getKey());
+                    String masp = snapshot.getKey();
+                    String tensp = snapshot.child("tensp").getValue().toString();
+                    long soluong = snapshot.child("soluong").getValue(long.class);
+                    long giasp = snapshot.child("giasp").getValue(long.class);
+                    long tongtien = snapshot.child("tongtien").getValue(long.class);
 
+                    DBProductsInOrder sanpham = new DBProductsInOrder(masp, tensp, "", "", soluong, giasp, tongtien);
+                    productsList.add(sanpham);
+                    productsInOrderAdapter.notifyDataSetChanged();
                 }
 
                 @Override
@@ -109,36 +117,6 @@ public class OrdersDetailActivity extends AppCompatActivity {
 
                 }
             });
-
-            ordRef.addValueEventListener(new ValueEventListener() {
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                        DBProductsInOrder DBProductsInOrder = dataSnapshot.getValue(DBProductsInOrder.class);
-                        ordRef.child(madh).child("sanpham").addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                assert DBProductsInOrder != null;
-                                DBProductsInOrder.setTensp((String) snapshot.child("tensp").getValue());
-                                DBProductsInOrder.setSoluong(snapshot.child("soluong").getValue(long.class));
-                                DBProductsInOrder.setGiasp(snapshot.child("giasp").getValue(long.class));
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-
-                            }
-                        });
-                        productsList.add(DBProductsInOrder);
-                        adapter.notifyDataSetChanged();
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
-
         } else {
             Toast.makeText(OrdersDetailActivity.this, "Không lấy được thông tin sản phẩm", Toast.LENGTH_SHORT).show();
             finish();

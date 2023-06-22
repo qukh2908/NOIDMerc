@@ -20,8 +20,8 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class ProductsInOrderAdapter extends RecyclerView.Adapter<ProductsInOrderAdapter.CartViewHolder> {
-    private ArrayList<DBProductsInOrder>list;
-    private Context context;
+    ArrayList<DBProductsInOrder>list;
+    Context context;
 
     public ProductsInOrderAdapter(ArrayList<DBProductsInOrder> list, Context context) {
         this.list = list;
