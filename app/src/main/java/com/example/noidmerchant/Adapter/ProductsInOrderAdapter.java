@@ -39,7 +39,7 @@ public class ProductsInOrderAdapter extends RecyclerView.Adapter<ProductsInOrder
     public void onBindViewHolder(@NonNull CartViewHolder holder, int position) {
         DBProductsInOrder DBProductsInOrder = list.get(position);
         holder.txtTensp.setText(DBProductsInOrder.getTensp());
-        holder.txtSL.setText(String.valueOf(DBProductsInOrder.getSoluong()));
+        holder.txtSL.setText("x" + DBProductsInOrder.getSoluong());
         double updatedPrice = DBProductsInOrder.getGiasp();
         DecimalFormat decimalFormat = new DecimalFormat("#,### đ");
         String formattedPrice = decimalFormat.format(updatedPrice);

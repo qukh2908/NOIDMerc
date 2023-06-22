@@ -6,6 +6,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
@@ -82,12 +83,14 @@ public class OrdersDetailActivity extends AppCompatActivity {
             //Set adapter cho rcv sản phẩm
             ProductsInOrderAdapter adapter = new ProductsInOrderAdapter(productsList, this);
             binding.rcvProductsList.setAdapter(adapter);
+            //Lấy danh sách sản phẩm của đơn hàng
             ordRef.child(madh).child("sanpham").orderByKey().addChildEventListener(new ChildEventListener() {
+                @SuppressLint("NotifyDataSetChanged")
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                     Log.i("ADMIN",madh + "/sanpham/" + snapshot.getKey());
                     String masp = snapshot.getKey();
-                    String tensp = snapshot.child("tensp").getValue().toString();
+                    String tensp = Objects.requireNonNull(snapshot.child("tensp").getValue()).toString();
                     long soluong = snapshot.child("soluong").getValue(long.class);
                     long giasp = snapshot.child("giasp").getValue(long.class);
                     long tongtien = snapshot.child("tongtien").getValue(long.class);
