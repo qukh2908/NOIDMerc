@@ -45,7 +45,6 @@ public class OrdersDetailActivity extends AppCompatActivity {
         //Reset khi khởi động
         makh = null;
         madh = null;
-        productsList.clear();
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             DBOrder DBOrder = (DBOrder) bundle.get("dathang");

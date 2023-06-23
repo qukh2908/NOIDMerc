@@ -25,10 +25,8 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         //Xem đã có quyền thông báo hay chưa
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            int POST_NOTIFICATIONS_CODE = 1;
-            int FOREGROUND_SERVICE_CODE = 2;
-            checkPermission(Manifest.permission.POST_NOTIFICATIONS, POST_NOTIFICATIONS_CODE);
-            checkPermission(Manifest.permission.FOREGROUND_SERVICE, FOREGROUND_SERVICE_CODE);
+            checkPermission(Manifest.permission.POST_NOTIFICATIONS, 1);
+            checkPermission(Manifest.permission.FOREGROUND_SERVICE, 2);
         }
     }
     @Override
@@ -50,8 +48,8 @@ public class MainActivity extends AppCompatActivity {
         binding.settingsCard.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, SettingsActivity.class)));
     }
     public void checkPermission(String permission, int requestCode) {
-        if (ContextCompat.checkSelfPermission(MainActivity.this, permission) == PackageManager.PERMISSION_DENIED) {
-            ActivityCompat.requestPermissions(MainActivity.this, new String[] { permission }, requestCode);
+        if (ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(this, new String[] { permission }, requestCode);
         }
     }
     @Override

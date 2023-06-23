@@ -10,10 +10,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.noidmerchant.Adapter.ProductsInOrderAdapter;
-import com.example.noidmerchant.Database.DBOrder;
 import com.example.noidmerchant.Adapter.OrdersAdapter;
-import com.example.noidmerchant.Database.DBProductsInOrder;
+import com.example.noidmerchant.Database.DBOrder;
 import com.example.noidmerchant.MainActivity;
 import com.example.noidmerchant.databinding.ActivityOrdersBinding;
 import com.google.firebase.database.ChildEventListener;
@@ -31,15 +29,13 @@ public class OrdersActivity extends AppCompatActivity {
     final DatabaseReference authRef = database.getReference().child("taikhoan");
     final DatabaseReference ordRef = database.getReference().child("dathang");
     ArrayList<DBOrder> ordersList = new ArrayList<>();
-    ArrayList<DBProductsInOrder> productsList = new ArrayList<>();
-    private ActivityOrdersBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActivityOrdersBinding binding;
         binding = ActivityOrdersBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         OrdersAdapter ordersAdapter = new OrdersAdapter(this, ordersList);
-
         binding.rcvDh.setAdapter(ordersAdapter);
         ordRef.orderByChild("tinhtrang").addChildEventListener(new ChildEventListener() {
             @Override
@@ -49,9 +45,10 @@ public class OrdersActivity extends AppCompatActivity {
                 String thoigiandh = Objects.requireNonNull(snapshot.child("thoigiandh").getValue()).toString();
                 String ghichudh = Objects.requireNonNull(snapshot.child("ghichudh").getValue()).toString();
                 String tinhtrang = Objects.requireNonNull(snapshot.child("tinhtrang").getValue()).toString();
-                long soluongdh = snapshot.child("soluongdh").getValue(long.class);
-                long tongtiendh =  snapshot.child("tongtiendh").getValue(long.class);
-
+                long soluongdh = Objects.requireNonNull(snapshot.child("soluongdh").getValue(long.class));
+                long tongtiendh =  Objects.requireNonNull(snapshot.child("tongtiendh").getValue(long.class));
+                long countsnapshot = snapshot.getChildrenCount();
+                Log.i("ADMIN","count:" + countsnapshot);
                 authRef.child(makh).addValueEventListener(new ValueEventListener() {
                     @SuppressLint("NotifyDataSetChanged")
                     @Override
@@ -71,20 +68,22 @@ public class OrdersActivity extends AppCompatActivity {
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 ordersList.clear();
-                ordRef.removeEventListener(this);
-                ordRef.addChildEventListener(this);
+                ordRef.orderByChild("tinhtrang").removeEventListener(this);
+                ordRef.orderByChild("tinhtrang").addChildEventListener(this);
             }
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot snapshot) {
                 ordersList.clear();
-                ordRef.removeEventListener(this);
-                ordRef.addChildEventListener(this);
+                ordRef.orderByChild("tinhtrang").removeEventListener(this);
+                ordRef.orderByChild("tinhtrang").addChildEventListener(this);
             }
 
             @Override
             public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
+                ordersList.clear();
+                ordRef.orderByChild("tinhtrang").removeEventListener(this);
+                ordRef.orderByChild("tinhtrang").addChildEventListener(this);
             }
 
             @Override
@@ -94,17 +93,10 @@ public class OrdersActivity extends AppCompatActivity {
         });
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         binding.rcvDh.setLayoutManager(layoutManager);
-
         //nút back
         binding.backBtn.setOnClickListener(v -> {
             startActivity(new Intent(this, MainActivity.class));
             finish();
         });
     }
-//    private Map<String, DBProductsInOrder> convertProductItemsToMap(ArrayList<DBProductsInOrder> items) {
-//        Map<String, DBProductsInOrder> itemsMap = new HashMap<>();
-//        for (DBProductsInOrder item : items) {
-//            itemsMap.put(item.getMasp(), item);
-//        } return itemsMap;
-//    }
 }

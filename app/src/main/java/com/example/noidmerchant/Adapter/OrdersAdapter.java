@@ -54,7 +54,6 @@ public class OrdersAdapter extends  RecyclerView.Adapter<OrdersAdapter.OrdersVie
                 holder.table_order.setBackgroundColor(Color.parseColor("#FFF48D"));
                 break;
         }
-
         double updatedPrice = order.getTongtiendh();
         DecimalFormat decimalFormat = new DecimalFormat("#,### đ");
         String formattedPrice = decimalFormat.format(updatedPrice);

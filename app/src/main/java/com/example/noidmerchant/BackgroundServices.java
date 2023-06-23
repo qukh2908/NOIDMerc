@@ -28,7 +28,6 @@ public class BackgroundServices extends Service {
     public IBinder onBind(Intent intent) {
         return null;
     }
-
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         ordRef.orderByKey().addChildEventListener(new ChildEventListener() {
@@ -39,18 +38,20 @@ public class BackgroundServices extends Service {
                 String status = Objects.requireNonNull(snapshot.child("tinhtrang").getValue()).toString();
                 if(status.equals("Đang chờ xác nhận")) {
                     assert key != null;
-                    createNotification("Đơn hàng: " + key.substring(15) + " đang chờ bạn", nofiId++);
+                    createNotification("Đơn hàng: " + key.substring(15) + " đang chờ", nofiId++);
                 }
             }
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
+                ordRef.removeEventListener(this);
+                ordRef.addChildEventListener(this);
             }
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
+                ordRef.removeEventListener(this);
+                ordRef.addChildEventListener(this);
             }
 
             @Override
@@ -63,7 +64,6 @@ public class BackgroundServices extends Service {
 
             }
         });
-
         return super.onStartCommand(intent, flags, startId);
     }
 
