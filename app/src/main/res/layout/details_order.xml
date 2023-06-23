@@ -320,6 +320,16 @@
                     android:padding="10dp">
 
                     <Button
+                        android:id="@+id/btn_xoa"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_rounded_delete"
+                        android:text="Xóa đơn hàng này"
+                        android:visibility="gone" />
+                    <Button
                         android:id="@+id/btn_huy"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"

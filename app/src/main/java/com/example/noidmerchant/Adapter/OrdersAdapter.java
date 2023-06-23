@@ -37,7 +37,7 @@ public class OrdersAdapter extends  RecyclerView.Adapter<OrdersAdapter.OrdersVie
     @Override
     public void onBindViewHolder(@NonNull OrdersViewHolder holder, int position) {
         DBOrder order = ordersList.get(position);
-        holder.txtMaDH.setText(order.getMakh());
+        holder.txtMaDH.setText(order.getMadh());
         holder.txtTime.setText(order.getThoigiandh());
         holder.txtTinhTrang.setText(order.getTinhtrang());
         switch (order.getTinhtrang()) {

@@ -36,7 +36,6 @@ public class OrdersDetailActivity extends AppCompatActivity {
     private String makh, madh;
     private DialogInterface.OnClickListener dialogClickListener;
     private DetailsOrderBinding binding;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,8 +69,9 @@ public class OrdersDetailActivity extends AppCompatActivity {
             binding.txtTt.setText(DBOrder.getTinhtrang());
             //Ẩn hiện nút tùy vào tình trạng đơn
             if (!DBOrder.getTinhtrang().equals("Đang chờ xác nhận")) {
-                binding.btnHuy.setVisibility(View.INVISIBLE);
-                binding.btnXacnhan.setVisibility(View.INVISIBLE);
+                binding.btnHuy.setVisibility(View.GONE);
+                binding.btnXacnhan.setVisibility(View.GONE);
+                binding.btnXoa.setVisibility(View.VISIBLE);
             }
             double updatedPrice = DBOrder.getTongtiendh();
             DecimalFormat decimalFormat = new DecimalFormat("#,### đ");
@@ -147,6 +147,26 @@ public class OrdersDetailActivity extends AppCompatActivity {
             };
             AlertDialog.Builder builder = new AlertDialog.Builder(OrdersDetailActivity.this);
             builder.setMessage("Hủy đơn hàng này?")
+                    .setPositiveButton("Có", dialogClickListener)
+                    .setNegativeButton("Không", dialogClickListener)
+                    .show();
+        });
+        //Nút xóa đơn hàng
+        binding.btnXoa.setOnClickListener(v -> {
+            dialogClickListener = (dialog, which) -> {
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        if (madh != null) {
+                            ordRef.child(madh).removeValue();
+                            finish();
+                        }
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        dialog.dismiss();
+                        break;
+                }
+            };
+            AlertDialog.Builder builder = new AlertDialog.Builder(OrdersDetailActivity.this);
+            builder.setMessage("Xóa đơn hàng này khỏi bộ nhớ?")
                     .setPositiveButton("Có", dialogClickListener)
                     .setNegativeButton("Không", dialogClickListener)
                     .show();
